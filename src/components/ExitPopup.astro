@@ -324,50 +324,52 @@
     .ep-h2 { font-size: 30px; }
   }
 
-  /* ── Mobile — stack vertically ───────────────── */
+  /* ── Mobile — bottom sheet ───────────────────── */
   @media (max-width: 580px) {
     .ep-popup {
-      grid-template-columns: 1fr;
-      grid-template-rows: 200px 1fr;
-      width: 92vw;
+      /* Override centered positioning — anchor to bottom */
+      inset: auto;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: 0;
+      width: 100%;
       max-height: 88vh;
       overflow-y: auto;
-      border-radius: 20px;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 24px 24px 0 0;
+      /* Single column — no photo panel */
+      grid-template-columns: 1fr;
+      /* Slide up animation instead of scale */
+      transform: translateY(40px);
     }
-    .ep-left {
-      height: 200px;
+    .ep-popup.ep-open {
+      transform: translateY(0);
     }
-    .ep-photo {
-      object-position: 50% 20%;
-    }
-    /* Fade bottom instead of right on mobile */
-    .ep-left::after {
-      background: linear-gradient(to bottom, transparent 40%, #26215C 100%);
-    }
-    .ep-quote-badge {
-      bottom: 14px;
-      left: 14px;
-      right: 14px;
-      padding: 10px 12px;
-    }
-    .ep-quote-text { font-size: 11px; margin-bottom: 4px; }
+    /* Hide photo panel — not needed on mobile */
+    .ep-left { display: none; }
     .ep-right {
-      padding: 28px 22px 24px;
+      padding: 32px 24px 36px;
       border-radius: 0;
     }
     .ep-right-blob { top: -40px; right: -40px; width: 180px; height: 180px; }
     .ep-h2 { font-size: 28px; }
-    .ep-btn { font-size: 14px; }
+    .ep-body { font-size: 13px; margin-bottom: 16px; }
+    .ep-checks { gap: 8px; margin-bottom: 20px; }
+    /* Close button: visible on light background */
     .ep-close {
-      top: 10px;
-      right: 10px;
-      background: rgba(255,255,255,0.2);
+      top: 12px;
+      right: 12px;
+      background: rgba(83, 74, 183, 0.1);
+      border-color: rgba(83, 74, 183, 0.2);
+      color: #534AB7;
     }
+    .ep-close:hover { background: rgba(83, 74, 183, 0.18); }
   }
 
   @media (max-width: 380px) {
-    .ep-popup { width: 96vw; }
-    .ep-right { padding: 24px 18px 20px; }
+    .ep-right { padding: 28px 20px 32px; }
+    .ep-h2 { font-size: 26px; }
   }
 </style>
 
