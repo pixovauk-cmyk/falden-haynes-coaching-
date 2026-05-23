@@ -1,0 +1,287 @@
+---
+// Footer.astro — site-wide footer
+// Light #f0eff8 background, dark text, clean minimal layout
+---
+
+<footer class="footer">
+  <div class="container">
+
+    <!-- Top: logo + tagline left | nav + social right -->
+    <div class="footer-top">
+
+      <div class="footer-brand">
+        <a href="/" class="footer-logo" aria-label="Feldon Haynes Coaching — home">
+          <img
+            src="/Images/feldon-haynes-logo-light.webp"
+            alt="Feldon Haynes Coaching"
+            width="123"
+            height="72"
+            loading="lazy"
+            class="footer-logo-img"
+          />
+        </a>
+        <p class="footer-tagline">
+          1-to-1 business coaching for ambitious founders.<br>
+          From someone who's actually done it.
+        </p>
+        <div class="footer-social" aria-label="Social links">
+          <a href="https://www.linkedin.com/in/feldon-haynes/" target="_blank" rel="noopener noreferrer" aria-label="Feldon Haynes on LinkedIn" class="footer-social-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+          <a href="https://wa.me/07562614867" target="_blank" rel="noopener noreferrer" aria-label="Message Feldon Haynes on WhatsApp" class="footer-social-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/>
+              <path d="M9 10c0 .6.6 2.4 2.7 3.4 2 1 3.7.6 4.3 0"/>
+            </svg>
+          </a>
+          <a href="https://linktr.ee/Feldeluxe" target="_blank" rel="noopener noreferrer" aria-label="Feldon Haynes on Linktree" class="footer-social-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-right">
+        <div class="footer-nav-group">
+          <p class="footer-nav-title">Navigation</p>
+          <nav class="footer-nav" aria-label="Footer navigation">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/blog">Blog</a>
+            <a href="/contact">Contact</a>
+          </nav>
+        </div>
+        <div class="footer-nav-group">
+          <p class="footer-nav-title">Legal</p>
+          <nav class="footer-nav" aria-label="Legal pages">
+            <a href="/privacy">Privacy policy</a>
+            <a href="/terms">Terms &amp; conditions</a>
+          </nav>
+        </div>
+        <div class="footer-nav-group">
+          <p class="footer-nav-title">Get in touch</p>
+          <address class="footer-contact">
+            <a href="mailto:info@feldeluxe.com">info@feldeluxe.com</a>
+            <a href="tel:07562614867">07562 614867</a>
+            <span>Halesowen, West Midlands</span>
+          </address>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-divider" role="separator"></div>
+
+    <!-- Bottom: copyright -->
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        &copy; 2026 Feldon Haynes Coaching &middot; Feldeluxe Ltd. All rights reserved.
+      </p>
+      <a
+        href="https://calendly.com/feldeluxe/discovery-call"
+        class="footer-cta"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Book a free call
+      </a>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: #f0eff8;
+    padding: 56px 0 32px;
+    border-top: 1px solid #ede9ff;
+  }
+
+  /* Top layout */
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 48px;
+    margin-bottom: 40px;
+    align-items: start;
+  }
+
+  /* Brand column */
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .footer-logo {
+    display: inline-flex;
+    align-items: center;
+  }
+  .footer-logo-img {
+    height: 72px;
+    width: auto;
+    display: block;
+  }
+
+  .footer-tagline {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #7e7a9f;
+    line-height: 1.65;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .footer-social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    background: #ffffff;
+    border: 1px solid #ede9ff;
+    border-radius: 8px;
+    color: #534ab7;
+    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+  .footer-social-link:hover {
+    color: #ffffff;
+    border-color: #534ab7;
+    background: #534ab7;
+  }
+
+  /* Right columns */
+  .footer-right {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .footer-nav-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-nav-title {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #1a1744;
+    margin-bottom: 4px;
+  }
+
+  .footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer-nav a {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #5a5578;
+    transition: color 0.2s ease;
+    line-height: 1.4;
+  }
+  .footer-nav a:hover { color: #534ab7; }
+
+  /* Contact */
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-style: normal;
+  }
+  .footer-contact a,
+  .footer-contact span {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #5a5578;
+    line-height: 1.4;
+    transition: color 0.2s ease;
+  }
+  .footer-contact a:hover { color: #534ab7; }
+
+  /* Divider */
+  .footer-divider {
+    border: none;
+    border-top: 1px solid #ede9ff;
+    margin-bottom: 28px;
+  }
+
+  /* Bottom row */
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .footer-copy {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #b0abc8;
+    line-height: 1.5;
+  }
+
+  .footer-cta {
+    display: inline-flex;
+    align-items: center;
+    background: #534ab7;
+    color: #ffffff;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 9px 20px;
+    border-radius: 9999px;
+    white-space: nowrap;
+    min-height: 38px;
+    transition: background 0.2s ease;
+  }
+  .footer-cta:hover { background: #3b309e; }
+
+  /* ── Tablet ──────────────────────────────── */
+  @media (max-width: 1024px) {
+    .footer-top {
+      grid-template-columns: 1fr;
+    }
+    .footer-right {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* ── Mobile ─────────────────────────────── */
+  @media (max-width: 640px) {
+    .footer-right {
+      grid-template-columns: 1fr 1fr;
+    }
+    .footer-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .footer-cta { width: 100%; justify-content: center; }
+  }
+
+  @media (max-width: 400px) {
+    .footer-right {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

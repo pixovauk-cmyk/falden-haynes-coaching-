@@ -1,0 +1,384 @@
+---
+// Hero.astro — homepage hero
+// Light #f8f9fb background, right-side purple gradient tint
+// Left: chip tag + H1 + sub + CTAs + trust dots. Right: photo card + floating stat
+---
+
+<section class="hero" aria-label="Introduction">
+
+  <!-- LEFT: copy column -->
+  <div class="hero-copy-wrap">
+    <div class="hero-copy fade-in">
+
+      <span class="hero-chip">1-to-1 Entrepreneurial Coaching</span>
+
+      <h1 class="hero-h1">
+        The business coach<br>who's actually<br>
+        <em>built businesses.</em>
+      </h1>
+
+      <p class="hero-sub">
+        1-to-1 coaching for small business owners and ambitious founders.
+        From someone who has actually built businesses, not just read about them.
+      </p>
+
+      <div class="hero-buttons">
+        <a
+          href="https://calendly.com/feldeluxe/discovery-call"
+          class="btn-primary"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Book your free discovery call
+        </a>
+        <a href="#services" class="btn-ghost">See how it works</a>
+      </div>
+
+      <div class="hero-trust">
+        <div class="trust-item">
+          <span class="trust-dot" aria-hidden="true"></span>
+          <span><strong>35+ businesses</strong> started from scratch</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-dot" aria-hidden="true"></span>
+          <span><strong>40+ founders</strong> supported</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-dot" aria-hidden="true"></span>
+          <span><strong>3 industry awards</strong> including EPIC Spirit Award</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RIGHT: photo with floating stat -->
+  <div class="hero-photo-col" aria-hidden="true">
+    <div class="hero-photo-wrap">
+
+      <!-- Decorative background blob -->
+      <div class="hero-blob" aria-hidden="true"></div>
+
+      <picture>
+        <source
+          media="(max-width: 768px)"
+          srcset="/Images/feldon-haynes-thoughtful-portrait-mobile.webp"
+        />
+        <img
+          src="/Images/feldon-haynes-thoughtful-portrait.webp"
+          alt="Feldon Haynes, business coach"
+          loading="eager"
+          fetchpriority="high"
+          class="hero-photo"
+          width="1066"
+          height="1600"
+        />
+      </picture>
+
+      <!-- Floating stat card — bottom left -->
+      <div class="hero-float hero-float--1">
+        <span class="float-number">40+</span>
+        <span class="float-label">Founders supported</span>
+      </div>
+
+      <!-- Floating award chip — top right -->
+      <div class="hero-float hero-float--2">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+        </svg>
+        <span>EPIC Spirit Award</span>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<style>
+  .hero {
+    background: #f8f9fb;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 700px;
+    overflow: hidden;
+  }
+
+  /* ── LEFT: copy ─────────────────────────── */
+  .hero-copy-wrap {
+    display: flex;
+    align-items: center;
+    padding: 72px 56px 72px max(48px, calc(50vw - 640px));
+  }
+
+  .hero-copy {
+    max-width: 560px;
+  }
+
+  /* Chip tag */
+  .hero-chip {
+    display: inline-flex;
+    align-items: center;
+    background: #e3dfff;
+    color: #3b309e;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 7px 18px;
+    border-radius: 9999px;
+    margin-bottom: 28px;
+  }
+
+  .hero-h1 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 68px;
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: #1a1744;
+    margin-bottom: 24px;
+  }
+  .hero-h1 em {
+    font-style: italic;
+    color: #534ab7;
+    font-weight: 700;
+  }
+
+  .hero-sub {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.75;
+    color: #4a4670;
+    max-width: 420px;
+    margin-bottom: 40px;
+  }
+
+  /* Buttons */
+  .hero-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    background: #534ab7;
+    color: #ffffff;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 16px 32px;
+    border-radius: 9999px;
+    white-space: nowrap;
+    min-height: 56px;
+    transition: background 0.2s ease, transform 0.1s ease;
+  }
+  .btn-primary:hover  { background: #3b309e; }
+  .btn-primary:active { transform: scale(0.98); }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    color: #4a4670;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 16px 32px;
+    border-radius: 9999px;
+    border: 1.5px solid #d5d2ea;
+    white-space: nowrap;
+    min-height: 56px;
+    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  }
+  .btn-ghost:hover {
+    border-color: #534ab7;
+    color: #534ab7;
+    background: #f0eeff;
+  }
+
+  /* Trust signals */
+  .hero-trust {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 28px;
+    border-top: 1px solid #ede9ff;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #5a5578;
+    line-height: 1.4;
+  }
+  .trust-item strong {
+    color: #26215C;
+    font-weight: 600;
+  }
+
+  .trust-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #534ab7;
+    flex-shrink: 0;
+  }
+
+  /* ── RIGHT: photo ───────────────────────── */
+  .hero-photo-col {
+    display: flex;
+    align-items: flex-end;
+    padding: 40px max(40px, calc(50vw - 640px)) 0 40px;
+    background: linear-gradient(135deg, #f8f9fb 0%, #ede9ff 60%, #e3dfff 100%);
+  }
+
+  .hero-photo-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+  }
+
+  /* Decorative blob behind the photo */
+  .hero-blob {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 85%;
+    background: linear-gradient(135deg, #c9c2ff 0%, #534ab7 100%);
+    border-radius: 40% 40% 0 0;
+    opacity: 0.15;
+    filter: blur(24px);
+    pointer-events: none;
+  }
+
+  .hero-photo {
+    position: relative;
+    width: 100%;
+    height: 560px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 20px 20px 0 0;
+    display: block;
+  }
+
+  /* Floating card 1 — bottom left */
+  .hero-float--1 {
+    position: absolute;
+    bottom: 48px;
+    left: -24px;
+    background: #ffffff;
+    border: 1px solid #ede9ff;
+    border-radius: 16px;
+    padding: 14px 20px;
+    box-shadow: 0 12px 40px rgba(59, 48, 158, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .float-number {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: #534ab7;
+    line-height: 1;
+  }
+
+  .float-label {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: #7e7a9f;
+    white-space: nowrap;
+  }
+
+  /* Floating chip 2 — top right */
+  .hero-float--2 {
+    position: absolute;
+    top: 28px;
+    right: -16px;
+    background: #534ab7;
+    border-radius: 9999px;
+    padding: 8px 16px;
+    box-shadow: 0 8px 24px rgba(83, 74, 183, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #F2D832;
+  }
+
+  .hero-float--2 span {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #F2D832;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* ── Tablet ─────────────────────────────── */
+  @media (max-width: 1024px) {
+    .hero-h1 { font-size: 42px; }
+    .hero-copy-wrap { padding: 60px 40px 60px 40px; }
+  }
+
+  /* ── Mobile ─────────────────────────────── */
+  @media (max-width: 768px) {
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .hero-photo-col {
+      order: -1;
+      padding: 32px 20px 0;
+      background: linear-gradient(135deg, #ede9ff 0%, #e3dfff 100%);
+    }
+
+    .hero-photo-wrap {
+      max-width: 100%;
+    }
+
+    .hero-photo {
+      height: 300px;
+      border-radius: 16px 16px 0 0;
+    }
+
+    .hero-copy-wrap {
+      padding: 40px 20px 56px;
+    }
+
+    .hero-h1 { font-size: 40px; }
+
+    .hero-buttons {
+      flex-direction: column;
+    }
+    .btn-primary,
+    .btn-ghost {
+      text-align: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .hero-float--1 { left: 8px; bottom: 20px; }
+    .hero-float--2 { right: 8px; top: 14px; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-h1 { font-size: 32px; }
+    .hero-sub { font-size: 15px; }
+    .hero-float--1, .hero-float--2 { display: none; }
+  }
+</style>

@@ -1,0 +1,739 @@
+---
+// blog/benefits-of-a-business-plan.astro
+// Primary keyword: benefits of a business plan (KD 17, Volume 260) — Cluster 2
+// Avatar: Jordan (aspiring founder) | Bundle: Business Plan Bundle
+
+import Layout from '../../layouts/Layout.astro';
+
+const publishDate = '2026-05-21';
+const publishDateDisplay = '21 May 2026';
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://feldeluxe.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://feldeluxe.com/blog" },
+        { "@type": "ListItem", "position": 3, "name": "Benefits of a Business Plan", "item": "https://feldeluxe.com/blog/benefits-of-a-business-plan" }
+      ]
+    },
+    {
+      "@type": "Article",
+      "headline": "The Benefits of a Business Plan. And How to Write One That Actually Works.",
+      "description": "The real benefits of a business plan go beyond investor decks. Here's what a proper plan actually does for your business, and how to build one that works.",
+      "author": {
+        "@type": "Person",
+        "name": "Feldon Haynes",
+        "url": "https://feldeluxe.com/about",
+        "jobTitle": "Business Coach"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Feldon Haynes Coaching",
+        "url": "https://feldeluxe.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://feldeluxe.com/Images/feldon-haynes-logo-light.webp"
+        }
+      },
+      "datePublished": publishDate,
+      "dateModified": publishDate,
+      "image": "https://feldeluxe.com/Images/feldon-haynes-seated-portrait.webp",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://feldeluxe.com/blog/benefits-of-a-business-plan"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do I need a business plan to start a business?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Legally, no. Practically, yes. Even a single page is better than nothing. Not because the document is magical, but because the thinking that goes into writing it is worth doing regardless. The founders who skip this step are the ones who end up six months in, confused about why things are not working."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should a small business plan include?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At minimum, a small business plan should cover: your target customer (specific, not vague), your revenue model (how money gets made), your costs (realistic, not optimistic), your pricing (with rationale), how you will get your first customers, and a 90-day action plan week by week."
+          }
+        }
+      ]
+    }
+  ]
+});
+---
+
+<Layout
+  title="Benefits of a Business Plan | Feldon Haynes Coaching"
+  description="The real benefits of a business plan go beyond investor decks. Learn what a proper plan actually does for your business, and how to build one that works."
+  canonicalUrl="https://feldeluxe.com/blog/benefits-of-a-business-plan"
+  ogType="article"
+  schema={schema}
+>
+
+  <!-- Article header -->
+  <section class="article-hero">
+    <div class="container">
+      <nav class="article-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true"> / </span>
+        <a href="/blog">Blog</a>
+        <span aria-hidden="true"> / </span>
+        <span aria-current="page">Benefits of a Business Plan</span>
+      </nav>
+
+      <div class="article-meta">
+        <span class="article-tag">Business Planning</span>
+        <time class="article-date" datetime={publishDate}>{publishDateDisplay}</time>
+        <span class="article-read">7 min read</span>
+      </div>
+
+      <h1 class="article-h1">
+        The Benefits of a Business Plan.<br class="title-break" />
+        And How to Write One That Actually Works.
+      </h1>
+
+      <p class="article-standfirst">
+        Most people treat a business plan like a tick-box exercise. Something you write once,
+        file away, and never look at again. That assumption is costing you more than you think.
+      </p>
+
+      <div class="article-author-chip">
+        <img
+          src="/Images/feldon-haynes-seated-portrait.webp"
+          alt="Feldon Haynes"
+          class="author-chip-img"
+          width="40"
+          height="40"
+          loading="eager"
+        />
+        <div>
+          <p class="author-chip-name">Feldon Haynes</p>
+          <p class="author-chip-role">Business Coach, Feldeluxe Ltd</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured image -->
+  <div class="article-feature-img-wrap">
+    <div class="container">
+      <img
+        src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop"
+        alt="Founder working through a business plan at a desk"
+        width="1200"
+        height="500"
+        class="article-feature-img"
+        loading="eager"
+      />
+    </div>
+  </div>
+
+  <!-- Article body -->
+  <article class="article-body" aria-label="Article content">
+    <div class="container">
+      <div class="article-content">
+
+        <p>
+          When it is built properly, a business plan is not paperwork. It is the clearest thinking you will
+          do about your business. The founders who treat it that way, as a working document rather than a
+          document for investors, are the ones who launch faster, waste less money on mistakes, and build
+          something they can actually run.
+        </p>
+
+        <p>
+          I have started 35 businesses. Not all of them worked. And the ones that went sideways fastest were
+          almost always the ones where I had skipped the planning. Not because planning is magic. But because
+          the process of writing it down forces you to confront things you have been glossing over in your head.
+        </p>
+
+        <p>In this post, I will cover:</p>
+        <ul>
+          <li>The real benefits of a business plan (including the ones most guides skip)</li>
+          <li>How long a business plan actually needs to be</li>
+          <li>The business planning process broken down into seven honest questions</li>
+          <li>Why most business plans fail, and how to make sure yours does not</li>
+        </ul>
+
+        <h2>What are the real benefits of a business plan?</h2>
+
+        <p>
+          Most articles list things like "attracts funding" and "gives direction." Both true. But there are
+          benefits that matter more at the early stage, and nobody talks about them.
+        </p>
+
+        <h3>1. You find the problems before they cost you money</h3>
+        <p>
+          Most business failures are predictable on paper. A plan forces you to think through your pricing,
+          your costs, your margins, and your customer before you have spent a penny. That is worth more than
+          most people realise. Discovering a problem in a document is free. Discovering it six months into
+          trading is not.
+        </p>
+
+        <h3>2. You know exactly who you are selling to</h3>
+        <p>
+          "Everyone" is not a market. A business plan forces you to define your customer with specificity.
+          Who exactly? What do they actually want? How much will they pay? What do they already use instead?
+          The business planning process answers questions you would not have thought to ask if you had just
+          started selling.
+        </p>
+
+        <h3>3. You make better decisions, faster</h3>
+        <p>
+          When you have a clear plan, everyday decisions become easier. Should you spend money on ads this
+          month? Check whether your model assumes paid acquisition. Is this new supplier worth switching to?
+          Check your cost assumptions. The plan becomes a reference point, not a rulebook, but a context that
+          stops you making reactive decisions.
+        </p>
+
+        <h3>4. You can actually measure progress</h3>
+        <p>
+          Without a plan, you are guessing whether things are going well. With one, you have something to
+          compare against. That is how you know whether a slow month is a blip or a signal that something
+          needs to change. Gut feel is not a measurement system.
+        </p>
+
+        <h3>5. It forces you to be honest with yourself</h3>
+        <p>
+          This is the one people do not expect. Writing a business plan honestly, not optimistically but
+          <em>honestly</em>, is the fastest way to find out whether your idea is actually viable. That is
+          not a bad outcome. Finding out early is always better than finding out late.
+        </p>
+
+        <h3>6. It signals that you are serious</h3>
+        <p>
+          Whether you are approaching a coach, a supplier, a business partner, or a bank, arriving with a
+          clear plan changes how people respond to you. It is not about impressing anyone. It is about
+          demonstrating that you have thought it through.
+        </p>
+
+        <div class="article-callout">
+          <p>
+            The advantages of a business plan are not mainly financial. They are about clarity.
+            A plan is what separates "I have an idea" from "I have a business."
+          </p>
+        </div>
+
+        <h2>How long should a business plan be?</h2>
+
+        <p>
+          There is no correct answer. It depends entirely on what you need it to do.
+        </p>
+
+        <p>
+          A <strong>one page business plan</strong> is often enough to validate an idea, map the model, and
+          decide whether to move forward. For most early-stage founders, I recommend starting there. One page.
+          No padding. No lengthy market research sections you will never update. Forces clarity precisely
+          because space is limited.
+        </p>
+
+        <p>A longer plan (10 to 20 pages) is worth the effort when:</p>
+        <ul>
+          <li>You are applying for funding or a business loan</li>
+          <li>You have business partners who need to understand the full picture</li>
+          <li>Your model is genuinely complex with multiple revenue streams</li>
+          <li>You are bringing in staff and need a shared reference point</li>
+        </ul>
+
+        <p>
+          For most small businesses in the early months? Start with one page. Expand it when the business
+          gives you a reason to.
+        </p>
+
+        <h2>The business planning process, step by step</h2>
+
+        <p>
+          You do not need specialist software or a business plan template. You need to answer seven questions,
+          in order, as honestly as you can.
+        </p>
+
+        <ol>
+          <li><strong>What problem does this business solve?</strong> And who specifically has that problem?</li>
+          <li><strong>How does the business make money?</strong> What is the revenue model?</li>
+          <li><strong>What are the costs?</strong> Both fixed (what you pay regardless) and variable (what scales with sales).</li>
+          <li><strong>What is the pricing strategy?</strong> And is there real evidence people will pay it?</li>
+          <li><strong>Who are the competitors?</strong> And what makes you genuinely different?</li>
+          <li><strong>How do you reach your first customers?</strong> Not eventually. First.</li>
+          <li><strong>What does the first 90 days look like?</strong> Week by week, with clear priorities.</li>
+        </ol>
+
+        <p>
+          Those seven questions are your business planning process. The answers become your plan.
+          If you cannot answer one of them clearly, that is the work to do, not the writing.
+        </p>
+
+        <h2>Why most business plans do not work</h2>
+
+        <p>Three reasons, in my experience.</p>
+
+        <p>
+          <strong>They are written for someone else.</strong> For the bank. For an investor. For a competition
+          entry. When a plan is written to impress rather than to guide, it is useless as a working document.
+          Write it for yourself first.
+        </p>
+
+        <p>
+          <strong>They are too optimistic.</strong> A plan that assumes 1,000 customers in month two with no
+          marketing budget is not a plan. It is wishful thinking. Build your plan on conservative numbers. If
+          reality beats the plan, that is a good problem to have. If it does not, you want to know before it
+          costs you.
+        </p>
+
+        <p>
+          <strong>They are written once and never looked at again.</strong> A business plan is only useful if
+          you actually read it. Review it quarterly. Update it when something changes. Treat it like a working
+          map, not a finished document.
+        </p>
+
+        <h2>Do I need a business plan to start a business?</h2>
+
+        <p><strong>No, you do not legally need a business plan to start a business. But practically, even one page will save you from mistakes that cost real money.</strong></p>
+
+        <p>
+          Legally, no. Practically, yes. Even a single page is better than nothing. Not because the document
+          is magical, but because the thinking that goes into writing it is worth doing regardless.
+        </p>
+
+        <p>
+          The founders who skip this step are the ones who end up six months in, confused about why things are
+          not working, spending money they did not plan to spend, selling to people who were never going to
+          buy. The plan would have flagged most of that in advance.
+        </p>
+
+        <h2>What should a small business plan include?</h2>
+
+        <p><strong>A small business plan should include your target customer, revenue model, costs, pricing, customer acquisition strategy, and a 90-day action plan.</strong></p>
+
+        <p>At minimum, your plan needs to cover:</p>
+        <ul>
+          <li>Your target customer (specific, not vague)</li>
+          <li>Your revenue model (how money gets made)</li>
+          <li>Your costs (realistic, not optimistic)</li>
+          <li>Your pricing (with rationale)</li>
+          <li>How you will get your first customers</li>
+          <li>A 90-day action plan, week by week</li>
+        </ul>
+
+        <p>
+          That is it. Everything else is detail you can add later when the business actually needs it.
+        </p>
+
+        <h2>Practical takeaways</h2>
+
+        <ul>
+          <li>Start with one page. Clarity beats length every time.</li>
+          <li>Write it for yourself, not for investors.</li>
+          <li>Answer the seven questions above, in order, honestly.</li>
+          <li>Revisit it every quarter and update what has changed.</li>
+          <li>If you are stuck on any of the questions, that is where the coaching conversation starts.</li>
+        </ul>
+
+        <!-- Soft CTA — AIDA framework -->
+        <div class="article-cta-block">
+          <p class="article-cta-eyebrow">Need help building your plan?</p>
+          <h3 class="article-cta-h3">
+            The Business Plan Bundle turns your idea into a complete, executable plan across 6 sessions.
+          </h3>
+          <p class="article-cta-body">
+            I will validate your idea, build the model, sort the positioning, map the operations, plan
+            the launch, and give you a 90-day roadmap to follow. Every session ends with a written action
+            plan in your inbox the same day. No vague advice. No homework you will never do.
+          </p>
+          <p class="article-cta-body">
+            Currently available at £160 for the full 6-session bundle. Normal price is £300.
+          </p>
+          <div class="article-cta-btns">
+            <a
+              href="https://calendly.com/feldeluxe/discovery-call"
+              class="article-cta-btn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Book a free discovery call
+            </a>
+            <a href="/#services" class="article-cta-link">
+              See pricing
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Author bio -->
+        <div class="article-author-bio">
+          <img
+            src="/Images/feldon-haynes-seated-portrait.webp"
+            alt="Feldon Haynes, business coach"
+            width="80"
+            height="80"
+            class="author-bio-img"
+            loading="lazy"
+          />
+          <div class="author-bio-text">
+            <p class="author-bio-name">Written by Feldon Haynes</p>
+            <p class="author-bio-body">
+              Feldon is a business coach based in Halesowen, West Midlands. He has started 35 businesses
+              since his teens, worked with the Black Country Chamber of Commerce, and delivered workshops at
+              the University of Warwick Science Park. He currently coaches 40 plus founders across the UK.
+              <a href="/about">Read more about Feldon.</a>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </article>
+
+</Layout>
+
+<style>
+  /* ── Article Hero ───────────────────────────── */
+  .article-hero {
+    background: linear-gradient(135deg, #1a1744 0%, #26215C 55%, #2d2a6e 100%);
+    padding: 56px 0 48px;
+  }
+
+  .article-breadcrumb {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .article-breadcrumb a {
+    color: rgba(255, 255, 255, 0.75);
+    transition: color 0.2s;
+  }
+  .article-breadcrumb a:hover { color: #F2D832; }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .article-tag {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(242, 216, 50, 0.15);
+    color: #F2D832;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    border: 1px solid rgba(242, 216, 50, 0.3);
+  }
+
+  .article-date,
+  .article-read {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.55);
+  }
+  .article-date::before { content: ''; }
+
+  .article-h1 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 44px;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: #ffffff;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    max-width: 780px;
+  }
+
+  .article-standfirst {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.7;
+    max-width: 640px;
+    margin-bottom: 32px;
+  }
+
+  .article-author-chip {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .author-chip-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top center;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    flex-shrink: 0;
+  }
+  .author-chip-name {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.3;
+  }
+  .author-chip-role {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.3;
+  }
+
+  /* ── Featured image ─────────────────────────── */
+  .article-feature-img-wrap {
+    background: #1a1744;
+    padding-bottom: 0;
+  }
+  .article-feature-img {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    display: block;
+    border-radius: 0;
+  }
+
+  /* ── Article body ───────────────────────────── */
+  .article-body {
+    background: #ffffff;
+    padding: 64px 0 80px;
+  }
+
+  .article-content {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .article-content p {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    color: #3d3a5c;
+    line-height: 1.85;
+    margin-bottom: 20px;
+  }
+
+  .article-content ul,
+  .article-content ol {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    color: #3d3a5c;
+    line-height: 1.8;
+    margin-bottom: 24px;
+    padding-left: 24px;
+  }
+
+  .article-content li {
+    margin-bottom: 10px;
+  }
+
+  .article-content h2 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #1a1744;
+    line-height: 1.25;
+    margin-top: 52px;
+    margin-bottom: 16px;
+  }
+
+  .article-content h3 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1744;
+    line-height: 1.3;
+    margin-top: 32px;
+    margin-bottom: 12px;
+  }
+
+  .article-content em {
+    font-style: italic;
+    color: #534ab7;
+  }
+
+  .article-content strong {
+    font-weight: 700;
+    color: #1a1744;
+  }
+
+  /* Callout block */
+  .article-callout {
+    background: #EEEDFE;
+    border-left: 4px solid #534AB7;
+    border-radius: 0 12px 12px 0;
+    padding: 20px 28px;
+    margin: 36px 0;
+  }
+  .article-callout p {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #26215C;
+    line-height: 1.65;
+    margin-bottom: 0 !important;
+    font-style: italic;
+  }
+
+  /* CTA block */
+  .article-cta-block {
+    background: linear-gradient(135deg, #1a1744 0%, #26215C 55%, #2d2a6e 100%);
+    border-radius: 20px;
+    padding: 40px 44px;
+    margin: 56px 0 48px;
+  }
+
+  .article-content .article-cta-eyebrow {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #F2D832;
+    margin-bottom: 12px !important;
+  }
+
+  .article-content .article-cta-h3 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    margin-top: 0;
+  }
+
+  .article-content .article-cta-body {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.75;
+    margin-bottom: 12px !important;
+  }
+
+  .article-cta-btns {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+  }
+
+  .article-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    background: #534AB7;
+    color: #ffffff;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 13px 28px;
+    border-radius: 9999px;
+    white-space: nowrap;
+    min-height: 48px;
+    transition: background 0.2s ease;
+    box-shadow: 0 6px 20px rgba(83, 74, 183, 0.4);
+  }
+  .article-cta-btn:hover { background: #3b309e; }
+
+  .article-cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255, 255, 255, 0.85);
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+  .article-cta-link:hover { color: #F2D832; }
+
+  /* Author bio */
+  .article-author-bio {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: #f8f9fb;
+    border-radius: 16px;
+    padding: 28px 32px;
+    border: 1px solid #ede9ff;
+    margin-top: 0;
+  }
+  .author-bio-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top center;
+    flex-shrink: 0;
+    border: 3px solid #ede9ff;
+  }
+  .author-bio-name {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a1744;
+    margin-bottom: 8px !important;
+  }
+  .author-bio-body {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #7e7a9f;
+    line-height: 1.75;
+    margin-bottom: 0 !important;
+  }
+  .author-bio-body a {
+    color: #534AB7;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid #F2D832;
+    padding-bottom: 1px;
+    transition: color 0.2s;
+  }
+  .author-bio-body a:hover { color: #3b309e; }
+
+  /* ── Responsive ─────────────────────────────── */
+  @media (max-width: 768px) {
+    .article-hero { padding: 40px 0 36px; }
+    .article-h1 { font-size: 30px; }
+    .article-standfirst { font-size: 16px; }
+    .article-feature-img { max-height: 240px; }
+    .article-body { padding: 44px 0 60px; }
+    .article-content h2 { font-size: 22px; margin-top: 40px; }
+    .article-content h3 { font-size: 18px; }
+    .article-content p,
+    .article-content ul,
+    .article-content ol { font-size: 16px; }
+    .article-cta-block { padding: 28px 24px; }
+    .article-cta-h3 { font-size: 20px; }
+    .article-cta-btn { width: 100%; justify-content: center; }
+    .article-author-bio { flex-direction: column; align-items: flex-start; padding: 24px 20px; }
+    .title-break { display: none; }
+  }
+</style>

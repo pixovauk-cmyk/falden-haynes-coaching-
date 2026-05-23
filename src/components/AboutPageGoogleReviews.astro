@@ -1,0 +1,347 @@
+---
+// AboutPageGoogleReviews.astro — all 5 real Google reviews from screenshots
+// Mobile: horizontal swipe, desktop: 3-col grid (first 3) + 2-col row (last 2)
+---
+
+<section class="google-reviews" aria-label="Google reviews">
+  <div class="container">
+
+    <div class="gr-header fade-in">
+      <div class="gr-badge-wrap">
+        <div class="gr-badge">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          <span class="gr-badge-text">Google Reviews</span>
+          <span class="gr-sep">·</span>
+          <span class="gr-stars-badge" aria-label="5 stars">★★★★★</span>
+          <span class="gr-count">5 reviews · Feldeluxe Ltd</span>
+        </div>
+      </div>
+      <h2 class="gr-h2">What clients say on Google.</h2>
+      <p class="gr-sub">Real feedback from people who've worked with Feldon directly.</p>
+    </div>
+
+    <!-- Scroll wrapper: swipe on mobile, grid on desktop -->
+    <div class="gr-scroll-wrap">
+      <div class="gr-grid fade-in">
+
+        <!-- 1. Mohamed Abdelrahim -->
+        <article class="gr-card">
+          <div class="gr-top">
+            <div class="gr-avatar" style="background:#EA4335">M</div>
+            <div class="gr-info">
+              <span class="gr-name">Mohamed Abdelrahim</span>
+              <span class="gr-meta">6 months ago</span>
+            </div>
+            <svg class="gr-glogo" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+          </div>
+          <div class="gr-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="gr-quote">"When I first met Feldon, I hadn't yet started to take action towards my dreams. When I started receiving regular mentoring calls from him and being held accountable, it gave me that push to start taking action. I am surprised by how similar our experiences are as entrepreneurs."</p>
+        </article>
+
+        <!-- 2. harman -->
+        <article class="gr-card">
+          <div class="gr-top">
+            <div class="gr-avatar" style="background:#B7410E">h</div>
+            <div class="gr-info">
+              <span class="gr-name">harman</span>
+              <span class="gr-meta">7 months ago</span>
+            </div>
+            <svg class="gr-glogo" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+          </div>
+          <div class="gr-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="gr-quote">"I attended a marketing webinar with Feldon Haynes. It was very good and everything was explained really well, whether it was the content or answering my questions. My questions were answered well in depth and he ensured that I understood."</p>
+        </article>
+
+        <!-- 3. Rayaan Farah -->
+        <article class="gr-card">
+          <div class="gr-top">
+            <div class="gr-avatar" style="background:#00897B">R</div>
+            <div class="gr-info">
+              <span class="gr-name">Rayaan Farah</span>
+              <span class="gr-meta">9 months ago</span>
+            </div>
+            <svg class="gr-glogo" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+          </div>
+          <div class="gr-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="gr-quote">"Feldon has been an incredible help to myself breaking down difficult policy language into understandable chunks, produced top quality policies for my organisation in a timely fashion and took the time to understand my pain points."</p>
+        </article>
+
+        <!-- 4. Kane Abbott -->
+        <article class="gr-card">
+          <div class="gr-top">
+            <div class="gr-avatar" style="background:#7B1FA2">K</div>
+            <div class="gr-info">
+              <span class="gr-name">Kane Abbott</span>
+              <span class="gr-meta">9 months ago</span>
+            </div>
+            <svg class="gr-glogo" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+          </div>
+          <div class="gr-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="gr-quote">"Feldon has massively helped me building contracts and keeping me up to date with industry specific advice. Recommend him highly!"</p>
+        </article>
+
+        <!-- 5. wayne h -->
+        <article class="gr-card">
+          <div class="gr-top">
+            <div class="gr-avatar" style="background:#E91E63">W</div>
+            <div class="gr-info">
+              <span class="gr-name">wayne h</span>
+              <span class="gr-meta">5 months ago · Local Guide</span>
+            </div>
+            <svg class="gr-glogo" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+          </div>
+          <div class="gr-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="gr-quote">"Great professional service. Saves money and time."</p>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="gr-footer fade-in">
+      <a
+        href="https://www.google.com/search?q=feldeluxe"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="gr-link"
+      >
+        Read all reviews on Google
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+          <path d="M2.5 6.5h8M7.5 3.5L10.5 6.5l-3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .google-reviews {
+    background: #ffffff;
+    padding: 80px 0;
+  }
+
+  /* Header */
+  .gr-header { text-align: center; margin-bottom: 44px; }
+
+  .gr-badge-wrap { display: flex; justify-content: center; margin-bottom: 22px; }
+  .gr-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #f8f9fb;
+    border: 1px solid #e8e8f0;
+    border-radius: 9999px;
+    padding: 8px 18px;
+  }
+  .gr-badge-text {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a1744;
+  }
+  .gr-sep { color: #ddd; }
+  .gr-stars-badge {
+    color: #FBBC05 !important;
+    -webkit-text-fill-color: #FBBC05;
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+  .gr-count {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 12px;
+    color: #9c97c0;
+  }
+
+  .gr-h2 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #1a1744;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .gr-sub {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #7e7a9f;
+    max-width: 360px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* Desktop grid: first 3 in a row, last 2 centred below */
+  .gr-scroll-wrap { padding-bottom: 4px; }
+
+  .gr-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+
+  /* 4th and 5th card span full row then auto-place centred */
+  .gr-card:nth-child(4) { grid-column: 1; }
+  .gr-card:nth-child(4),
+  .gr-card:nth-child(5) { }
+
+  /* For the bottom row of 2: start them in the middle col */
+  @media (min-width: 769px) {
+    .gr-grid {
+      grid-template-rows: auto auto;
+    }
+    .gr-card:nth-child(4) { grid-column: 1; grid-row: 2; }
+    .gr-card:nth-child(5) { grid-column: 2; grid-row: 2; }
+  }
+
+  /* Card */
+  .gr-card {
+    background: #f8f9fb;
+    border: 1px solid #e8e8f0;
+    border-radius: 20px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  .gr-card:hover { box-shadow: 0 6px 28px rgba(26,23,68,0.08); border-color: #d0cce8; }
+
+  /* Top row */
+  .gr-top { display: flex; align-items: center; gap: 10px; }
+  .gr-glogo { margin-left: auto; flex-shrink: 0; }
+
+  .gr-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+  }
+
+  .gr-info { display: flex; flex-direction: column; gap: 2px; }
+  .gr-name {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1744;
+  }
+  .gr-meta {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 11px;
+    color: #9c97c0;
+  }
+
+  .gr-stars {
+    font-size: 15px;
+    color: #FBBC05 !important;
+    -webkit-text-fill-color: #FBBC05;
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+
+  .gr-quote {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #5a5680;
+    line-height: 1.75;
+    font-style: italic;
+    flex: 1;
+  }
+
+  /* Footer */
+  .gr-footer { display: flex; justify-content: center; }
+  .gr-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #d0cce8;
+    color: #534AB7;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .gr-link:hover { background: #f0eff8; border-color: #b8b2f0; }
+
+  /* ── Tablet ──────────────────────────────── */
+  @media (max-width: 1024px) {
+    .gr-h2 { font-size: 30px; }
+    .gr-grid { grid-template-columns: repeat(2, 1fr); }
+    .gr-card:nth-child(4),
+    .gr-card:nth-child(5) { grid-column: auto; grid-row: auto; }
+  }
+
+  /* ── Mobile swipe ────────────────────────── */
+  @media (max-width: 768px) {
+    .google-reviews { padding: 52px 0; }
+    .gr-h2 { font-size: 24px; }
+
+    .gr-scroll-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      margin: 0 -16px;
+      padding: 0 16px 12px;
+    }
+    .gr-scroll-wrap::-webkit-scrollbar { display: none; }
+
+    .gr-grid {
+      display: flex;
+      flex-wrap: nowrap;
+      width: max-content;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .gr-card {
+      width: 260px;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+    }
+    .gr-card:nth-child(4),
+    .gr-card:nth-child(5) { grid-column: auto; grid-row: auto; }
+  }
+</style>

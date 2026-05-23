@@ -1,0 +1,608 @@
+---
+// QuizWidget.astro — Guided quiz → recommends best package or free call
+---
+
+<div class="quiz-wrap" id="quiz-wrap">
+
+  <!-- ── INTRO ────────────────────────────── -->
+  <div class="quiz-screen" id="quiz-intro">
+    <div class="quiz-intro-emoji">🎯</div>
+    <h3 class="quiz-intro-h3">Find your perfect starting point</h3>
+    <p class="quiz-intro-p">
+      Answer 8 quick questions and we'll match you with the right package, or a free call, based on exactly where you are right now.
+    </p>
+    <div class="quiz-intro-chips">
+      <span>⏱️ 2 minutes</span>
+      <span>✅ 8 questions</span>
+      <span>🎁 Free &amp; personalised</span>
+    </div>
+    <button class="quiz-start-btn" id="quiz-start">
+      Let's find your fit &nbsp;→
+    </button>
+  </div>
+
+  <!-- ── QUESTION ──────────────────────────── -->
+  <div class="quiz-screen" id="quiz-question" hidden>
+    <div class="quiz-top-bar">
+      <div class="quiz-progress-track">
+        <div class="quiz-progress-fill" id="quiz-bar" style="width:0%"></div>
+      </div>
+      <span class="quiz-step-label" id="quiz-q-num">1 / 8</span>
+    </div>
+    <p class="quiz-q-eyebrow" id="quiz-q-eyebrow"></p>
+    <h3 class="quiz-q-text" id="quiz-q-text"></h3>
+    <div class="quiz-options" id="quiz-options"></div>
+    <button class="quiz-back-btn" id="quiz-back" hidden>← Back</button>
+  </div>
+
+  <!-- ── RESULT ────────────────────────────── -->
+  <div class="quiz-screen" id="quiz-result" hidden>
+    <div class="result-top">
+      <span class="result-top-emoji" id="result-emoji"></span>
+      <div>
+        <p class="result-top-label">Your best match</p>
+        <h3 class="result-top-name" id="result-name"></h3>
+      </div>
+    </div>
+    <p class="result-desc" id="result-desc"></p>
+    <div class="result-meta-row" id="result-meta-row"></div>
+    <a class="result-cta-btn" id="result-cta" href="" target="_blank" rel="noopener noreferrer"></a>
+    <p class="result-note" id="result-note"></p>
+    <button class="quiz-restart-btn" id="quiz-restart">↩ Start over</button>
+  </div>
+
+</div>
+
+<style>
+  .quiz-wrap {
+    background: #ffffff;
+    border-radius: 20px;
+    border: 1px solid #ede9ff;
+    box-shadow: 0 2px 16px rgba(83, 74, 183, 0.07);
+    padding: 36px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .quiz-screen { display: flex; flex-direction: column; }
+  .quiz-screen[hidden] { display: none; }
+
+  /* ── Intro ──────────────────────────────── */
+  .quiz-intro-emoji {
+    font-size: 52px;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .quiz-intro-h3 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: #1a1744;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .quiz-intro-p {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 15px;
+    color: #7e7a9f;
+    line-height: 1.75;
+    max-width: 480px;
+    margin-bottom: 24px;
+  }
+  .quiz-intro-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+  .quiz-intro-chips span {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #534AB7;
+    background: #EEEDFE;
+    border: 1px solid #d4d0ff;
+    padding: 7px 16px;
+    border-radius: 9999px;
+  }
+  .quiz-start-btn {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    background: #534AB7;
+    color: #ffffff;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 16px 32px;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    min-height: 54px;
+    transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(83, 74, 183, 0.35);
+  }
+  .quiz-start-btn:hover {
+    background: #3b309e;
+    box-shadow: 0 6px 28px rgba(83, 74, 183, 0.45);
+    transform: translateY(-1px);
+  }
+  .quiz-start-btn:active { transform: scale(0.98); }
+
+  /* ── Progress ────────────────────────────── */
+  .quiz-top-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .quiz-progress-track {
+    flex: 1;
+    height: 6px;
+    background: #EEEDFE;
+    border-radius: 9999px;
+    overflow: hidden;
+  }
+  .quiz-progress-fill {
+    height: 100%;
+    background: linear-gradient(to right, #534AB7, #8b7fe8);
+    border-radius: 9999px;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .quiz-step-label {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #9c97c0;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ── Question ────────────────────────────── */
+  .quiz-q-eyebrow {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #534AB7;
+    margin-bottom: 8px;
+  }
+  .quiz-q-text {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    color: #1a1744;
+    line-height: 1.25;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Injected by JS */
+  .quiz-opt {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-align: left;
+    background: #fafafa;
+    border: 2px solid #ede9ff;
+    border-radius: 14px;
+    padding: 14px 20px;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #26215C;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.15s ease;
+  }
+  .quiz-opt-emoji {
+    font-size: 24px;
+    line-height: 1;
+    flex-shrink: 0;
+    width: 36px;
+    text-align: center;
+  }
+  .quiz-opt-label { flex: 1; }
+  .quiz-opt-arrow {
+    font-size: 16px;
+    color: #c9c2ff;
+    flex-shrink: 0;
+    transition: transform 0.15s, color 0.15s;
+  }
+  .quiz-opt:hover {
+    background: #EEEDFE;
+    border-color: #534AB7;
+    color: #534AB7;
+    transform: translateX(4px);
+    box-shadow: 0 4px 16px rgba(83, 74, 183, 0.12);
+  }
+  .quiz-opt:hover .quiz-opt-arrow { transform: translateX(3px); color: #534AB7; }
+  .quiz-opt:active { transform: scale(0.99) translateX(2px); }
+
+  .quiz-back-btn {
+    background: none;
+    border: none;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #b8b4d8;
+    cursor: pointer;
+    padding: 4px 0;
+    align-self: flex-start;
+    transition: color 0.2s;
+  }
+  .quiz-back-btn:hover { color: #534AB7; }
+  .quiz-back-btn[hidden] { display: none; }
+
+  /* ── Result ──────────────────────────────── */
+  .result-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: linear-gradient(135deg, #1a1744 0%, #26215C 100%);
+    border-radius: 18px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+  }
+  .result-top-emoji {
+    font-size: 44px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .result-top-label {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #F2D832;
+    margin-bottom: 4px;
+  }
+  .result-top-name {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .result-desc {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 15px;
+    color: #5a5680;
+    line-height: 1.75;
+    margin-bottom: 18px;
+  }
+
+  .result-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .result-meta-chip {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #534AB7;
+    background: #EEEDFE;
+    border: 1px solid #d4d0ff;
+    padding: 5px 14px;
+    border-radius: 9999px;
+  }
+
+  .result-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #534AB7;
+    color: #ffffff;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 16px 32px;
+    border-radius: 9999px;
+    text-decoration: none;
+    margin-bottom: 14px;
+    min-height: 54px;
+    transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(83, 74, 183, 0.35);
+  }
+  .result-cta-btn:hover {
+    background: #3b309e;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 28px rgba(83, 74, 183, 0.45);
+  }
+  .result-cta-btn:active { transform: scale(0.98); }
+
+  .result-note {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 13px;
+    color: #9c97c0;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .quiz-restart-btn {
+    background: none;
+    border: 1.5px solid #e8e5f8;
+    border-radius: 9999px;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #9c97c0;
+    padding: 10px 20px;
+    cursor: pointer;
+    align-self: center;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .quiz-restart-btn:hover { border-color: #534AB7; color: #534AB7; }
+
+  /* ── Mobile ──────────────────────────────── */
+  @media (max-width: 640px) {
+    .quiz-wrap { padding: 28px 22px; }
+    .quiz-q-text { font-size: 19px; }
+    .quiz-intro-h3 { font-size: 22px; }
+    .quiz-opt { font-size: 14px; padding: 13px 16px; }
+    .quiz-opt-emoji { font-size: 20px; width: 28px; }
+    .result-top { padding: 20px; }
+    .result-top-name { font-size: 18px; }
+  }
+</style>
+
+<script>
+  const questions = [
+    {
+      eyebrow: 'About you',
+      text: 'Where are you in your business journey right now?',
+      options: [
+        { emoji: '💡', label: 'I have a business idea but haven\'t started yet', scores: { plan: 3, discovery: 1 } },
+        { emoji: '🚀', label: 'I\'ve just launched, under 6 months in', scores: { plan: 2, sprint: 1 } },
+        { emoji: '⚙️', label: 'I\'ve been running for 6 months to 2 years', scores: { sprint: 2, project: 1, plan: 1 } },
+        { emoji: '🏢', label: 'I run an established business, over 2 years', scores: { direction: 3 } },
+        { emoji: '🤝', label: 'I lead an organisation, charity or social enterprise', scores: { direction: 2, project: 2 } },
+      ]
+    },
+    {
+      eyebrow: 'Your challenge',
+      text: 'What\'s the main reason you\'re looking for coaching right now?',
+      options: [
+        { emoji: '📋', label: 'I need a proper business plan to move forward', scores: { plan: 3 } },
+        { emoji: '📉', label: 'I\'m not getting enough customers or revenue', scores: { sprint: 2, plan: 1 } },
+        { emoji: '😤', label: 'I feel completely stuck and don\'t know what to do next', scores: { sprint: 3 } },
+        { emoji: '🎯', label: 'I have a specific project or launch to deliver', scores: { project: 3 } },
+        { emoji: '🔧', label: 'My business needs better systems and processes', scores: { direction: 2, project: 1 } },
+        { emoji: '🧭', label: 'I\'ve lost direction and need a full strategy reset', scores: { direction: 3 } },
+        { emoji: '🤔', label: 'I\'m not entirely sure. Something just isn\'t working.', scores: { discovery: 2, sprint: 1 } },
+      ]
+    },
+    {
+      eyebrow: 'Your goal',
+      text: 'What does success look like for you 6 months from now?',
+      options: [
+        { emoji: '📄', label: 'A complete, validated business plan I can act on', scores: { plan: 3 } },
+        { emoji: '💰', label: 'Consistent customers and predictable revenue', scores: { sprint: 2, plan: 1 } },
+        { emoji: '🔓', label: 'Breaking through a specific block or bottleneck', scores: { sprint: 3 } },
+        { emoji: '🛠️', label: 'A specific project or product launched and delivered', scores: { project: 3 } },
+        { emoji: '⏰', label: 'Better systems and more time back in my week', scores: { direction: 2 } },
+        { emoji: '🗺️', label: 'A clear 6-month strategic roadmap for my business', scores: { direction: 3 } },
+        { emoji: '🌫️', label: 'I\'m not sure yet. Still figuring that out.', scores: { discovery: 2 } },
+      ]
+    },
+    {
+      eyebrow: 'The timeline',
+      text: 'How long have you been dealing with this challenge?',
+      options: [
+        { emoji: '🆕', label: 'It\'s just come up, very recent', scores: { discovery: 1 } },
+        { emoji: '📅', label: 'A few weeks', scores: { sprint: 1 } },
+        { emoji: '🗓️', label: 'A couple of months', scores: { sprint: 1, plan: 1 } },
+        { emoji: '⌛', label: 'Around 6 months', scores: { plan: 1, direction: 1 } },
+        { emoji: '😩', label: 'Over a year. It\'s been going on a long time', scores: { direction: 2, sprint: 1 } },
+      ]
+    },
+    {
+      eyebrow: 'Your commitment',
+      text: 'How many hours a week can you realistically dedicate to working on your business?',
+      options: [
+        { emoji: '🏃', label: 'Less than 5 hours. I have a lot going on right now', scores: { discovery: 2 } },
+        { emoji: '🚶', label: '5 to 10 hours a week', scores: { sprint: 1, project: 1 } },
+        { emoji: '💪', label: '10 to 20 hours a week', scores: { plan: 1, direction: 1 } },
+        { emoji: '🔥', label: 'More than 20 hours. This is my primary focus.', scores: { plan: 2, direction: 2 } },
+      ]
+    },
+    {
+      eyebrow: 'What you need',
+      text: 'What kind of support do you feel you need most right now?',
+      options: [
+        { emoji: '🏗️', label: 'Structure: help building a proper framework or plan', scores: { plan: 2, direction: 1 } },
+        { emoji: '⚡', label: 'Accountability. Someone to keep me on track', scores: { sprint: 2 } },
+        { emoji: '🧠', label: 'Expertise. Specific knowledge I don\'t have', scores: { project: 2, plan: 1 } },
+        { emoji: '💡', label: 'Clarity. Help thinking through what to actually do', scores: { direction: 2, discovery: 1 } },
+        { emoji: '🚀', label: 'Speed. Fast decisions and momentum right now', scores: { sprint: 3, project: 1 } },
+        { emoji: '🪞', label: 'Honest feedback. Someone who\'ll tell me the truth', scores: { discovery: 1, sprint: 1, plan: 1 } },
+      ]
+    },
+    {
+      eyebrow: 'Your experience',
+      text: 'Have you worked with a business coach or mentor before?',
+      options: [
+        { emoji: '✨', label: 'No. This would be my first time', scores: { discovery: 1, plan: 1 } },
+        { emoji: '👍', label: 'Yes, and it was genuinely helpful', scores: { direction: 1, plan: 1 } },
+        { emoji: '😕', label: 'Yes, but it didn\'t really work for me', scores: { discovery: 1, sprint: 1 } },
+        { emoji: '📚', label: 'I\'ve self-studied a lot but not had formal coaching', scores: { sprint: 1, direction: 1 } },
+      ]
+    },
+    {
+      eyebrow: 'Final question',
+      text: 'How would you describe your readiness to invest in coaching right now?',
+      options: [
+        { emoji: '👀', label: 'Just exploring. Not ready to commit yet', scores: { discovery: 3 } },
+        { emoji: '🤓', label: 'Seriously considering it. Want to find the right fit first', scores: { discovery: 1, plan: 1 } },
+        { emoji: '✅', label: 'Ready. I just need to find the right package', scores: { plan: 1, direction: 1, sprint: 1, project: 1 } },
+        { emoji: '⏩', label: 'Urgent. I want to start as soon as possible', scores: { sprint: 2, project: 1, plan: 1 } },
+      ]
+    },
+  ];
+
+  const outcomes = {
+    discovery: {
+      emoji: '☕',
+      name: 'Free Discovery Call',
+      desc: 'The perfect starting point. We\'ll spend 30 minutes talking through where you are, what you\'re working towards, and whether coaching is the right move for you. No pitch. No pressure. Just an honest conversation.',
+      chips: ['30 minutes', 'Video call', 'Completely free', 'No commitment'],
+      cta: '📞  Book your free call',
+      url: 'https://calendly.com/feldeluxe/discovery-call',
+      note: 'Still not sure? Email Feldon directly at info@feldeluxe.com',
+    },
+    plan: {
+      emoji: '📋',
+      name: 'The Business Plan Bundle',
+      desc: 'From idea to a complete, executable business plan. Validated, structured, and ready to launch. You\'ll leave with a plan you can actually follow, not a document that sits in a drawer.',
+      chips: ['6 sessions', 'Aspiring founders', '£160 (was £300)', 'Save £140'],
+      cta: '🎯  Grab this bundle',
+      url: 'https://calendly.com/feldeluxe/packages/8af8f4b4-b4fc-4b38-a4d7-4c8863f57ce5',
+      note: 'Not 100% sure? Start with a free discovery call first. No commitment needed.',
+    },
+    sprint: {
+      emoji: '⚡',
+      name: 'The Action Sprint Bundle',
+      desc: 'Find the block. Make the decision. Build a 30-day plan and move fast. Three focused sessions designed to get you unstuck and back in motion. Quickly. When you\'ve been spinning your wheels too long, this is the fix.',
+      chips: ['3 sessions', 'Stuck founders', '£90 (was £150)', 'Save £60'],
+      cta: '🚀  Grab this bundle',
+      url: 'https://calendly.com/feldeluxe/packages/549dd535-e12c-4506-822a-9a839af25318',
+      note: 'Not 100% sure? Start with a free discovery call first. No commitment needed.',
+    },
+    project: {
+      emoji: '🎯',
+      name: 'The Project Bundle',
+      desc: 'Three focused sessions to scope, map, and deliver a specific project or launch. You know what you\'re building. You just need the structure, expertise, and accountability to actually get it done properly.',
+      chips: ['3 sessions', 'Specific project', '£90 (was £150)', 'Save £60'],
+      cta: '🛠️  Grab this bundle',
+      url: 'https://calendly.com/feldeluxe/packages/da7fbbe4-840c-4ea8-8147-2128f99cfd6b',
+      note: 'Not 100% sure? Start with a free discovery call first. No commitment needed.',
+    },
+    direction: {
+      emoji: '🧭',
+      name: 'The Direction Bundle',
+      desc: 'A full business audit, vision work, and a 6-month strategic roadmap built for established businesses that need clarity and direction. Not just more action. This is where businesses that have been running for a while find their next gear.',
+      chips: ['6 sessions', 'Established businesses', '£160 (was £300)', 'Save £140'],
+      cta: '🗺️  Grab this bundle',
+      url: 'https://calendly.com/feldeluxe/packages/bcd3e931-3e20-4faa-9d96-2a82cc4e121a',
+      note: 'Not 100% sure? Start with a free discovery call first. No commitment needed.',
+    },
+  };
+
+  let current = 0;
+  const answers = {};
+  const scores = { discovery: 0, plan: 0, sprint: 0, project: 0, direction: 0 };
+
+  const intro    = document.getElementById('quiz-intro');
+  const qScreen  = document.getElementById('quiz-question');
+  const rScreen  = document.getElementById('quiz-result');
+  const startBtn = document.getElementById('quiz-start');
+  const backBtn  = document.getElementById('quiz-back');
+  const restartBtn = document.getElementById('quiz-restart');
+  const qNum     = document.getElementById('quiz-q-num');
+  const qEyebrow = document.getElementById('quiz-q-eyebrow');
+  const qText    = document.getElementById('quiz-q-text');
+  const qOpts    = document.getElementById('quiz-options');
+  const bar      = document.getElementById('quiz-bar');
+
+  function showQuestion(i) {
+    const q = questions[i];
+    qNum.textContent = `${i + 1} / ${questions.length}`;
+    qEyebrow.textContent = q.eyebrow;
+    qText.textContent = q.text;
+    bar.style.width = `${(i / questions.length) * 100}%`;
+    backBtn.hidden = i === 0;
+
+    qOpts.innerHTML = '';
+    q.options.forEach((opt, idx) => {
+      const btn = document.createElement('button');
+      btn.className = 'quiz-opt';
+      btn.innerHTML = `
+        <span class="quiz-opt-emoji">${opt.emoji}</span>
+        <span class="quiz-opt-label">${opt.label}</span>
+        <span class="quiz-opt-arrow">→</span>
+      `;
+      btn.addEventListener('click', () => pick(i, idx, opt));
+      qOpts.appendChild(btn);
+    });
+  }
+
+  function pick(qIdx, optIdx, opt) {
+    if (answers[qIdx] !== undefined) {
+      const prev = questions[qIdx].options[answers[qIdx]];
+      Object.entries(prev.scores).forEach(([k, v]) => { scores[k] -= v; });
+    }
+    Object.entries(opt.scores).forEach(([k, v]) => { scores[k] += v; });
+    answers[qIdx] = optIdx;
+    current = qIdx + 1;
+
+    if (current >= questions.length) {
+      showResult();
+    } else {
+      showQuestion(current);
+    }
+  }
+
+  function showResult() {
+    qScreen.hidden = true;
+    rScreen.hidden = false;
+    bar.style.width = '100%';
+
+    const winner = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
+    const o = outcomes[winner];
+
+    document.getElementById('result-emoji').textContent = o.emoji;
+    document.getElementById('result-name').textContent  = o.name;
+    document.getElementById('result-desc').textContent  = o.desc;
+    document.getElementById('result-note').textContent  = o.note;
+
+    const metaRow = document.getElementById('result-meta-row');
+    metaRow.innerHTML = o.chips.map(c => `<span class="result-meta-chip">${c}</span>`).join('');
+
+    const cta = document.getElementById('result-cta');
+    cta.textContent = o.cta;
+    cta.href = o.url;
+  }
+
+  backBtn.addEventListener('click', () => {
+    if (current > 0) {
+      current--;
+      if (answers[current] !== undefined) {
+        const prev = questions[current].options[answers[current]];
+        Object.entries(prev.scores).forEach(([k, v]) => { scores[k] -= v; });
+        delete answers[current];
+      }
+      showQuestion(current);
+    }
+  });
+
+  startBtn.addEventListener('click', () => {
+    intro.hidden = true;
+    qScreen.hidden = false;
+    showQuestion(0);
+  });
+
+  restartBtn.addEventListener('click', () => {
+    current = 0;
+    Object.keys(answers).forEach(k => delete answers[k]);
+    Object.keys(scores).forEach(k => { scores[k] = 0; });
+    rScreen.hidden = true;
+    qScreen.hidden = true;
+    intro.hidden = false;
+  });
+</script>

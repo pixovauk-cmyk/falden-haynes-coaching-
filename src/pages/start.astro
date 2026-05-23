@@ -1,0 +1,336 @@
+---
+// start.astro — Landing page (/start)
+// Primary keyword: business startup advice
+// Meta title: "Free Business Coaching Call | Feldon Haynes"
+// No nav, no footer nav links — single conversion goal
+// Schema: WebPage
+
+import '../styles/global.css';
+import CalendlyEmbed from '../components/CalendlyEmbed.astro';
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Free Business Coaching Call | Feldon Haynes",
+  "url": "https://feldeluxe.com/start",
+  "description": "Book a free 30-minute business coaching call with Feldon Haynes. Get clear business startup advice, an honest conversation, and a structured way forward. No pitch. No pressure.",
+  "isPartOf": {
+    "@type": "WebSite",
+    "url": "https://feldeluxe.com",
+    "name": "Feldon Haynes Coaching"
+  }
+});
+---
+
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Business Coaching Call | Feldon Haynes</title>
+  <meta name="description" content="Book a free 30-minute call with Feldon Haynes. Business startup advice, a clear direction, and an honest conversation from someone who's started 35+ businesses. No pitch." />
+  <link rel="canonical" href="https://feldeluxe.com/start" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Free Business Coaching Call | Feldon Haynes" />
+  <meta property="og:description" content="Book a free 30-minute business coaching call. Business startup advice from someone who's actually done it. 35+ businesses started, 40+ founders supported." />
+  <meta property="og:image" content="https://feldeluxe.com/Images/feldon-haynes-professional-headshot.webp" />
+  <meta property="og:url" content="https://feldeluxe.com/start" />
+  <meta property="og:site_name" content="Feldon Haynes Coaching" />
+  <meta property="og:locale" content="en_GB" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Free Business Coaching Call | Feldon Haynes" />
+  <meta name="twitter:description" content="Book a free 30-minute business coaching call. Business startup advice from someone who's actually done it." />
+  <meta name="twitter:image" content="https://feldeluxe.com/Images/feldon-haynes-professional-headshot.webp" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/Images/Logo/feldon-haynes-favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/Images/Logo/feldon-haynes-favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="256x256" href="/Images/Logo/feldon-haynes-favicon-256.png" />
+
+  <!-- DNS prefetch for Calendly -->
+  <link rel="dns-prefetch" href="https://calendly.com" />
+  <link rel="dns-prefetch" href="https://assets.calendly.com" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <script type="application/ld+json" set:html={schema}></script>
+  <!-- GA4: [GA4_ID] — add tracking snippet here before launch -->
+  <!-- GSC: [GSC_TAG] — add verification meta tag here before launch -->
+</head>
+<body>
+
+  <!-- Minimal header — logo only, no navigation links -->
+  <header class="lp-header">
+    <div class="container lp-header__inner">
+      <span class="lp-logo" aria-label="Feldon Haynes Coaching">
+        <span class="lp-logo__first">Feldon</span><span class="lp-logo__last">&nbsp;Haynes Coaching</span>
+      </span>
+    </div>
+  </header>
+
+  <!-- Hero — copy left, Calendly right -->
+  <section class="lp-hero">
+    <div class="container lp-hero__grid">
+
+      <div class="lp-hero__copy">
+        <p class="lp-eyebrow">
+          <span class="lp-eyebrow__line" aria-hidden="true"></span>
+          Free 30-minute discovery call
+        </p>
+        <h1 class="lp-h1">
+          You've got the <em>idea</em>.<br>Let's build the plan.
+        </h1>
+        <p class="lp-sub">
+          Whether you're about to launch something new or looking for honest business startup advice before you go any further, this is the clearest first step you can take.
+        </p>
+        <ul class="lp-benefits">
+          <li>
+            <span class="lp-benefit__dot" aria-hidden="true"></span>
+            <span>Get clear on exactly what's holding you back</span>
+          </li>
+          <li>
+            <span class="lp-benefit__dot" aria-hidden="true"></span>
+            <span>Walk away with a structured starting point</span>
+          </li>
+          <li>
+            <span class="lp-benefit__dot" aria-hidden="true"></span>
+            <span>No pitch. No pressure. Just an honest conversation.</span>
+          </li>
+        </ul>
+        <p class="lp-proof">
+          <span>35+ businesses started</span>
+          <span class="lp-proof__sep" aria-hidden="true">·</span>
+          <span>40+ founders coached</span>
+          <span class="lp-proof__sep" aria-hidden="true">·</span>
+          <span>EPIC Spirit Award winner</span>
+        </p>
+      </div>
+
+      <div class="lp-hero__cal">
+        <p class="lp-cal__label">Pick a time that works for you</p>
+        <CalendlyEmbed url="https://calendly.com/feldeluxe/discovery-call" height="660px" />
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Minimal footer — no nav links -->
+  <footer class="lp-footer">
+    <div class="container lp-footer__inner">
+      <p class="lp-footer__copy">
+        &copy; 2026 Feldon Haynes Coaching &middot; Feldeluxe Ltd. All rights reserved.
+      </p>
+      <div class="lp-footer__links">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
+
+<style>
+  /* ── Header ─────────────────────────────── */
+  .lp-header {
+    background: #534AB7;
+    height: 64px;
+    display: flex;
+    align-items: center;
+  }
+
+  .lp-header__inner {
+    display: flex;
+    align-items: center;
+  }
+
+  .lp-logo {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1;
+    user-select: none;
+  }
+  .lp-logo__first  { color: #F2D832; }
+  .lp-logo__last   { color: #ffffff; }
+
+  /* ── Hero ────────────────────────────────── */
+  .lp-hero {
+    background: #26215C;
+    padding: 80px 0 72px;
+  }
+
+  .lp-hero__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  /* Eyebrow */
+  .lp-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #AFA9EC;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .lp-eyebrow__line {
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: #F2D832;
+    flex-shrink: 0;
+  }
+
+  /* H1 */
+  .lp-h1 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+  .lp-h1 em {
+    font-style: italic;
+    color: #F2D832;
+  }
+
+  /* Sub */
+  .lp-sub {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: #AFA9EC;
+    line-height: 1.75;
+    max-width: 380px;
+    margin-bottom: 32px;
+  }
+
+  /* Benefits list */
+  .lp-benefits {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 36px;
+    padding: 0;
+  }
+  .lp-benefits li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.5;
+  }
+  .lp-benefit__dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #AFA9EC;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  /* Social proof */
+  .lp-proof {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.55);
+  }
+  .lp-proof__sep {
+    color: rgba(255, 255, 255, 0.25);
+  }
+
+  /* Calendly column */
+  .lp-cal__label {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  /* ── Footer ──────────────────────────────── */
+  .lp-footer {
+    background: #1a1744;
+    padding: 24px 0;
+  }
+  .lp-footer__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .lp-footer__copy {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.25);
+  }
+  .lp-footer__links {
+    display: flex;
+    gap: 20px;
+  }
+  .lp-footer__links a {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.25);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .lp-footer__links a:hover {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  /* ── Mobile ──────────────────────────────── */
+  @media (max-width: 900px) {
+    .lp-hero__grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .lp-sub {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .lp-hero {
+      padding: 48px 0 56px;
+    }
+    .lp-h1 {
+      font-size: 32px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .lp-footer__inner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+  }
+</style>

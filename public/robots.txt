@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Block admin and CMS
+Disallow: /keystatic/
+Disallow: /keystatic
+
+# Block noindex pages (belt-and-braces)
+Disallow: /privacy/
+Disallow: /terms/
+
+Sitemap: https://feldeluxe.com/sitemap-index.xml

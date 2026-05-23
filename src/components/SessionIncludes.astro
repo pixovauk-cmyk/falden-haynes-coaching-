@@ -1,0 +1,306 @@
+---
+// SessionIncludes.astro — "What every session includes"
+// Purple #534ab7 full rounded card with 2×2 photo grid
+// Left: chip tag + H2 + feature list. Right: 2×2 photo grid
+---
+
+<section class="session-section" aria-label="What every session includes">
+  <div class="container">
+    <div class="session-card fade-in">
+
+      <!-- LEFT: copy + features -->
+      <div class="session-left">
+
+        <span class="session-chip">Every session</span>
+
+        <h2 class="session-h2">
+          This is what you get.<br><em>Every time.</em>
+        </h2>
+
+        <p class="session-sub">
+          Every bundle. Every session. No exceptions.
+        </p>
+
+        <ul class="session-features" role="list">
+
+          <li class="feature-item">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 10l4.553-2.069a1 1 0 0 1 1.447.894v6.35a1 1 0 0 1-1.447.894L15 14"/>
+                <rect x="3" y="6" width="12" height="12" rx="2"/>
+              </svg>
+            </div>
+            <div class="feature-text">
+              <span class="feature-title">Recorded every time</span>
+              <span class="feature-body">Full replay in your inbox. Revisit any moment, any time.</span>
+            </div>
+          </li>
+
+          <li class="feature-item">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 3v4a1 1 0 0 0 1 1h4"/>
+                <path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/>
+                <line x1="9" y1="13" x2="15" y2="13"/>
+                <line x1="9" y1="17" x2="15" y2="17"/>
+              </svg>
+            </div>
+            <div class="feature-text">
+              <span class="feature-title">Action plan the same day</span>
+              <span class="feature-body">Not next week. Written and in your inbox before you sleep.</span>
+            </div>
+          </li>
+
+          <li class="feature-item">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="5" width="18" height="14" rx="2"/>
+                <polyline points="3 7 12 13 21 7"/>
+              </svg>
+            </div>
+            <div class="feature-text">
+              <span class="feature-title">I'm reachable between sessions</span>
+              <span class="feature-body">Drop me a message when something comes up. I respond within 48 hours.</span>
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+
+      <!-- RIGHT: 2×2 photo grid -->
+      <div class="session-right">
+        <div class="photo-grid">
+          <img
+            src="/Images/feldon-haynes-working-at-laptop.webp"
+            alt="Feldon Haynes reviewing client strategy at his laptop"
+            width="280"
+            height="210"
+            loading="lazy"
+            class="photo-grid__img"
+          />
+          <img
+            src="/Images/feldon-haynes-sales-funnel-training.webp"
+            alt="Feldon Haynes teaching sales and follow-up systems"
+            width="280"
+            height="210"
+            loading="lazy"
+            class="photo-grid__img"
+          />
+          <img
+            src="/Images/feldon-haynes-whiteboard-strategy-session.webp"
+            alt="Feldon Haynes mapping a client growth strategy on a whiteboard"
+            width="280"
+            height="210"
+            loading="lazy"
+            class="photo-grid__img"
+          />
+          <img
+            src="/Images/feldon-haynes-award-photo.webp"
+            alt="Feldon Haynes receiving an entrepreneurship award"
+            width="280"
+            height="210"
+            loading="lazy"
+            class="photo-grid__img"
+          />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .session-section {
+    background: #f8f9fb;
+    padding: 80px 0;
+  }
+
+  /* Navy floating card */
+  .session-card {
+    background: #26215C;
+    border-radius: 28px;
+    padding: 60px 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+    box-shadow: 0 24px 80px rgba(38, 33, 92, 0.4);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Decorative circle accents */
+  .session-card::before,
+  .session-card::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .session-card::before {
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.04);
+    top: -160px;
+    right: -100px;
+  }
+  .session-card::after {
+    width: 240px;
+    height: 240px;
+    background: rgba(255, 255, 255, 0.05);
+    bottom: -80px;
+    left: 120px;
+  }
+
+  /* ── LEFT ──────────────────────────────── */
+  .session-left {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Chip */
+  .session-chip {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.9);
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 9999px;
+    margin-bottom: 24px;
+    align-self: flex-start;
+  }
+
+  .session-h2 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 44px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+    margin-bottom: 14px;
+    line-height: 1.15;
+  }
+  .session-h2 em {
+    font-style: italic;
+    color: #F2D832;
+    font-weight: 700;
+  }
+
+  .session-sub {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 36px;
+  }
+
+  /* Feature list */
+  .session-features {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .feature-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .feature-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    flex-shrink: 0;
+  }
+
+  .feature-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding-top: 2px;
+  }
+  .feature-title {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.3;
+  }
+  .feature-body {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.65;
+  }
+
+  /* ── RIGHT: photo grid ──────────────────── */
+  .session-right {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .photo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .photo-grid__img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 14px;
+    display: block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+  .photo-grid__img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Offset first and third images slightly for visual interest */
+  .photo-grid__img:nth-child(1),
+  .photo-grid__img:nth-child(3) {
+    margin-top: 16px;
+  }
+
+  /* ── Tablet ──────────────────────────────── */
+  @media (max-width: 1024px) {
+    .session-card {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 48px 40px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .session-section { padding: 56px 0; }
+    .session-card {
+      padding: 36px 24px;
+      border-radius: 20px;
+    }
+    .session-h2 { font-size: 26px; }
+    .photo-grid__img { height: 130px; }
+    .photo-grid__img:nth-child(1),
+    .photo-grid__img:nth-child(3) { margin-top: 0; }
+  }
+</style>

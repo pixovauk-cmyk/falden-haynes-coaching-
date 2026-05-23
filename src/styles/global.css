@@ -1,0 +1,142 @@
+/* ── Design tokens ───────────────────────────────────────── */
+:root {
+  /* Colours */
+  --background:          #f8f9fb;
+  --surface:             #ffffff;
+  --surface-tint:        #f2f0ff;
+  --primary:             #3b309e;
+  --primary-container:   #534ab7;
+  --on-primary:          #ffffff;
+  --primary-fixed:       #e3dfff;
+  --secondary-container: #F2D832;
+  --navy:                #26215C;
+  --on-surface:          #1a1744;
+  --on-surface-variant:  #4a4670;
+  --muted:               #7e7a9f;
+  --outline:             #d5d2ea;
+  --outline-variant:     #ede9ff;
+  --gold:                #F2D832;
+  --success-bg:          #e3f5ec;
+  --success-text:        #065f3c;
+  --footer-bg:           #f0eff8;
+
+  /* Shadows */
+  --shadow-sm:           0 2px 8px rgba(59, 48, 158, 0.06);
+  --shadow-md:           0 4px 20px rgba(59, 48, 158, 0.09);
+  --shadow-lg:           0 20px 40px -10px rgba(59, 48, 158, 0.12);
+  --shadow-atmospheric:  0 20px 60px -15px rgba(59, 48, 158, 0.08);
+
+  /* Typography */
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+
+  /* Spacing (8px scale) */
+  --space-1:   8px;
+  --space-2:  16px;
+  --space-3:  24px;
+  --space-4:  32px;
+  --space-5:  40px;
+  --space-6:  48px;
+  --space-8:  64px;
+  --space-10: 80px;
+  --space-12: 96px;
+
+  /* Radii */
+  --radius-sm:   8px;
+  --radius-md:  12px;
+  --radius-lg:  16px;
+  --radius-xl:  24px;
+  --radius-full: 9999px;
+
+  /* Container */
+  --container-max:    1280px;
+  --margin-desktop:   64px;
+  --margin-tablet:    40px;
+  --margin-mobile:    20px;
+}
+
+/* ── Reset ─────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--background);
+  color: var(--on-surface);
+  font-size: 18px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-sans);
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ── Container ─────────────────────────────────────────── */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--margin-desktop);
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 var(--margin-tablet);
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 var(--margin-mobile);
+  }
+}
+
+/* ── Chip / pill label ─────────────────────────────────── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--primary-fixed);
+  color: var(--primary);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: var(--radius-full);
+}
+
+/* ── Scroll-triggered fade-in ──────────────────────────── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

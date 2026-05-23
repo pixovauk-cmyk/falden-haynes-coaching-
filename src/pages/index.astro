@@ -1,0 +1,82 @@
+---
+// index.astro — Homepage
+// Primary keyword: business coach small business
+// Section rhythm: Hero → Problems → Bundles → Session → About → Testimonials → FinalCTA
+
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import ProblemGrid from '../components/ProblemGrid.astro';
+import ServicesSection from '../components/ServicesSection.astro';
+import BundleCards from '../components/BundleCards.astro';
+import SessionIncludes from '../components/SessionIncludes.astro';
+import AboutTeaser from '../components/AboutTeaser.astro';
+import Testimonials from '../components/Testimonials.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+
+// Organisation schema — homepage only
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Feldon Haynes Coaching",
+  "legalName": "Feldeluxe Ltd",
+  "url": "https://feldeluxe.com",
+  "logo": "https://feldeluxe.com/Images/feldon-haynes-logo-dark.webp",
+  "description": "1-to-1 business coaching for small business owners and ambitious founders. 35+ businesses started, 40+ founders supported, 3 industry awards.",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+447562614867",
+    "contactType": "customer service",
+    "email": "info@feldeluxe.com",
+    "availableLanguage": "English"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Halesowen",
+    "addressRegion": "West Midlands",
+    "postalCode": "B62 8HU",
+    "addressCountry": "GB"
+  },
+  "founder": {
+    "@type": "Person",
+    "name": "Feldon Haynes",
+    "jobTitle": "Business Coach",
+    "url": "https://feldeluxe.com/about"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/in/feldon-haynes/",
+    "https://linktr.ee/Feldeluxe",
+    "https://uk.trustpilot.com/review/feldeluxe.com"
+  ]
+});
+---
+
+<Layout
+  title="Business Coach for Small Business Owners | Feldon Haynes"
+  description="Feldon Haynes is a business coach for small business owners. 35+ businesses started, 40+ founders supported. Book your free 30-minute discovery call."
+  schema={schema}
+  canonicalUrl="https://feldeluxe.com/"
+  ogImage="/Images/feldon-haynes-thoughtful-portrait.webp"
+  preloadImage="/Images/feldon-haynes-thoughtful-portrait.webp"
+  preloadImageMobile="/Images/feldon-haynes-thoughtful-portrait-mobile.webp"
+  preloadImageMobileBreakpoint="768px"
+>
+  <!--
+    Section colour rhythm:
+    #f8f9fb / #ede9ff → Hero (light + purple gradient tint)
+    #f0eff8           → Problem grid
+    #ffffff           → Bundle cards
+    #f8f9fb           → Session includes (outer) / #534ab7 rounded card (inner)
+    #ffffff           → About teaser
+    #534ab7           → Testimonials
+    #f8f9fb           → Final CTA
+    #f0eff8           → Footer
+  -->
+  <Hero />
+  <ProblemGrid />
+  <ServicesSection />
+  <BundleCards />
+  <SessionIncludes />
+  <AboutTeaser />
+  <Testimonials />
+  <FinalCTA />
+</Layout>

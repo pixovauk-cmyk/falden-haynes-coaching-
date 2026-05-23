@@ -1,0 +1,310 @@
+---
+// ContactForm.astro — contact form → Notion via Zapier webhook
+// Endpoint: [ZAPIER_WEBHOOK_URL] — CONFIRM with Feldon before launch
+// Fields: name, email, message, timestamp
+// Honeypot: bot-trap field (hidden, must be empty on submit)
+// See: info.md Section 11 — Zapier account needs confirming
+---
+
+<!--
+  BEFORE LAUNCH: Replace [ZAPIER_WEBHOOK_URL] in the script below with the
+  real Zapier catch webhook URL. Format: https://hooks.zapier.com/hooks/catch/XXXXXXXX/XXXXXXXX/
+  The Zapier zap should pass: name, email, message, date → Notion database.
+-->
+
+<form
+  class="contact-form"
+  id="contact-form"
+  novalidate
+  aria-label="Send Feldon a message"
+>
+  <!-- Honeypot — bots fill this, humans don't -->
+  <div class="form-honeypot" aria-hidden="true">
+    <label for="website">Leave this blank</label>
+    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="name" class="form-label">
+        Your name <span class="form-required" aria-hidden="true">*</span>
+      </label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        class="form-input"
+        required
+        autocomplete="name"
+        placeholder="Jordan Smith"
+        aria-required="true"
+      />
+      <span class="form-error" id="name-error" role="alert" aria-live="polite"></span>
+    </div>
+
+    <div class="form-group">
+      <label for="email" class="form-label">
+        Email address <span class="form-required" aria-hidden="true">*</span>
+      </label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        class="form-input"
+        required
+        autocomplete="email"
+        placeholder="jordan@example.com"
+        aria-required="true"
+      />
+      <span class="form-error" id="email-error" role="alert" aria-live="polite"></span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="message" class="form-label">
+      Message <span class="form-required" aria-hidden="true">*</span>
+    </label>
+    <textarea
+      id="message"
+      name="message"
+      class="form-input form-textarea"
+      required
+      rows="5"
+      placeholder="Tell me a bit about where you are and what you're working on."
+      aria-required="true"
+    ></textarea>
+    <span class="form-error" id="message-error" role="alert" aria-live="polite"></span>
+  </div>
+
+  <button type="submit" class="form-submit" id="form-submit">
+    Send message
+  </button>
+
+  <!-- Status messages -->
+  <div class="form-status form-status--success" id="form-success" role="alert" aria-live="polite" hidden>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="20 6 9 17 4 12"/>
+    </svg>
+    Message sent. I'll get back to you within 48 hours.
+  </div>
+  <div class="form-status form-status--error" id="form-error-msg" role="alert" aria-live="polite" hidden>
+    Something went wrong. Please try again or email me directly at
+    <a href="mailto:info@feldeluxe.com">info@feldeluxe.com</a>.
+  </div>
+</form>
+
+<script>
+  const form     = document.getElementById('contact-form') as HTMLFormElement;
+  const submitBtn = document.getElementById('form-submit') as HTMLButtonElement;
+  const successEl = document.getElementById('form-success') as HTMLElement;
+  const errorEl   = document.getElementById('form-error-msg') as HTMLElement;
+
+  // [ZAPIER_WEBHOOK_URL] — replace before launch
+  // Format: https://hooks.zapier.com/hooks/catch/XXXXXXXX/XXXXXXXX/
+  const WEBHOOK_URL = '[ZAPIER_WEBHOOK_URL]';
+
+  function setError(fieldId: string, msg: string) {
+    const el = document.getElementById(`${fieldId}-error`);
+    const input = document.getElementById(fieldId) as HTMLInputElement;
+    if (el) el.textContent = msg;
+    if (input) input.classList.toggle('form-input--error', !!msg);
+  }
+
+  function validateForm(name: string, email: string, message: string): boolean {
+    let valid = true;
+    if (!name.trim()) { setError('name', 'Please enter your name.'); valid = false; }
+    else setError('name', '');
+    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError('email', 'Please enter a valid email address.'); valid = false;
+    } else setError('email', '');
+    if (!message.trim() || message.trim().length < 10) {
+      setError('message', 'Please enter a message (at least 10 characters).'); valid = false;
+    } else setError('message', '');
+    return valid;
+  }
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const name    = formData.get('name') as string;
+    const email   = formData.get('email') as string;
+    const message = formData.get('message') as string;
+    const honeypot = formData.get('website') as string;
+
+    // Reject if honeypot is filled (bot)
+    if (honeypot) return;
+
+    if (!validateForm(name, email, message)) return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    successEl.hidden = true;
+    errorEl.hidden   = true;
+
+    try {
+      if (WEBHOOK_URL === '[ZAPIER_WEBHOOK_URL]') {
+        // Dev mode: log to console and show success (remove before launch)
+        console.log('Form submission (dev):', { name, email, message });
+        await new Promise(r => setTimeout(r, 600));
+      } else {
+        await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name,
+            email,
+            message,
+            date: new Date().toISOString(),
+            source: 'feldeluxe.com contact form',
+          }),
+        });
+      }
+      form.reset();
+      successEl.hidden = false;
+      submitBtn.textContent = 'Sent';
+    } catch {
+      errorEl.hidden = false;
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send message';
+    }
+  });
+</script>
+
+<style>
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* Honeypot — visually hidden but not display:none (bots see it) */
+  .form-honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-label {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #26215C;
+  }
+  .form-required { color: #534AB7; }
+
+  .form-input {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #26215C;
+    background: #ffffff;
+    border: 1px solid #d4d1f0;
+    border-radius: 10px;
+    padding: 12px 16px;
+    width: 100%;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    outline: none;
+    min-height: 48px;
+  }
+  .form-input::placeholder { color: #bbb; }
+  .form-input:focus {
+    border-color: #534AB7;
+    box-shadow: 0 0 0 3px rgba(83, 74, 183, 0.12);
+  }
+  .form-input--error {
+    border-color: #e53e3e;
+  }
+  .form-input--error:focus {
+    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.12);
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.6;
+  }
+
+  .form-error {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 12px;
+    color: #e53e3e;
+    min-height: 16px;
+    line-height: 1.3;
+  }
+
+  .form-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #534AB7;
+    color: #ffffff;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 14px 32px;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+    min-height: 52px;
+    transition: background 0.2s ease, transform 0.1s ease;
+    align-self: flex-start;
+    min-width: 160px;
+  }
+  .form-submit:hover  { background: #3b309e; }
+  .form-submit:active { transform: scale(0.98); }
+  .form-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* Status messages */
+  .form-status {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 14px 16px;
+    border-radius: 10px;
+  }
+  .form-status[hidden] { display: none; }
+
+  .form-status--success {
+    background: #f0fdf4;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+  }
+  .form-status--error {
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+  }
+  .form-status--error a {
+    color: #991b1b;
+    text-decoration: underline;
+  }
+
+  /* ── Mobile ─────────────────────────────── */
+  @media (max-width: 600px) {
+    .form-row { grid-template-columns: 1fr; }
+    .form-submit { width: 100%; align-self: stretch; }
+  }
+</style>

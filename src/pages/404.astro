@@ -1,0 +1,118 @@
+---
+// 404.astro — Custom not-found page
+// noindex — Astro applies this automatically to 404 pages
+
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Page not found | Feldon Haynes Coaching"
+  description="The page you're looking for doesn't exist. Head back to the homepage or book a free discovery call."
+  noindex={true}
+>
+  <section class="notfound">
+    <div class="container notfound__inner">
+      <p class="notfound__code">404</p>
+      <h1 class="notfound__h1">That page doesn't exist.</h1>
+      <p class="notfound__body">
+        It may have moved, or the link you followed might be wrong.
+        Either way, you can find what you need below.
+      </p>
+      <div class="notfound__actions">
+        <a href="/" class="notfound__btn notfound__btn--primary">Go to homepage</a>
+        <a
+          href="https://calendly.com/feldeluxe/discovery-call"
+          class="notfound__btn notfound__btn--ghost"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Book a free call</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .notfound {
+    background: #26215C;
+    min-height: calc(100vh - 64px);
+    display: flex;
+    align-items: center;
+    padding: 80px 0;
+  }
+
+  .notfound__inner {
+    text-align: center;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .notfound__code {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 96px;
+    font-weight: 700;
+    color: #F2D832;
+    line-height: 1;
+    margin-bottom: 16px;
+    letter-spacing: -0.04em;
+  }
+
+  .notfound__h1 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+  }
+
+  .notfound__body {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: #AFA9EC;
+    line-height: 1.75;
+    margin-bottom: 36px;
+  }
+
+  .notfound__actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .notfound__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 12px 28px;
+    border-radius: 100px;
+    min-height: 48px;
+    text-decoration: none;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .notfound__btn--primary {
+    background: #534AB7;
+    color: #ffffff;
+    border: 1px solid transparent;
+  }
+  .notfound__btn--primary:hover { background: #3b309e; }
+
+  .notfound__btn--ghost {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  .notfound__btn--ghost:hover { border-color: rgba(255, 255, 255, 0.5); }
+
+  @media (max-width: 768px) {
+    .notfound__code { font-size: 72px; }
+    .notfound__h1 { font-size: 26px; }
+    .notfound__btn { width: 100%; }
+  }
+</style>

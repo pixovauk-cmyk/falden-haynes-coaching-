@@ -1,0 +1,173 @@
+---
+// FinalCTA.astro — compact closing CTA card
+---
+
+<section class="final-cta" aria-label="Book a free discovery call">
+  <div class="container">
+    <div class="cta-card fade-in">
+
+      <span class="cta-chip">Ready to start?</span>
+
+      <h2 class="cta-h2">
+        Let's build something <em>real</em> together.
+      </h2>
+
+      <p class="cta-body">
+        Your free 30-minute discovery call costs nothing. I'll listen to where you are,
+        tell you honestly whether I think I can help, and if we're a good fit, we'll
+        talk next steps. No pitch. No pressure.
+      </p>
+
+      <div class="cta-social-proof">
+        <div class="cta-avatars" aria-hidden="true">
+          <img src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face" alt="" class="cta-avatar" width="100" height="100" loading="lazy" />
+          <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face" alt="" class="cta-avatar" width="100" height="100" loading="lazy" />
+          <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face" alt="" class="cta-avatar" width="100" height="100" loading="lazy" />
+          <img src="https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face" alt="" class="cta-avatar" width="100" height="100" loading="lazy" />
+        </div>
+        <p class="cta-social-text"><strong>40+ founders</strong> already working with Feldon</p>
+      </div>
+
+      <a
+        href="https://calendly.com/feldeluxe/discovery-call"
+        class="cta-btn"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Book your free discovery call
+      </a>
+
+      <p class="cta-note">Free · 30 minutes · No obligation</p>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .final-cta {
+    background: #f8f9fb;
+    padding: 56px 0;
+  }
+
+  .cta-card {
+    max-width: 540px;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 1px solid #ede9ff;
+    border-radius: 20px;
+    padding: 40px 44px;
+    box-shadow: 0 12px 40px rgba(59, 48, 158, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .cta-chip {
+    display: inline-flex;
+    align-items: center;
+    background: #e3dfff;
+    color: #3b309e;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 9999px;
+    margin-bottom: 16px;
+  }
+
+  .cta-h2 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #1a1744;
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+  .cta-h2 em {
+    font-style: italic;
+    color: #534ab7;
+    font-weight: 700;
+  }
+
+  .cta-body {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #7e7a9f;
+    line-height: 1.8;
+    margin-bottom: 24px;
+    max-width: 440px;
+  }
+
+  .cta-social-proof {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .cta-avatars {
+    display: flex;
+    align-items: center;
+  }
+  .cta-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2.5px solid #ffffff;
+    margin-left: -10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  }
+  .cta-avatar:first-child { margin-left: 0; }
+  .cta-social-text {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #7e7a9f;
+    line-height: 1.4;
+    text-align: left;
+  }
+  .cta-social-text strong {
+    color: #1a1744;
+    font-weight: 700;
+  }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #534ab7;
+    color: #ffffff;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 13px 32px;
+    border-radius: 9999px;
+    white-space: nowrap;
+    min-height: 48px;
+    transition: background 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 6px 20px rgba(83, 74, 183, 0.3);
+    margin-bottom: 12px;
+  }
+  .cta-btn:hover { background: #3b309e; }
+  .cta-btn:active { transform: scale(0.97); }
+
+  .cta-note {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #b0abc8;
+  }
+
+  /* ── Mobile ─────────────────────────────── */
+  @media (max-width: 768px) {
+    .final-cta { padding: 40px 0; }
+    .cta-card { padding: 32px 24px; border-radius: 16px; }
+    .cta-h2 { font-size: 24px; }
+    .cta-btn { width: 100%; font-size: 14px; }
+  }
+</style>

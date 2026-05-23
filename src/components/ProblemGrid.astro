@@ -1,0 +1,404 @@
+---
+// ProblemGrid.astro — "Is this you?" — full-bleed image cards with text overlay
+---
+
+<section class="problems" id="problems" aria-label="Who this is for">
+  <div class="container">
+
+    <div class="problems-header fade-in">
+      <span class="p-chip">Who it's for</span>
+      <h2 class="p-h2">Is this you?</h2>
+      <p class="p-intro">Four types of founders come through my door. One of them is you.</p>
+    </div>
+
+    <div class="p-scroll-wrap" id="prob-scroll">
+    <div class="p-grid fade-in">
+
+      <!-- Card 1: Aspiring Founder -->
+      <article class="p-card">
+        <img
+          src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop"
+          alt="Aspiring founder with a notebook"
+          class="p-card-img"
+          loading="lazy"
+          width="600"
+          height="800"
+        />
+        <div class="p-card-overlay">
+          <span class="p-card-num">01</span>
+          <div class="p-card-content">
+            <span class="p-card-chip">Aspiring Founder</span>
+            <h3 class="p-card-title">You've got the idea. Now what?</h3>
+            <p class="p-card-text">
+              You know you want to build something, but you don't know where to start.
+              I'll help you turn it into a plan you can follow.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2: Early-Stage Founder -->
+      <article class="p-card">
+        <img
+          src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop"
+          alt="Early-stage founders working together"
+          class="p-card-img"
+          loading="lazy"
+          width="600"
+          height="800"
+        />
+        <div class="p-card-overlay">
+          <span class="p-card-num">02</span>
+          <div class="p-card-content">
+            <span class="p-card-chip">Early-Stage Founder</span>
+            <h3 class="p-card-title">You've started. Now it gets real.</h3>
+            <p class="p-card-text">
+              The first steps are done. Now you're in the messy middle:
+              money, systems, customers, all at once. Let's cut through it.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3: Stuck Founder -->
+      <article class="p-card">
+        <img
+          src="https://images.pexels.com/photos/3755761/pexels-photo-3755761.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop"
+          alt="Founder thinking through a problem"
+          class="p-card-img"
+          loading="lazy"
+          width="600"
+          height="800"
+        />
+        <div class="p-card-overlay">
+          <span class="p-card-num">03</span>
+          <div class="p-card-content">
+            <span class="p-card-chip">Stuck Founder</span>
+            <h3 class="p-card-title">You're running. But something's off.</h3>
+            <p class="p-card-text">
+              Growth has stalled or the business feels harder than it should.
+              I'll help you find out why, and fix it.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 4: Business Owner -->
+      <article class="p-card">
+        <img
+          src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop"
+          alt="Established business owner in a meeting"
+          class="p-card-img"
+          loading="lazy"
+          width="600"
+          height="800"
+        />
+        <div class="p-card-overlay">
+          <span class="p-card-num">04</span>
+          <div class="p-card-content">
+            <span class="p-card-chip">Business Owner</span>
+            <h3 class="p-card-title">Established. Now let's build on it.</h3>
+            <p class="p-card-text">
+              Your business is running. But there's more: scaling, systemising,
+              or just getting your time back. I can help with all of it.
+            </p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    </div>
+
+    <!-- Mobile carousel nav — hidden on desktop -->
+    <div class="p-carousel-nav" aria-label="Scroll cards">
+      <button class="p-carousel-btn" id="prob-prev" aria-label="Previous card">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11 4L6 9l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="p-carousel-btn" id="prob-next" aria-label="Next card">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+    <div class="p-cta-wrap fade-in">
+      <a
+        href="https://calendly.com/feldeluxe/discovery-call"
+        class="p-cta"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Book a free 30-minute call
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .problems {
+    background: #f0eff8;
+    padding: 80px 0;
+  }
+
+  /* Header */
+  .problems-header {
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .p-chip {
+    display: inline-flex;
+    align-items: center;
+    background: #e3dfff;
+    color: #3b309e;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 7px 18px;
+    border-radius: 9999px;
+    margin-bottom: 24px;
+  }
+
+  .p-h2 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 52px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #1a1744;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .p-intro {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #7e7a9f;
+    max-width: 460px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* 4-col grid */
+  .p-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  /* Card — full-bleed image */
+  .p-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 460px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .p-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 56px rgba(26, 23, 68, 0.28);
+  }
+  .p-card:hover .p-card-img {
+    transform: scale(1.04);
+  }
+
+  /* Photo fills card */
+  .p-card-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  /* Overlay — clear at top, solid dark from midpoint down */
+  .p-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      transparent 30%,
+      rgba(26, 23, 68, 0.55) 50%,
+      rgba(26, 23, 68, 0.88) 65%,
+      rgba(26, 23, 68, 0.98) 100%
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px 24px 32px;
+  }
+
+  /* Number badge — absolute top left so it's out of the flex flow */
+  .p-card-num {
+    position: absolute;
+    top: 20px;
+    left: 24px;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #ffffff;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    padding: 5px 12px;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+  }
+
+  /* Text content — bottom */
+  .p-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .p-card-chip {
+    display: inline-flex;
+    align-self: flex-start;
+    background: rgba(83, 74, 183, 0.7);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: #ffffff;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .p-card-title {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.3;
+    margin-bottom: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .p-card-text {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.7;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* CTA */
+  .p-cta-wrap {
+    text-align: center;
+  }
+
+  .p-cta {
+    display: inline-flex;
+    align-items: center;
+    background: #534ab7;
+    color: #ffffff;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 16px 36px;
+    border-radius: 9999px;
+    white-space: nowrap;
+    min-height: 56px;
+    transition: background 0.2s ease, transform 0.1s ease;
+  }
+  .p-cta:hover  { background: #3b309e; }
+  .p-cta:active { transform: scale(0.98); }
+
+  /* ── Tablet ─────────────────────────────── */
+  @media (max-width: 1024px) {
+    .p-grid { grid-template-columns: repeat(2, 1fr); }
+    .p-card { height: 420px; }
+  }
+
+  /* Carousel nav — hidden on desktop */
+  .p-carousel-nav {
+    display: none;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .p-carousel-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #534AB7;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    transition: background 0.2s, transform 0.1s;
+    flex-shrink: 0;
+  }
+  .p-carousel-btn:hover { background: #3b309e; }
+  .p-carousel-btn:active { transform: scale(0.95); }
+
+  /* ── Mobile ─────────────────────────────── */
+  @media (max-width: 767px) {
+    .problems { padding: 52px 0; }
+    .p-h2 { font-size: 34px; }
+    .p-cta { width: 100%; justify-content: center; }
+
+    .p-scroll-wrap {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      margin: 0 -16px;
+      padding: 0 16px 4px;
+    }
+    .p-scroll-wrap::-webkit-scrollbar { display: none; }
+
+    .p-grid {
+      display: flex;
+      flex-wrap: nowrap;
+      width: max-content;
+      gap: 14px;
+    }
+
+    .p-card {
+      width: calc(85vw);
+      height: 400px;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+    }
+
+    .p-carousel-nav { display: flex; }
+  }
+</style>
+
+<script>
+  const probScroll = document.getElementById('prob-scroll');
+  const probPrev = document.getElementById('prob-prev');
+  const probNext = document.getElementById('prob-next');
+  if (probScroll && probPrev && probNext) {
+    const getStep = () => {
+      const card = probScroll.querySelector('.p-card');
+      if (!card) return 300;
+      return card.offsetWidth + 14;
+    };
+    probPrev.addEventListener('click', () => probScroll.scrollBy({ left: -getStep(), behavior: 'smooth' }));
+    probNext.addEventListener('click', () => probScroll.scrollBy({ left: getStep(), behavior: 'smooth' }));
+  }
+</script>

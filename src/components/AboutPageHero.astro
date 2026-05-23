@@ -1,0 +1,297 @@
+---
+// AboutPageHero.astro — matches homepage hero exactly
+// Same light bg, purple gradient right col, floating cards
+// Uses feldon-haynes-professional-headshot.webp — object-position tuned so face shows
+---
+
+<section class="about-hero" aria-label="About Feldon Haynes">
+
+  <!-- LEFT: copy -->
+  <div class="ah-copy-wrap">
+    <div class="ah-copy fade-in">
+
+      <nav class="ah-breadcrumb" aria-label="Breadcrumb">
+        <a href="/" class="ah-bc-link">Home</a>
+        <span class="ah-bc-sep" aria-hidden="true">›</span>
+        <span class="ah-bc-cur" aria-current="page">About</span>
+      </nav>
+
+      <span class="ah-chip">Business Coach and Mentor</span>
+
+      <h1 class="ah-h1">
+        Business coach<br>and mentor.<br>
+        <em>Who's actually done it.</em>
+      </h1>
+
+      <p class="ah-sub">
+        Serial entrepreneur. 35+ businesses started. 40+ founders supported.
+        Based in Halesowen, coaching founders across the UK online.
+      </p>
+
+      <a href="#story" class="ah-btn-ghost">Read my story</a>
+
+    </div>
+  </div>
+
+  <!-- RIGHT: photo -->
+  <div class="ah-photo-col" aria-hidden="true">
+    <div class="ah-photo-wrap">
+
+      <div class="ah-blob"></div>
+
+      <img
+        src="/Images/feldon-haynes-professional-headshot.webp"
+        alt="Feldon Haynes, business coach and mentor"
+        loading="eager"
+        fetchpriority="high"
+        width="1066"
+        height="1600"
+        class="ah-photo"
+      />
+
+      <!-- Floating stat card — bottom left -->
+      <div class="ah-float ah-float--stat">
+        <span class="ah-float-num">40+</span>
+        <span class="ah-float-label">Founders supported</span>
+      </div>
+
+      <!-- Award chip — top right -->
+      <div class="ah-float ah-float--award">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+        </svg>
+        <span>EPIC Spirit Award</span>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<style>
+  /* ── Section grid — identical structure to homepage hero ── */
+  .about-hero {
+    background: #f8f9fb;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 700px;
+    overflow: hidden;
+  }
+
+  /* ── LEFT copy column ────────────────────── */
+  .ah-copy-wrap {
+    display: flex;
+    align-items: center;
+    padding: 72px 56px 72px max(48px, calc(50vw - 640px));
+  }
+
+  .ah-copy { max-width: 540px; }
+
+  /* Breadcrumb */
+  .ah-breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+  .ah-bc-link {
+    color: #534AB7;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .ah-bc-link:hover { opacity: 0.75; }
+  .ah-bc-sep { color: #ccc; font-size: 16px; }
+  .ah-bc-cur { color: #9c97c0; }
+
+  /* Chip */
+  .ah-chip {
+    display: inline-flex;
+    align-items: center;
+    background: #e3dfff;
+    color: #3b309e;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 7px 18px;
+    border-radius: 9999px;
+    margin-bottom: 28px;
+  }
+
+  /* H1 */
+  .ah-h1 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 62px;
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: #1a1744;
+    margin-bottom: 24px;
+  }
+  .ah-h1 em {
+    font-style: italic;
+    color: #534AB7;
+    font-weight: 700;
+  }
+
+  /* Sub */
+  .ah-sub {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.75;
+    color: #4a4670;
+    max-width: 420px;
+    margin-bottom: 40px;
+  }
+
+  .ah-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    color: #4a4670;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 16px 32px;
+    border-radius: 9999px;
+    border: 1.5px solid #d5d2ea;
+    white-space: nowrap;
+    min-height: 56px;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .ah-btn-ghost:hover {
+    border-color: #534AB7;
+    color: #534AB7;
+    background: #f0eeff;
+  }
+
+  /* ── RIGHT photo column ──────────────────── */
+  .ah-photo-col {
+    display: flex;
+    align-items: flex-end;
+    padding: 40px max(40px, calc(50vw - 640px)) 0 40px;
+    background: linear-gradient(135deg, #f8f9fb 0%, #ede9ff 60%, #e3dfff 100%);
+  }
+
+  .ah-photo-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+  }
+
+  /* Soft blob behind photo */
+  .ah-blob {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 85%;
+    background: linear-gradient(135deg, #c9c2ff 0%, #534AB7 100%);
+    border-radius: 40% 40% 0 0;
+    opacity: 0.15;
+    filter: blur(24px);
+    pointer-events: none;
+  }
+
+  /* Photo — face is ~20% from top in this image, so push position up */
+  .ah-photo {
+    position: relative;
+    width: 100%;
+    height: 560px;
+    object-fit: cover;
+    object-position: center 8%;
+    border-radius: 20px 20px 0 0;
+    display: block;
+  }
+
+  /* Floating stat card — bottom left */
+  .ah-float--stat {
+    position: absolute;
+    bottom: 48px;
+    left: -24px;
+    background: #ffffff;
+    border: 1px solid #ede9ff;
+    border-radius: 16px;
+    padding: 14px 20px;
+    box-shadow: 0 12px 40px rgba(59, 48, 158, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .ah-float-num {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: #534AB7;
+    line-height: 1;
+  }
+  .ah-float-label {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: #7e7a9f;
+    white-space: nowrap;
+  }
+
+  /* Award chip — top right */
+  .ah-float--award {
+    position: absolute;
+    top: 28px;
+    right: -16px;
+    background: #534AB7;
+    border-radius: 9999px;
+    padding: 8px 16px;
+    box-shadow: 0 8px 24px rgba(83, 74, 183, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #F2D832;
+  }
+  .ah-float--award span {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #F2D832;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* ── Tablet ──────────────────────────────── */
+  @media (max-width: 1024px) {
+    .ah-h1 { font-size: 44px; }
+    .ah-copy-wrap { padding: 60px 40px; }
+    .ah-photo-col { padding: 40px 40px 0; }
+  }
+
+  /* ── Mobile ──────────────────────────────── */
+  @media (max-width: 768px) {
+    .about-hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+    .ah-photo-col {
+      order: -1;
+      padding: 32px 20px 0;
+      background: linear-gradient(135deg, #ede9ff 0%, #e3dfff 100%);
+    }
+    .ah-photo-wrap { max-width: 100%; }
+    .ah-photo {
+      height: 320px;
+      border-radius: 16px 16px 0 0;
+      object-position: center 5%;
+    }
+    .ah-copy-wrap { padding: 40px 20px 56px; }
+    .ah-h1 { font-size: 36px; }
+    .ah-btn-ghost { width: 100%; justify-content: center; }
+    .ah-float--stat { left: 8px; bottom: 20px; }
+    .ah-float--award { right: 8px; top: 14px; }
+  }
+</style>

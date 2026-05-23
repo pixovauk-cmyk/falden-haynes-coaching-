@@ -1,0 +1,322 @@
+---
+// AboutPageStory.astro — timeline/journey format
+// Inspired by Vidyard: alternating image/text blocks with milestone markers
+// DRAFT COPY — update with Feldon's own words once received (Section 12 of info.md)
+---
+
+<section class="story" aria-label="Feldon's story and journey">
+  <div class="container">
+
+    <div class="story-header fade-in">
+      <p class="eyebrow">
+        <span class="eyebrow-line" aria-hidden="true"></span>
+        My journey
+      </p>
+      <h2 class="story-h2">Where I came from.<br>And why I coach.</h2>
+      <p class="story-sub">
+        A story that starts earlier than most. And gets more honest along the way.
+      </p>
+    </div>
+
+    <!-- Timeline wrapper -->
+    <div class="timeline">
+
+      <!-- Milestone 1: The beginning — text left, image right -->
+      <div class="milestone fade-in">
+        <div class="milestone-text">
+          <span class="milestone-tag">The start</span>
+          <h3 class="milestone-h3">I didn't wait for permission.</h3>
+          <p class="milestone-body">
+            I started my first business when most people my age were still figuring out
+            what they wanted to study. That was a choice, and it came with everything
+            you'd expect. The excitement. The mistakes. The moments of genuine
+            progress, and the moments where it all felt like it was going backwards.
+          </p>
+          <p class="milestone-body">
+            Born in September 2002 and raised in the West Midlands, this community
+            has always been part of how I think and operate.
+          </p>
+        </div>
+        <div class="milestone-visual">
+          <img
+            src="/Images/feldon-haynes-seated-portrait.webp"
+            alt="Feldon Haynes seated in a professional portrait"
+            width="480"
+            height="380"
+            loading="lazy"
+            class="milestone-img milestone-img--portrait"
+          />
+        </div>
+      </div>
+
+      <!-- Timeline connector -->
+      <div class="timeline-connector" aria-hidden="true">
+        <div class="connector-line"></div>
+        <div class="connector-dot"></div>
+      </div>
+
+      <!-- Milestone 2: Building and failing — text left, image right -->
+      <div class="milestone milestone--reverse fade-in">
+        <div class="milestone-text">
+          <span class="milestone-tag">The real bit</span>
+          <h3 class="milestone-h3">35 businesses. Not all of them worked.</h3>
+          <p class="milestone-body">
+            I've now started 35 businesses. They haven't all worked. That's the bit
+            most coaches won't tell you. But it's also the bit that matters most.
+            Because you don't get real business knowledge from the ones that went
+            smoothly. You get it from figuring out what went wrong and what you'd
+            do differently.
+          </p>
+          <p class="milestone-body">
+            The West Midlands is where I grew up, where I built my businesses, and
+            where I'm based now. I've worked with the Black Country Chamber of
+            Commerce, delivered workshops at the University of Warwick Science Park,
+            and spent time in rooms with people who are trying to build something real.
+          </p>
+        </div>
+        <div class="milestone-visual">
+          <img
+            src="/Images/feldon-haynes-whiteboard-strategy-session.webp"
+            alt="Feldon Haynes mapping a client strategy on a whiteboard"
+            width="480"
+            height="380"
+            loading="lazy"
+            class="milestone-img"
+          />
+        </div>
+      </div>
+
+      <!-- Timeline connector -->
+      <div class="timeline-connector" aria-hidden="true">
+        <div class="connector-line"></div>
+        <div class="connector-dot"></div>
+      </div>
+
+      <!-- Milestone 3: Coaching — text left, image right -->
+      <div class="milestone fade-in">
+        <div class="milestone-text">
+          <span class="milestone-tag">Why I coach</span>
+          <h3 class="milestone-h3">I got tired of watching talented people get stuck.</h3>
+          <p class="milestone-body">
+            When I started coaching, it wasn't a pivot or a next step. It came from
+            watching talented, motivated people get stuck in exactly the same places.
+            Not because they lacked ability, but because no one had helped them turn
+            what was in their head into a structured plan.
+          </p>
+          <p class="milestone-body">
+            That's what I do. And that's why I do it.
+          </p>
+          <a
+            href="https://calendly.com/feldeluxe/discovery-call"
+            class="milestone-cta"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Book a free call
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+        <div class="milestone-visual">
+          <img
+            src="/Images/feldon-haynes-sales-funnel-training.webp"
+            alt="Feldon Haynes presenting coaching frameworks on a whiteboard"
+            width="480"
+            height="380"
+            loading="lazy"
+            class="milestone-img"
+          />
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .story {
+    background: #FAF9F6;
+    padding: 80px 0;
+  }
+
+  /* Header */
+  .story-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #534AB7;
+    margin-bottom: 14px;
+  }
+  .eyebrow-line {
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: #F2D832;
+    flex-shrink: 0;
+  }
+  .story-h2 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 44px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #1a1744;
+    line-height: 1.1;
+    margin-bottom: 14px;
+  }
+  .story-sub {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #7e7a9f;
+    max-width: 420px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* Timeline */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 1060px;
+    margin: 0 auto;
+  }
+
+  /* Each milestone: two-column image + text */
+  .milestone {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    padding: 48px 0;
+  }
+  .milestone--reverse {
+    direction: rtl;
+  }
+  .milestone--reverse > * {
+    direction: ltr;
+  }
+
+  /* Milestone text */
+  .milestone-tag {
+    display: inline-block;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #534AB7;
+    background: #EEEDFE;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    margin-bottom: 16px;
+  }
+
+  .milestone-h3 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #1a1744;
+    line-height: 1.2;
+    margin-bottom: 18px;
+  }
+
+  .milestone-body {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #5a5680;
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+  .milestone-body:last-of-type { margin-bottom: 0; }
+
+  .milestone-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #534AB7;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 2px solid #F2D832;
+    padding-bottom: 2px;
+    margin-top: 20px;
+    transition: color 0.2s;
+  }
+  .milestone-cta:hover { color: #3b309e; }
+
+  /* Image */
+  .milestone-img {
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    object-position: center 30%;
+    border-radius: 20px;
+    display: block;
+    background: linear-gradient(135deg, #EEEDFE 0%, #e3dfff 100%);
+  }
+  .milestone-img--portrait {
+    object-position: center 15%;
+  }
+
+  /* Timeline connectors */
+  .timeline-connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 0;
+  }
+  .connector-line {
+    width: 2px;
+    height: 32px;
+    background: linear-gradient(to bottom, #EEEDFE, #534AB7);
+  }
+  .connector-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #534AB7;
+    border: 3px solid #FAF9F6;
+    box-shadow: 0 0 0 3px #534AB7;
+  }
+
+  /* ── Tablet ──────────────────────────────── */
+  @media (max-width: 1024px) {
+    .milestone {
+      grid-template-columns: 1fr;
+      gap: 28px;
+      direction: ltr;
+      padding: 32px 0;
+    }
+    .milestone--reverse { direction: ltr; }
+    .milestone-img { height: 260px; }
+    .story-h2 { font-size: 34px; }
+    .milestone-h3 { font-size: 24px; }
+    .timeline-connector { display: none; }
+  }
+
+  /* ── Mobile ──────────────────────────────── */
+  @media (max-width: 640px) {
+    .story { padding: 52px 0; }
+    .story-h2 { font-size: 26px; }
+    .story-header { margin-bottom: 40px; }
+    .milestone { padding: 24px 0; gap: 20px; }
+    .milestone-img { height: 220px; }
+    .milestone-h3 { font-size: 20px; }
+  }
+</style>

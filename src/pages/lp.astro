@@ -1,0 +1,1384 @@
+---
+// lp.astro — High-converting landing page
+// Goal: Book free discovery call | Audience: Cold + warm traffic
+// No nav, no footer — uses LpLayout (pure conversion)
+
+import LpLayout from '../layouts/LpLayout.astro';
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Free Business Coaching Discovery Call",
+  "provider": {
+    "@type": "Person",
+    "name": "Feldon Haynes",
+    "url": "https://feldeluxe.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "GBP",
+    "description": "Free 30-minute discovery call with business coach Feldon Haynes"
+  }
+});
+---
+
+<LpLayout
+  title="Work With a Business Coach Who Has Actually Built Businesses | Feldon Haynes"
+  description="Book a free 30-minute discovery call with Feldon Haynes. 35+ businesses started. 40+ founders coached. Honest advice. Real plans. No pitch."
+  canonicalUrl="https://feldeluxe.com/lp"
+  noindex={true}
+  schema={schema}
+>
+
+<!-- ── TOP BAR ─────────────────────────────────── -->
+<header class="lp-bar">
+  <div class="lp-container lp-bar-inner">
+    <a href="/" aria-label="Feldon Haynes Coaching — home">
+      <img src="/Images/feldon-haynes-logo-light.webp" alt="Feldon Haynes Coaching" width="82" height="48" loading="eager" class="lp-logo-img" />
+    </a>
+    <a href="https://calendly.com/feldeluxe/discovery-call" class="lp-bar-cta" target="_blank" rel="noopener noreferrer">
+      Book a free call
+    </a>
+  </div>
+</header>
+
+<!-- ── HERO — light theme matching home page ────── -->
+<section class="lp-hero">
+  <div class="lp-container">
+    <div class="hero-grid">
+
+      <!-- Left: copy -->
+      <div class="hero-copy fade-in">
+        <span class="hero-chip">Free 30-minute discovery call</span>
+
+        <h1 class="hero-h1">
+          A business coach who has<br />
+          <em>actually</em> built businesses.
+        </h1>
+
+        <p class="hero-sub">
+          35 businesses started. 40+ founders coached. Based in the West Midlands,
+          working with founders across the UK.
+        </p>
+
+        <ul class="hero-checks">
+          <li>
+            <svg class="check-icon" viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="11" fill="#534AB7"/><path d="M7 11.5l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Honest advice. Not just what you want to hear.
+          </li>
+          <li>
+            <svg class="check-icon" viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="11" fill="#534AB7"/><path d="M7 11.5l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Written action plan after every session, same day
+          </li>
+          <li>
+            <svg class="check-icon" viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="11" fill="#534AB7"/><path d="M7 11.5l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Discovery call is free. No commitment, no pitch.
+          </li>
+          <li>
+            <svg class="check-icon" viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="11" fill="#534AB7"/><path d="M7 11.5l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Structured bundles from £90. No vague retainers.
+          </li>
+        </ul>
+
+        <a href="https://calendly.com/feldeluxe/discovery-call" class="hero-cta-btn" target="_blank" rel="noopener noreferrer">
+          Book your free 30-minute call
+        </a>
+        <p class="hero-cta-note">Free · No obligation · Wednesdays and Thursdays</p>
+
+        <div class="hero-proof">
+          <div class="hero-avatars" aria-hidden="true">
+            <img src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop&crop=face" alt="" class="hero-avatar" width="80" height="80" loading="lazy" />
+            <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop&crop=face" alt="" class="hero-avatar" width="80" height="80" loading="lazy" />
+            <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop&crop=face" alt="" class="hero-avatar" width="80" height="80" loading="lazy" />
+            <img src="https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop&crop=face" alt="" class="hero-avatar" width="80" height="80" loading="lazy" />
+          </div>
+          <p class="hero-proof-text"><strong>40+ founders</strong> already working with Feldon</p>
+        </div>
+      </div>
+
+      <!-- Right: Feldon photo + floating badges -->
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-blob"></div>
+        <div class="hero-img-wrap">
+          <img
+            src="/Images/feldon-haynes-professional-headshot.webp"
+            alt="Feldon Haynes, business coach"
+            width="480"
+            height="580"
+            loading="eager"
+            class="hero-img"
+          />
+          <div class="hero-badge hero-badge--tl">
+            <span class="badge-num">35+</span>
+            <span class="badge-label">Businesses started</span>
+          </div>
+          <div class="hero-badge hero-badge--br">
+            <span class="badge-num">40+</span>
+            <span class="badge-label">Founders coached</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── PAIN POINTS ───────────────────────────────── -->
+<section class="lp-pain">
+  <div class="lp-container">
+    <div class="section-header fade-in">
+      <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>You are in the right place if…</p>
+    </div>
+    <div class="pain-scroll-wrap" id="pain-scroll">
+      <div class="pain-grid">
+        <div class="pain-card fade-in">
+          <div class="pain-icon-wrap">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M13 3v10l6 3" stroke="#534AB7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="13" cy="13" r="11" stroke="#534AB7" stroke-width="1.5"/></svg>
+          </div>
+          <h3 class="pain-title">You have the idea. Not the plan.</h3>
+          <p class="pain-body">You know what you want to build. You just cannot figure out how to turn it into something real. Every week you delay costs you.</p>
+        </div>
+        <div class="pain-card pain-card--dark fade-in">
+          <div class="pain-icon-wrap pain-icon-wrap--light">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M13 5v8l5 5" stroke="#F2D832" stroke-width="2" stroke-linecap="round"/><circle cx="13" cy="13" r="11" stroke="#F2D832" stroke-width="1.5"/></svg>
+          </div>
+          <h3 class="pain-title pain-title--light">You are running a business but feel stuck.</h3>
+          <p class="pain-body pain-body--light">The business is moving but it feels reactive, unfocused, or headed somewhere you did not intend. You need someone outside it to help you see clearly.</p>
+        </div>
+        <div class="pain-card fade-in">
+          <div class="pain-icon-wrap">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M8 13h10M13 8l5 5-5 5" stroke="#534AB7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="13" cy="13" r="11" stroke="#534AB7" stroke-width="1.5"/></svg>
+          </div>
+          <h3 class="pain-title">You know what to do. You just need someone to push you.</h3>
+          <p class="pain-body">You have enough knowledge. What you need is accountability, structure, and someone who will tell you the truth rather than agree with everything.</p>
+        </div>
+      </div>
+    </div>
+    <div class="lp-carousel-nav pain-carousel-nav">
+      <button class="lp-carousel-btn" id="pain-prev" aria-label="Previous">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11 4L6 9l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="lp-carousel-btn" id="pain-next" aria-label="Next">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS 1 ────────────────────────────── -->
+<section class="lp-t1">
+  <div class="lp-container">
+    <div class="section-header fade-in">
+      <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>What founders say</p>
+      <h2 class="section-h2">Real feedback. Real names.</h2>
+    </div>
+    <div class="t1-scroll-wrap" id="t1-scroll">
+      <div class="t1-grid">
+        <div class="t1-card fade-in">
+          <div class="t1-stars">★★★★★</div>
+          <p class="t1-quote">"I attended a marketing webinar led by Feldon Haynes. He was very friendly and supportive throughout — ensuring everyone understood everything. He explained it clearly and even answered my questions in depth. I learnt a lot."</p>
+          <div class="t1-author">
+            <img src="https://images.pexels.com/photos/1065084/pexels-photo-1065084.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop&crop=face" alt="" class="t1-avatar" aria-hidden="true" width="80" height="80" loading="lazy" />
+            <div><p class="t1-name">Workshop attendee</p><p class="t1-source">Trustpilot review</p></div>
+          </div>
+        </div>
+        <div class="t1-card t1-card--featured fade-in">
+          <div class="t1-stars">★★★★★</div>
+          <p class="t1-quote">"Where do I start with Feldon? He is not only a sharp individual but someone who truly cares about his clients. Kind, humble, and always willing to lend support — a rare combination. Every conversation has been insightful."</p>
+          <div class="t1-author">
+            <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop&crop=face" alt="" class="t1-avatar" aria-hidden="true" width="80" height="80" loading="lazy" />
+            <div><p class="t1-name">Business owner</p><p class="t1-source">LinkedIn recommendation</p></div>
+          </div>
+        </div>
+        <div class="t1-card fade-in">
+          <div class="t1-stars">★★★★★</div>
+          <p class="t1-quote">"I reached out to Feldon because he was recommended to me. I was looking at a new venture and was lost. He was extremely helpful — specific places to look, people to contact, grants to consider. Not just advice. Actions."</p>
+          <div class="t1-author">
+            <img src="https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop&crop=face" alt="" class="t1-avatar" aria-hidden="true" width="80" height="80" loading="lazy" />
+            <div><p class="t1-name">New venture founder</p><p class="t1-source">Trustpilot review</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="lp-carousel-nav t1-carousel-nav">
+      <button class="lp-carousel-btn" id="t1-prev" aria-label="Previous">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11 4L6 9l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="lp-carousel-btn" id="t1-next" aria-label="Next">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ──────────────────────────────── -->
+<section class="lp-how">
+  <div class="lp-container">
+    <div class="section-header fade-in">
+      <p class="eyebrow eyebrow--light"><span class="eyebrow-line" aria-hidden="true"></span>The process</p>
+      <h2 class="section-h2 section-h2--light">Simple. Structured. No surprises.</h2>
+    </div>
+    <div class="how-scroll-wrap" id="how-scroll">
+      <div class="how-grid">
+        <div class="how-step fade-in">
+          <div class="how-num">01</div>
+          <div class="how-img-wrap">
+            <img src="https://images.pexels.com/photos/4226140/pexels-photo-4226140.jpeg?auto=compress&cs=tinysrgb&w=600&h=380&fit=crop" alt="Booking a call online" width="600" height="380" loading="lazy" class="how-img" />
+          </div>
+          <h3 class="how-title">Book your free call</h3>
+          <p class="how-body">Pick a Wednesday or Thursday slot on Calendly. 30 minutes. Free. I will listen to where you are and tell you honestly whether I think I can help.</p>
+        </div>
+        <div class="how-step fade-in">
+          <div class="how-num">02</div>
+          <div class="how-img-wrap">
+            <img src="/Images/feldon-haynes-whiteboard-strategy-session.webp" alt="Feldon running a strategy session" width="600" height="380" loading="lazy" class="how-img" />
+          </div>
+          <h3 class="how-title">We get to work</h3>
+          <p class="how-body">Sessions are focused and practical. No theory, no generic advice. I come prepared. You bring the problem. We build the solution together.</p>
+        </div>
+        <div class="how-step fade-in">
+          <div class="how-num">03</div>
+          <div class="how-img-wrap">
+            <img src="https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg?auto=compress&cs=tinysrgb&w=600&h=380&fit=crop" alt="Reviewing action plan after session" width="600" height="380" loading="lazy" class="how-img" />
+          </div>
+          <h3 class="how-title">You leave with a plan</h3>
+          <p class="how-body">Every session ends with a written action plan in your inbox the same day. Not a summary. A real plan you can act on the next morning.</p>
+        </div>
+      </div>
+    </div>
+    <div class="lp-carousel-nav how-carousel-nav">
+      <button class="lp-carousel-btn lp-carousel-btn--light" id="how-prev" aria-label="Previous">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11 4L6 9l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="lp-carousel-btn lp-carousel-btn--light" id="how-next" aria-label="Next">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+    <div class="how-cta fade-in">
+      <a href="https://calendly.com/feldeluxe/discovery-call" class="lp-btn-gold" target="_blank" rel="noopener noreferrer">Book your free discovery call</a>
+      <p class="how-note">Free · 30 minutes · No commitment required</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT FELDON ──────────────────────────────── -->
+<section class="lp-about">
+  <div class="lp-container">
+    <div class="about-grid">
+      <div class="about-img-col fade-in">
+        <img src="/Images/feldon-haynes-award-photo.webp" alt="Feldon Haynes receiving the EPIC Spirit Award" width="480" height="480" loading="lazy" class="about-award-img" />
+      </div>
+      <div class="about-copy fade-in">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>About Feldon</p>
+        <h2 class="about-h2">I did not read about this.<br />I lived it.</h2>
+        <p class="about-body">I started my first business before most people my age were thinking about careers. Since then I have built 35 businesses. Not all of them worked, and that is exactly the point.</p>
+        <p class="about-body">The lessons that matter most do not come from the businesses that went smoothly. They come from figuring out what went wrong and what you would do differently. That experience is what I bring to every session.</p>
+        <p class="about-body">I have delivered workshops at the University of Warwick Science Park, worked with the Black Country Chamber of Commerce, and spent years in rooms with founders who are building something real.</p>
+        <div class="about-stats">
+          <div class="about-stat"><span class="stat-num">35+</span><span class="stat-label">Businesses started</span></div>
+          <div class="about-stat"><span class="stat-num">40+</span><span class="stat-label">Founders coached</span></div>
+          <div class="about-stat"><span class="stat-num">3</span><span class="stat-label">Industry awards</span></div>
+        </div>
+        <a href="https://calendly.com/feldeluxe/discovery-call" class="lp-btn-primary" target="_blank" rel="noopener noreferrer">Book your free call</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BUNDLES ───────────────────────────────────── -->
+<section class="lp-bundles">
+  <div class="lp-container">
+    <div class="section-header fade-in" style="text-align:center">
+      <span class="b-chip">Investment bundles</span>
+      <h2 class="b-h2">Choose your starting point</h2>
+      <p class="b-intro">Launch pricing. All sessions online, Wednesdays and Thursdays, 8am to 6pm.</p>
+    </div>
+    <div class="b-scroll-wrap" id="b-scroll">
+      <div class="b-grid fade-in">
+
+        <article class="b-card">
+          <div class="b-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          <h3 class="b-name">The Project Bundle</h3>
+          <p class="b-meta">3 sessions &middot; Specific project</p>
+          <div class="b-price-row">
+            <span class="b-price">&pound;90</span>
+            <span class="b-was">&pound;150</span>
+            <span class="b-save">Save £60</span>
+          </div>
+          <p class="b-desc">Three focused sessions to scope, map, and launch a specific project.</p>
+          <a href="https://calendly.com/feldeluxe/packages/da7fbbe4-840c-4ea8-8147-2128f99cfd6b" class="b-btn b-btn--ghost" target="_blank" rel="noopener noreferrer">Select bundle</a>
+        </article>
+
+        <article class="b-card">
+          <div class="b-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <h3 class="b-name">The Action Sprint Bundle</h3>
+          <p class="b-meta">3 sessions &middot; Stuck founders</p>
+          <div class="b-price-row">
+            <span class="b-price">&pound;90</span>
+            <span class="b-was">&pound;150</span>
+            <span class="b-save">Save £60</span>
+          </div>
+          <p class="b-desc">Find the block, make the decision, and build a 30-day plan to move fast.</p>
+          <a href="https://calendly.com/feldeluxe/packages/549dd535-e12c-4506-822a-9a839af25318" class="b-btn b-btn--ghost" target="_blank" rel="noopener noreferrer">Select bundle</a>
+        </article>
+
+        <article class="b-card b-card--popular">
+          <div class="b-badge">Most Popular</div>
+          <div class="b-icon b-icon--filled"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg></div>
+          <h3 class="b-name">The Business Plan Bundle</h3>
+          <p class="b-meta">6 sessions &middot; Aspiring founders</p>
+          <div class="b-price-row">
+            <span class="b-price">&pound;160</span>
+            <span class="b-was">&pound;300</span>
+            <span class="b-save">Save £140</span>
+          </div>
+          <p class="b-desc">From idea to a complete, executable plan: validated, structured, and ready to launch.</p>
+          <a href="https://calendly.com/feldeluxe/packages/8af8f4b4-b4fc-4b38-a4d7-4c8863f57ce5" class="b-btn b-btn--filled" target="_blank" rel="noopener noreferrer">Select bundle</a>
+        </article>
+
+        <article class="b-card">
+          <div class="b-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></div>
+          <h3 class="b-name">The Direction Bundle</h3>
+          <p class="b-meta">6 sessions &middot; Lost direction</p>
+          <div class="b-price-row">
+            <span class="b-price">&pound;160</span>
+            <span class="b-was">&pound;300</span>
+            <span class="b-save">Save £140</span>
+          </div>
+          <p class="b-desc">Business audit, vision work, and a 6-month strategic roadmap for existing businesses.</p>
+          <a href="https://calendly.com/feldeluxe/packages/bcd3e931-3e20-4faa-9d96-2a82cc4e121a" class="b-btn b-btn--ghost" target="_blank" rel="noopener noreferrer">Select bundle</a>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- Mobile carousel nav -->
+    <div class="b-carousel-nav" aria-label="Scroll bundles">
+      <button class="b-carousel-btn" id="b-prev" aria-label="Previous">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11 4L6 9l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="b-carousel-btn" id="b-next" aria-label="Next">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+    <p class="b-note fade-in">Not sure which fits? <a href="https://calendly.com/feldeluxe/discovery-call" target="_blank" rel="noopener noreferrer">Start with a free 30-minute discovery call &rarr;</a></p>
+  </div>
+</section>
+
+<!-- ── MORE FROM FOUNDERS — Google Review cards ───── -->
+<section class="lp-google">
+  <div class="lp-container">
+    <div class="section-header fade-in" style="text-align:center">
+      <div class="gr-badge-wrap"><div class="gr-badge">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        <span class="gr-badge-text">Google Reviews</span>
+        <span class="gr-sep">·</span>
+        <span class="gr-stars-badge">★★★★★</span>
+        <span class="gr-count">5 reviews · Feldeluxe Ltd</span>
+      </div></div>
+      <h2 class="section-h2">What clients say on Google.</h2>
+    </div>
+
+    <div class="gr-scroll-wrap" id="gr-scroll">
+      <div class="google-pair fade-in">
+
+        <!-- Left: real Google review card -->
+        <article class="gr-card">
+          <div class="gr-top">
+            <div class="gr-avatar" style="background:#EA4335">M</div>
+            <div class="gr-info">
+              <span class="gr-name">Mohamed Abdelrahim</span>
+              <span class="gr-meta">6 months ago</span>
+            </div>
+            <svg class="gr-glogo" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          </div>
+          <div class="gr-stars">★★★★★</div>
+          <p class="gr-quote">"When I first met Feldon, I hadn't yet started to take action towards my dreams. When I started receiving regular mentoring calls from him and being held accountable, it gave me that push to start taking action. I am surprised by how similar our experiences are as entrepreneurs."</p>
+        </article>
+
+        <!-- Yellow vertical divider -->
+        <div class="google-ydivider" aria-hidden="true">
+          <div class="google-ydivider-line"></div>
+        </div>
+
+        <!-- Right: real Google review card -->
+        <article class="gr-card">
+          <div class="gr-top">
+            <div class="gr-avatar" style="background:#00897B">R</div>
+            <div class="gr-info">
+              <span class="gr-name">Rayaan Farah</span>
+              <span class="gr-meta">9 months ago</span>
+            </div>
+            <svg class="gr-glogo" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          </div>
+          <div class="gr-stars">★★★★★</div>
+          <p class="gr-quote">"Feldon has been an incredible help to myself breaking down difficult policy language into understandable chunks, produced top quality policies for my organisation in a timely fashion and took the time to understand my pain points."</p>
+        </article>
+
+      </div>
+    </div>
+    <div class="lp-carousel-nav gr-carousel-nav">
+      <button class="lp-carousel-btn" id="gr-prev" aria-label="Previous">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11 4L6 9l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="lp-carousel-btn" id="gr-next" aria-label="Next">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+    <div class="gr-footer fade-in">
+      <a href="https://www.google.com/search?q=feldeluxe" target="_blank" rel="noopener noreferrer" class="gr-link">
+        Read all reviews on Google
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2.5 6.5h8M7.5 3.5L10.5 6.5l-3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ───────────────────────────────────────── -->
+<section class="lp-faq">
+  <div class="lp-container">
+    <div class="faq-grid">
+      <div class="faq-left fade-in">
+        <p class="eyebrow eyebrow--light"><span class="eyebrow-line" aria-hidden="true"></span>Questions</p>
+        <h2 class="faq-h2">Honest answers to the things you are probably wondering.</h2>
+        <a href="https://calendly.com/feldeluxe/discovery-call" class="lp-btn-gold" target="_blank" rel="noopener noreferrer" style="margin-top: 32px;">
+          Book your free call
+        </a>
+      </div>
+      <div class="faq-right">
+        <details class="faq-item">
+          <summary class="faq-q">Is the discovery call really free?</summary>
+          <p class="faq-a">Yes. 30 minutes, no charge, no obligation. I use it to understand where you are and whether I think I can genuinely help. If coaching is not the right next step for you, I will tell you that too.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Do I have to commit to a bundle before the call?</summary>
+          <p class="faq-a">No. The discovery call comes first. If we both feel it is a good fit, I will walk you through the options and you can decide from there. No pressure on the call to sign up to anything.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Are sessions online or in person?</summary>
+          <p class="faq-a">All sessions are online via video call. This means you can work with me regardless of where in the UK you are based.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">What if I am not ready to start a business yet?</summary>
+          <p class="faq-a">That is exactly who the Business Plan Bundle is for. You do not need to have launched. You just need an idea you are serious about. The sessions take you from idea to a complete, executable plan.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">How is this different from a generic business coach?</summary>
+          <p class="faq-a">I have personally started 35 businesses. I am not coaching from a textbook. I am coaching from experience. Every session ends with a written action plan. And I will tell you honestly what I think, even when that is not what you were hoping to hear.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">When are sessions available?</summary>
+          <p class="faq-a">Sessions run on Wednesdays and Thursdays, 8am to 6pm. You can book your free discovery call directly through Calendly and choose a time that works for you.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOT BAR ──────────────────────────────────── -->
+<div class="lp-foot">
+  <p>&copy; 2026 Feldon Haynes Coaching &middot; Feldeluxe Ltd.</p>
+  <div class="lp-foot-links">
+    <a href="/privacy">Privacy policy</a>
+    <a href="/terms">Terms &amp; conditions</a>
+  </div>
+</div>
+
+</LpLayout>
+
+<style>
+  /* ── Global resets for LP ───────────────────── */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .lp-container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── Shared typography ──────────────────────── */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #534AB7;
+    margin-bottom: 14px;
+  }
+  .eyebrow--light { color: #F2D832; }
+  .eyebrow-line {
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: #F2D832;
+    flex-shrink: 0;
+  }
+  .section-header { margin-bottom: 40px; }
+  .section-h2 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: #1a1744;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .section-h2--light { color: #ffffff; }
+  .section-sub {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 16px;
+    color: #7e7a9f;
+    line-height: 1.7;
+    max-width: 520px;
+  }
+
+  /* ── Buttons ────────────────────────────────── */
+  .lp-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #534AB7;
+    color: #ffffff;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 14px 32px;
+    border-radius: 9999px;
+    white-space: nowrap;
+    min-height: 50px;
+    transition: background 0.2s, transform 0.1s;
+    box-shadow: 0 6px 24px rgba(83,74,183,0.28);
+  }
+  .lp-btn-primary:hover { background: #3b309e; }
+  .lp-btn-primary:active { transform: scale(0.97); }
+
+  .lp-btn-gold {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #F2D832;
+    color: #1a1744;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 15px 36px;
+    border-radius: 9999px;
+    white-space: nowrap;
+    min-height: 52px;
+    transition: background 0.2s, transform 0.1s;
+    box-shadow: 0 8px 28px rgba(242,216,50,0.3);
+  }
+  .lp-btn-gold:hover { background: #e8ce20; }
+  .lp-btn-gold:active { transform: scale(0.97); }
+
+  /* ── Top bar ────────────────────────────────── */
+  .lp-bar {
+    background: #ffffff;
+    border-bottom: 1px solid #ede9ff;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 72px;
+    display: flex;
+    align-items: center;
+  }
+  .lp-bar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .lp-logo-img { height: 48px; width: auto; display: block; }
+  .lp-bar-cta {
+    display: inline-flex;
+    align-items: center;
+    background: #534AB7;
+    color: #ffffff;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 11px 24px;
+    border-radius: 9999px;
+    min-height: 44px;
+    transition: background 0.2s;
+  }
+  .lp-bar-cta:hover { background: #3b309e; }
+
+  /* ── Hero ───────────────────────────────────── */
+  .lp-hero {
+    background: #f8f9fb;
+    padding: 72px 0 80px;
+    overflow: hidden;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 440px;
+    gap: 64px;
+    align-items: center;
+  }
+  .hero-chip {
+    display: inline-flex;
+    align-items: center;
+    background: #e3dfff;
+    color: #3b309e;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 9999px;
+    margin-bottom: 24px;
+  }
+  .hero-h1 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 56px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #1a1744;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+  .hero-h1 em { font-style: italic; color: #534AB7; }
+  .hero-sub {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 17px;
+    color: #5a5680;
+    line-height: 1.65;
+    margin-bottom: 28px;
+    max-width: 480px;
+  }
+  .hero-checks {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+  .hero-checks li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #3d3a5c;
+    line-height: 1.4;
+  }
+  .check-icon { width: 22px; height: 22px; flex-shrink: 0; }
+  .hero-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #534AB7;
+    color: #ffffff;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 16px 36px;
+    border-radius: 9999px;
+    white-space: nowrap;
+    min-height: 56px;
+    transition: background 0.2s, transform 0.1s;
+    box-shadow: 0 8px 32px rgba(83,74,183,0.28);
+    margin-bottom: 10px;
+  }
+  .hero-cta-btn:hover { background: #3b309e; }
+  .hero-cta-btn:active { transform: scale(0.97); }
+  .hero-cta-note {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 12px;
+    color: #b0abc8;
+    margin-bottom: 28px;
+    display: block;
+  }
+  .hero-proof { display: flex; align-items: center; gap: 12px; }
+  .hero-avatars { display: flex; align-items: center; }
+  .hero-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #f8f9fb;
+    margin-left: -10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  }
+  .hero-avatar:first-child { margin-left: 0; }
+  .hero-proof-text {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 13px;
+    color: #7e7a9f;
+  }
+  .hero-proof-text strong { color: #1a1744; }
+
+  /* Hero visual */
+  .hero-visual { position: relative; }
+  .hero-blob {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #e3dfff 0%, rgba(227,223,255,0) 70%);
+    top: -40px;
+    right: -60px;
+    z-index: 0;
+  }
+  .hero-img-wrap { position: relative; z-index: 1; }
+  .hero-img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 24px;
+    display: block;
+    border: 3px solid #ede9ff;
+  }
+  .hero-badge {
+    position: absolute;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 12px 18px;
+    box-shadow: 0 8px 28px rgba(83,74,183,0.15);
+    border: 1px solid #ede9ff;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 130px;
+  }
+  .hero-badge--tl { top: 28px; left: -36px; }
+  .hero-badge--br { bottom: 48px; right: -28px; }
+  .badge-num {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: #534AB7;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .badge-label {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 11px;
+    color: #7e7a9f;
+    font-weight: 500;
+  }
+
+  /* ── Pain points ────────────────────────────── */
+  .lp-pain {
+    background: #ffffff;
+    padding: 72px 0;
+  }
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .pain-card {
+    background: #f8f9fb;
+    border-radius: 20px;
+    padding: 32px 28px 36px;
+    border: 1px solid #ede9ff;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .pain-card--dark {
+    background: linear-gradient(135deg, #1a1744 0%, #26215C 100%);
+    border-color: transparent;
+  }
+  .pain-icon-wrap {
+    width: 48px; height: 48px;
+    background: #EEEDFE;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .pain-icon-wrap--light { background: rgba(255,255,255,0.1); }
+  .pain-title {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: #1a1744;
+    line-height: 1.3;
+  }
+  .pain-title--light { color: #ffffff; }
+  .pain-body {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    color: #7e7a9f;
+    line-height: 1.75;
+  }
+  .pain-body--light { color: rgba(255,255,255,0.65); }
+
+  /* ── Testimonials 1 ─────────────────────────── */
+  .lp-t1 { background: #f8f9fb; padding: 80px 0; }
+  .t1-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .t1-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 32px 28px;
+    border: 1px solid #ede9ff;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .t1-card--featured {
+    background: linear-gradient(135deg, #1a1744 0%, #26215C 100%);
+    border-color: transparent;
+  }
+  .t1-stars { font-size: 16px; color: #F2D832; letter-spacing: 2px; }
+  .t1-quote {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    color: #5a5680;
+    line-height: 1.8;
+    font-style: italic;
+    flex: 1;
+  }
+  .t1-card--featured .t1-quote { color: rgba(255,255,255,0.8); }
+  .t1-author { display: flex; align-items: center; gap: 12px; }
+  .t1-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ede9ff;
+    flex-shrink: 0;
+  }
+  .t1-card--featured .t1-avatar { border-color: rgba(255,255,255,0.15); }
+  .t1-name {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a1744;
+    line-height: 1.3;
+  }
+  .t1-card--featured .t1-name { color: #ffffff; }
+  .t1-source {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 11px;
+    color: #b0abc8;
+  }
+
+  /* ── How it works ───────────────────────────── */
+  .lp-how {
+    background: linear-gradient(135deg, #1a1744 0%, #26215C 55%, #2d2a6e 100%);
+    padding: 80px 0;
+  }
+  .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-bottom: 48px; }
+  .how-step { display: flex; flex-direction: column; gap: 16px; }
+  .how-num {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #F2D832;
+    letter-spacing: 0.1em;
+  }
+  .how-img-wrap { border-radius: 16px; overflow: hidden; }
+  .how-img { width: 100%; height: 210px; object-fit: cover; display: block; transition: transform 0.4s; }
+  .how-step:hover .how-img { transform: scale(1.03); }
+  .how-title {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.3;
+  }
+  .how-body {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.75;
+  }
+  .how-cta { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .how-note {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* ── About ──────────────────────────────────── */
+  .lp-about { background: #ffffff; padding: 80px 0; }
+  .about-grid { display: grid; grid-template-columns: 420px 1fr; gap: 72px; align-items: center; }
+  .about-award-img {
+    width: 100%;
+    max-height: 480px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 24px;
+    display: block;
+    border: 3px solid #ede9ff;
+    box-shadow: 0 12px 40px rgba(83,74,183,0.1);
+  }
+  .about-h2 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: #1a1744;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  .about-body {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 15px;
+    color: #5a5680;
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+  .about-stats {
+    display: flex;
+    gap: 32px;
+    padding: 24px 0;
+    border-top: 1px solid #ede9ff;
+    border-bottom: 1px solid #ede9ff;
+    margin: 28px 0;
+  }
+  .about-stat { display: flex; flex-direction: column; gap: 4px; }
+  .stat-num {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: #534AB7;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #7e7a9f;
+  }
+
+  /* ── Bundles (BundleCards style) ───────────── */
+  .lp-bundles { background: #f0eff8; padding: 80px 0; }
+  .b-chip {
+    display: inline-flex;
+    align-items: center;
+    background: #e3dfff;
+    color: #3b309e;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 7px 18px;
+    border-radius: 9999px;
+    margin-bottom: 20px;
+  }
+  .b-h2 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #1a1744;
+    margin-bottom: 12px;
+    line-height: 1.1;
+  }
+  .b-intro {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 17px;
+    color: #7e7a9f;
+    line-height: 1.7;
+    margin-bottom: 48px;
+  }
+  .b-scroll-wrap {
+    margin-bottom: 32px;
+  }
+  .b-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    padding-top: 16px;
+  }
+  .b-card {
+    position: relative;
+    background: #f8f9fb;
+    border-radius: 20px;
+    border: 1.5px solid #ede9ff;
+    padding: 28px 24px 24px;
+    box-shadow: 0 4px 20px rgba(59,48,158,0.06);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.22s, box-shadow 0.22s;
+  }
+  .b-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(59,48,158,0.12); }
+  .b-card--popular {
+    background: #ffffff;
+    border: 2.5px solid #534ab7;
+    box-shadow: 0 0 0 4px rgba(83,74,183,0.1), 0 8px 32px rgba(59,48,158,0.12);
+  }
+  .b-card--popular:hover { box-shadow: 0 0 0 4px rgba(83,74,183,0.15), 0 20px 56px rgba(59,48,158,0.18); }
+  .b-badge {
+    position: absolute;
+    top: -13px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #534ab7;
+    color: #F2D832;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 16px;
+    border-radius: 9999px;
+    white-space: nowrap;
+  }
+  .b-icon {
+    width: 44px; height: 44px;
+    background: #e3dfff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #534ab7;
+    margin-bottom: 36px;
+    flex-shrink: 0;
+  }
+  .b-icon--filled { background: #534ab7; color: #ffffff; }
+  .b-name {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1744;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .b-meta {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    color: #7e7a9f;
+    margin-bottom: 18px;
+  }
+  .b-price-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+  .b-price { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 42px; font-weight: 800; color: #534ab7; line-height: 1; letter-spacing: -0.02em; }
+  .b-was { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 14px; color: #c4bfe0; text-decoration: line-through; }
+  .b-save { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 11px; font-weight: 600; color: #065f3c; background: #e3f5ec; padding: 3px 9px; border-radius: 9999px; }
+  .b-desc { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 15px; color: #7e7a9f; line-height: 1.7; flex: 1; margin-bottom: 22px; }
+  .b-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 100%;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 15px; font-weight: 600;
+    padding: 14px; border-radius: 9999px;
+    min-height: 50px;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+  }
+  .b-btn--filled { background: #534ab7; color: #ffffff; border: 1.5px solid transparent; }
+  .b-btn--filled:hover { background: #3b309e; }
+  .b-btn--ghost { background: transparent; color: #534ab7; border: 1.5px solid #534ab7; }
+  .b-btn--ghost:hover { background: #534ab7; color: #ffffff; }
+  .b-note { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 14px; color: #7e7a9f; text-align: center; }
+  .b-note a { color: #534ab7; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; }
+  .b-note a:hover { color: #3b309e; }
+  .b-carousel-nav {
+    display: none;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+    margin-bottom: 8px;
+  }
+  .b-carousel-btn {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: #534AB7;
+    border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: #ffffff;
+    transition: background 0.2s, transform 0.1s;
+    flex-shrink: 0;
+  }
+  .b-carousel-btn:hover { background: #3b309e; }
+  .b-carousel-btn:active { transform: scale(0.95); }
+
+  /* ── Google Review section ──────────────────── */
+  .lp-google { background: #ffffff; padding: 80px 0; border-top: 1px solid #ede9ff; }
+  .gr-badge-wrap { display: flex; justify-content: center; margin-bottom: 20px; }
+  .gr-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #f8f9fb; border: 1px solid #e8e8f0; border-radius: 9999px; padding: 8px 18px;
+  }
+  .gr-badge-text { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 13px; font-weight: 700; color: #1a1744; }
+  .gr-sep { color: #ddd; }
+  .gr-stars-badge { color: #FBBC05; -webkit-text-fill-color: #FBBC05; font-size: 13px; letter-spacing: 1px; }
+  .gr-count { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 12px; color: #9c97c0; }
+
+  .google-pair {
+    display: grid;
+    grid-template-columns: 1fr 56px 1fr;
+    align-items: center;
+    gap: 0;
+    margin: 40px 0 32px;
+  }
+  /* Reuse gr-card styles from About page exactly */
+  .gr-card {
+    background: #f8f9fb; border: 1px solid #e8e8f0; border-radius: 20px;
+    padding: 24px; display: flex; flex-direction: column; gap: 12px;
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  .gr-card:hover { box-shadow: 0 6px 28px rgba(26,23,68,0.08); border-color: #d0cce8; }
+  .gr-top { display: flex; align-items: center; gap: 10px; }
+  .gr-glogo { margin-left: auto; flex-shrink: 0; }
+  .gr-avatar { width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 15px; font-weight: 800; color: #ffffff; }
+  .gr-info { display: flex; flex-direction: column; gap: 2px; }
+  .gr-name { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 14px; font-weight: 700; color: #1a1744; }
+  .gr-meta { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 11px; color: #9c97c0; }
+  .gr-stars { font-size: 15px; color: #FBBC05; -webkit-text-fill-color: #FBBC05; letter-spacing: 2px; line-height: 1; }
+  .gr-quote { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 14px; color: #5a5680; line-height: 1.75; font-style: italic; flex: 1; }
+  .gr-footer { display: flex; justify-content: center; }
+  .gr-link { display: inline-flex; align-items: center; gap: 8px; border: 1px solid #d0cce8; color: #534AB7; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 14px; font-weight: 600; padding: 12px 24px; border-radius: 9999px; text-decoration: none; transition: background 0.2s, border-color 0.2s; }
+  .gr-link:hover { background: #f0eff8; border-color: #b8b2f0; }
+
+  /* Yellow vertical divider between cards */
+  .google-ydivider { display: flex; justify-content: center; align-items: center; }
+  .google-ydivider-line { width: 3px; min-height: 200px; background: linear-gradient(to bottom, transparent, #F2D832 15%, #F2D832 85%, transparent); border-radius: 4px; }
+
+  /* ── FAQ ────────────────────────────────────── */
+  .lp-faq {
+    background: linear-gradient(135deg, #1a1744 0%, #26215C 55%, #2d2a6e 100%);
+    padding: 80px 0;
+  }
+  .faq-grid { display: grid; grid-template-columns: 360px 1fr; gap: 72px; align-items: start; }
+  .faq-h2 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    line-height: 1.25;
+    margin-bottom: 20px;
+  }
+  .faq-item { border-bottom: 1px solid rgba(255,255,255,0.1); padding: 18px 0; }
+  .faq-item:first-child { border-top: 1px solid rgba(255,255,255,0.1); }
+  .faq-q {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.4;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-q::after { content: '+'; font-size: 22px; font-weight: 300; color: #F2D832; flex-shrink: 0; line-height: 1; transition: transform 0.2s; }
+  details[open] .faq-q::after { transform: rotate(45deg); }
+  .faq-a {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.8;
+    margin-top: 12px;
+    padding-right: 32px;
+  }
+
+  /* ── Final CTA ──────────────────────────────── */
+  .lp-final {
+    background: linear-gradient(135deg, #1a1744 0%, #26215C 55%, #2d2a6e 100%);
+    padding: 80px 0;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .final-grid { display: grid; grid-template-columns: 1fr 460px; gap: 64px; align-items: center; }
+  .final-eyebrow {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #F2D832;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .final-h2 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 44px;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: #ffffff;
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
+  .final-body {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 16px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.75;
+    max-width: 500px;
+    margin-bottom: 28px;
+  }
+  .final-proof { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+  .final-avatars { display: flex; }
+  .final-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #26215C;
+    margin-left: -8px;
+  }
+  .final-avatar:first-child { margin-left: 0; }
+  .final-proof-text {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+  }
+  .final-proof-text strong { color: #ffffff; }
+  .final-note {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 12px;
+    display: block;
+  }
+  .final-img {
+    width: 100%;
+    height: 440px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 24px;
+    display: block;
+    border: 3px solid rgba(255,255,255,0.08);
+  }
+
+  /* ── Foot bar ───────────────────────────────── */
+  .lp-foot {
+    background: #13102e;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+  }
+  .lp-foot-links { display: flex; gap: 20px; }
+  .lp-foot-links a { color: rgba(255,255,255,0.35); transition: color 0.2s; }
+  .lp-foot-links a:hover { color: rgba(255,255,255,0.7); }
+
+  /* ── Shared carousel nav (hidden on desktop) ── */
+  .lp-carousel-nav {
+    display: none;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+    margin-bottom: 8px;
+  }
+  .lp-carousel-btn {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: #534AB7;
+    border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: #ffffff;
+    transition: background 0.2s, transform 0.1s;
+    flex-shrink: 0;
+  }
+  .lp-carousel-btn:hover { background: #3b309e; }
+  .lp-carousel-btn:active { transform: scale(0.95); }
+  .lp-carousel-btn--light { background: rgba(255,255,255,0.18); }
+  .lp-carousel-btn--light:hover { background: rgba(255,255,255,0.3); }
+
+  /* ── Responsive ─────────────────────────────── */
+  @media (max-width: 1100px) {
+    .b-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 1024px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-img-col { max-width: 420px; }
+    .faq-grid { grid-template-columns: 1fr; gap: 40px; }
+    .final-grid { grid-template-columns: 1fr; }
+    .final-img-col { display: none; }
+    .google-pair { grid-template-columns: 1fr; gap: 20px; }
+    .google-ydivider { display: none; }
+  }
+  @media (max-width: 768px) {
+    .lp-hero { padding: 48px 0 56px; }
+    .hero-h1 { font-size: 34px; }
+    .hero-cta-btn { width: 100%; }
+    .pain-grid { grid-template-columns: 1fr; }
+    .t1-grid { grid-template-columns: 1fr; }
+    .how-grid { grid-template-columns: 1fr; gap: 40px; }
+    .section-h2 { font-size: 28px; }
+    .final-h2 { font-size: 30px; }
+    .lp-btn-gold { width: 100%; }
+    .google-pair { gap: 20px; }
+  }
+  /* ── Mobile carousels (must come after 768px block) ── */
+  @media (max-width: 640px) {
+    /* Shared scroll-wrap pattern */
+    .pain-scroll-wrap,
+    .t1-scroll-wrap,
+    .how-scroll-wrap,
+    .gr-scroll-wrap,
+    .b-scroll-wrap {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      margin: 0 -16px;
+      padding: 20px 16px 4px;
+    }
+    .pain-scroll-wrap::-webkit-scrollbar,
+    .t1-scroll-wrap::-webkit-scrollbar,
+    .how-scroll-wrap::-webkit-scrollbar,
+    .gr-scroll-wrap::-webkit-scrollbar,
+    .b-scroll-wrap::-webkit-scrollbar { display: none; }
+
+    /* Bundles */
+    .b-grid {
+      display: flex; flex-wrap: nowrap; width: max-content; gap: 14px;
+    }
+    .b-card { width: 82vw; flex-shrink: 0; scroll-snap-align: start; }
+    .b-carousel-nav { display: flex; }
+
+    /* Pain points */
+    .pain-grid { display: flex; flex-wrap: nowrap; width: max-content; gap: 14px; }
+    .pain-card { width: 82vw; flex-shrink: 0; scroll-snap-align: start; min-height: 0; }
+    .pain-carousel-nav { display: flex; }
+
+    /* Testimonials */
+    .t1-grid { display: flex; flex-wrap: nowrap; width: max-content; gap: 14px; }
+    .t1-card { width: 82vw; flex-shrink: 0; scroll-snap-align: start; }
+    .t1-carousel-nav { display: flex; }
+
+    /* How it works */
+    .how-grid { display: flex; flex-wrap: nowrap; width: max-content; gap: 20px; }
+    .how-step { width: 82vw; flex-shrink: 0; scroll-snap-align: start; }
+    .how-carousel-nav { display: flex; }
+
+    /* Google reviews */
+    .google-pair { display: flex; flex-wrap: nowrap; width: max-content; gap: 14px; }
+    .gr-card { width: 82vw; flex-shrink: 0; scroll-snap-align: start; }
+    .google-ydivider { display: none; }
+    .gr-carousel-nav { display: flex; }
+  }
+</style>
+
+<script>
+  function initCarousel(wrapId: string, prevId: string, nextId: string, cardSel: string, gap = 14) {
+    const wrap = document.getElementById(wrapId);
+    const prev = document.getElementById(prevId);
+    const next = document.getElementById(nextId);
+    if (!wrap || !prev || !next) return;
+    const step = () => { const c = wrap.querySelector(cardSel); return c ? (c as HTMLElement).offsetWidth + gap : 300; };
+    prev.addEventListener('click', () => wrap.scrollBy({ left: -step(), behavior: 'smooth' }));
+    next.addEventListener('click', () => wrap.scrollBy({ left: step(), behavior: 'smooth' }));
+  }
+
+  initCarousel('b-scroll',    'b-prev',    'b-next',    '.b-card',    14);
+  initCarousel('pain-scroll', 'pain-prev', 'pain-next', '.pain-card', 14);
+  initCarousel('t1-scroll',   't1-prev',   't1-next',   '.t1-card',   14);
+  initCarousel('how-scroll',  'how-prev',  'how-next',  '.how-step',  20);
+  initCarousel('gr-scroll',   'gr-prev',   'gr-next',   '.gr-card',   14);
+</script>

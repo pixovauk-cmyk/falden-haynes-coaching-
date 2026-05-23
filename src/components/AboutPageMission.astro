@@ -1,0 +1,357 @@
+---
+// AboutPageMission.astro — "How I work"
+// Replaces Mission/Vision/Values framework entirely
+// 3-col image-led section: photo + bold statement + one sentence
+// Uses: working-at-laptop, cutout-thoughtful (never used before), sales-funnel-training
+---
+
+<section class="how-work" aria-label="How Feldon works">
+  <div class="container">
+
+    <div class="hw-header fade-in">
+      <p class="eyebrow">
+        <span class="eyebrow-line" aria-hidden="true"></span>
+        How I work
+      </p>
+      <h2 class="hw-h2">No theory. No fluff.<br>Just honest work.</h2>
+      <p class="hw-sub">
+        What you get from me, every session, every client, no exceptions.
+      </p>
+    </div>
+
+    <div class="hw-scroll-wrap" id="hw-scroll">
+    <div class="hw-grid fade-in">
+
+      <!-- Card 1 -->
+      <div class="hw-card">
+        <div class="hw-img-wrap">
+          <img
+            src="https://images.pexels.com/photos/3182781/pexels-photo-3182781.jpeg?auto=compress&cs=tinysrgb&w=800&h=540&fit=crop"
+            alt="Professional preparing notes and strategy before a coaching session"
+            width="400"
+            height="260"
+            loading="lazy"
+            class="hw-img"
+          />
+        </div>
+        <div class="hw-card-body">
+          <h3 class="hw-title">I come prepared.</h3>
+          <p class="hw-text">
+            Before every session, I've thought about your specific situation, not just your industry.
+            You're never starting from scratch.
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 2: thoughtful portrait with purple overlay -->
+      <div class="hw-card hw-card--overlay">
+        <div class="hw-img-wrap">
+          <img
+            src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800&h=540&fit=crop"
+            alt="Two people in a direct and honest business conversation"
+            width="400"
+            height="260"
+            loading="lazy"
+            class="hw-img"
+          />
+          <div class="hw-img-overlay" aria-hidden="true"></div>
+        </div>
+        <div class="hw-card-body">
+          <h3 class="hw-title hw-title--light">I'll tell you what I actually think.</h3>
+          <p class="hw-text hw-text--light">
+            If the idea has a gap, I'll say so. Honest input is more useful
+            than comfortable agreement.
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="hw-card">
+        <div class="hw-img-wrap">
+          <img
+            src="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=800&h=540&fit=crop"
+            alt="Business founder leaving a session with a clear action plan"
+            width="400"
+            height="260"
+            loading="lazy"
+            class="hw-img"
+          />
+        </div>
+        <div class="hw-card-body">
+          <h3 class="hw-title">You leave with a plan.</h3>
+          <p class="hw-text">
+            Every session ends with a written action plan in your inbox, the same day.
+            Not a vague list. A real plan you can act on.
+          </p>
+        </div>
+      </div>
+
+    </div>
+    </div>
+
+    <!-- Mobile carousel nav -->
+    <div class="hw-carousel-nav" aria-label="Scroll cards">
+      <button class="hw-carousel-btn" id="hw-prev" aria-label="Previous">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11 4L6 9l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="hw-carousel-btn" id="hw-next" aria-label="Next">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+    <!-- Bottom: community context -->
+    <div class="hw-footer fade-in">
+      <div class="hw-footer-inner">
+        <p class="hw-footer-text">
+          I've delivered workshops at the University of Warwick Science Park, worked
+          with the Black Country Chamber of Commerce, and spent years in rooms with people
+          who are trying to build something real. The West Midlands business community
+          matters to me. Genuinely.
+        </p>
+        <a
+          href="https://calendly.com/feldeluxe/discovery-call"
+          class="hw-footer-cta"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Book a free call</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .how-work {
+    background: #ffffff;
+    padding: 80px 0;
+  }
+
+  /* Header */
+  .hw-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #534AB7;
+    margin-bottom: 14px;
+  }
+  .eyebrow-line {
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: #F2D832;
+    flex-shrink: 0;
+  }
+  .hw-h2 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #26215C;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .hw-sub {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #7e7a9f;
+    line-height: 1.6;
+  }
+
+  /* Grid */
+  .hw-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: stretch;
+    margin-bottom: 32px;
+  }
+
+  .hw-card {
+    background: #f8f9fb;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .hw-card--overlay {
+    background: #534AB7;
+  }
+
+  /* Image wraps */
+  .hw-img-wrap {
+    flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .hw-img {
+    width: 100%;
+    height: 248px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .hw-card:hover .hw-img {
+    transform: scale(1.03);
+  }
+
+  /* Purple tint overlay for card 2 */
+  .hw-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(83, 74, 183, 0.55);
+    pointer-events: none;
+  }
+
+  /* Card body */
+  .hw-card-body {
+    padding: 28px 28px 32px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hw-title {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #26215C;
+    line-height: 1.25;
+  }
+  .hw-title--light { color: #ffffff; }
+
+  .hw-text {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #7e7a9f;
+    line-height: 1.75;
+  }
+  .hw-text--light { color: rgba(175, 169, 236, 0.9); }
+
+  /* Footer strip */
+  .hw-footer {
+    background: #f8f9fb;
+    border-radius: 16px;
+    padding: 32px 40px;
+  }
+  .hw-footer-inner {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+  .hw-footer-text {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #7e7a9f;
+    line-height: 1.75;
+    flex: 1;
+  }
+  .hw-footer-cta {
+    display: inline-flex;
+    align-items: center;
+    background: #534AB7;
+    color: #ffffff;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 13px 26px;
+    border-radius: 9999px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-height: 48px;
+    transition: background 0.2s ease;
+  }
+  .hw-footer-cta:hover { background: #3b309e; }
+
+  /* Carousel nav — hidden on desktop */
+  .hw-carousel-nav {
+    display: none;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .hw-carousel-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #534AB7;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    transition: background 0.2s, transform 0.1s;
+    flex-shrink: 0;
+  }
+  .hw-carousel-btn:hover { background: #3b309e; }
+  .hw-carousel-btn:active { transform: scale(0.95); }
+
+  /* ── Tablet ──────────────────────────────── */
+  @media (max-width: 1024px) {
+    .hw-grid { grid-template-columns: 1fr; }
+    .hw-img { height: 280px; }
+    .hw-footer-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .hw-footer-cta { width: 100%; justify-content: center; }
+  }
+
+  /* ── Mobile ──────────────────────────────── */
+  @media (max-width: 768px) {
+    .how-work { padding: 48px 0; }
+    .hw-h2 { font-size: 28px; }
+    .hw-card-body { padding: 24px 20px 28px; }
+    .hw-footer { padding: 24px 20px; }
+
+    .hw-scroll-wrap {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      margin: 0 -16px;
+      padding: 0 16px 4px;
+    }
+    .hw-scroll-wrap::-webkit-scrollbar { display: none; }
+
+    .hw-grid {
+      display: flex;
+      flex-wrap: nowrap;
+      width: max-content;
+      gap: 14px;
+      grid-template-columns: unset;
+    }
+
+    .hw-card {
+      width: calc(85vw);
+      flex-shrink: 0;
+      scroll-snap-align: start;
+    }
+
+    .hw-img { height: 220px; }
+
+    .hw-carousel-nav { display: flex; }
+  }
+</style>
+
+<script>
+  const hwWrap = document.getElementById('hw-scroll');
+  const hwPrev = document.getElementById('hw-prev');
+  const hwNext = document.getElementById('hw-next');
+  if (hwWrap && hwPrev && hwNext) {
+    const step = () => { const c = hwWrap.querySelector('.hw-card'); return c ? c.offsetWidth + 14 : 300; };
+    hwPrev.addEventListener('click', () => hwWrap.scrollBy({ left: -step(), behavior: 'smooth' }));
+    hwNext.addEventListener('click', () => hwWrap.scrollBy({ left: step(), behavior: 'smooth' }));
+  }
+</script>

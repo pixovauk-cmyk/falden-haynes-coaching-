@@ -1,0 +1,406 @@
+---
+// blog/index.astro — Blog listing page
+// Primary keyword: business coaching blog | informational hub for Feldon Haynes Coaching
+
+import Layout from '../../layouts/Layout.astro';
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://feldeluxe.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://feldeluxe.com/blog" }
+      ]
+    }
+  ]
+});
+
+const posts = [
+  {
+    slug: "benefits-of-a-business-plan",
+    title: "The Benefits of a Business Plan. And How to Write One That Actually Works.",
+    excerpt: "Most people treat a business plan like a tick-box exercise. Here's what a proper plan actually does for your business, and how to build one that works.",
+    tag: "Business Planning",
+    date: "21 May 2026",
+    datetime: "2026-05-21",
+    readTime: "7 min read",
+    image: "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+    imageAlt: "Founder working through a business plan at a desk",
+  }
+];
+---
+
+<Layout
+  title="Business Coaching Blog | Advice for Founders | Feldon Haynes"
+  description="Practical business advice from someone who has actually built businesses. No fluff. No theory. Just honest guidance for founders."
+  canonicalUrl="https://feldeluxe.com/blog"
+  preloadImage="/Images/feldon-haynes-working-at-laptop.webp"
+  preloadImageMobile="/Images/feldon-haynes-sales-funnel-training.webp"
+  preloadImageMobileBreakpoint="768px"
+  schema={schema}
+>
+
+  <!-- Blog hero -->
+  <section class="blog-hero">
+    <div class="container">
+      <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true"> / </span>
+        <span aria-current="page">Blog</span>
+      </nav>
+      <p class="blog-eyebrow">
+        <span class="eyebrow-line" aria-hidden="true"></span>
+        Insights
+      </p>
+      <h1 class="blog-h1">Practical advice for founders.<br>From someone who has done it.</h1>
+      <p class="blog-sub">
+        No fluff. No theory. Just honest guidance on business planning, growth, and getting unstuck,
+        based on 35 businesses and 40 plus founders coached.
+      </p>
+    </div>
+  </section>
+
+  <!-- Post grid -->
+  <section class="blog-listing" aria-label="Blog posts">
+    <div class="container">
+      <div class="blog-grid">
+        {posts.map((post) => (
+          <article class="blog-card fade-in">
+            <a href={`/blog/${post.slug}`} class="blog-card-img-link" aria-hidden="true" tabindex="-1">
+              <div class="blog-card-img-wrap">
+                <img
+                  src={post.image}
+                  alt={post.imageAlt}
+                  width="600"
+                  height="400"
+                  loading="lazy"
+                  class="blog-card-img"
+                />
+              </div>
+            </a>
+            <div class="blog-card-body">
+              <div class="blog-card-meta">
+                <span class="blog-card-tag">{post.tag}</span>
+                <time datetime={post.datetime} class="blog-card-date">{post.date}</time>
+                <span class="blog-card-read">{post.readTime}</span>
+              </div>
+              <h2 class="blog-card-title">
+                <a href={`/blog/${post.slug}`}>{post.title}</a>
+              </h2>
+              <p class="blog-card-excerpt">{post.excerpt}</p>
+              <a href={`/blog/${post.slug}`} class="blog-card-cta" aria-label={`Read: ${post.title}`}>
+                Read article
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="blog-bottom-cta" aria-label="Book a call">
+    <div class="container">
+      <div class="blog-cta-inner fade-in">
+        <div class="blog-cta-text">
+          <p class="blog-cta-eyebrow">Ready to move forward?</p>
+          <h2 class="blog-cta-h2">Reading is a start. Coaching is what changes things.</h2>
+          <p class="blog-cta-body">
+            Book a free 30-minute discovery call. No pitch. No pressure. Just an honest conversation
+            about where you are and what would actually help.
+          </p>
+        </div>
+        <a
+          href="https://calendly.com/feldeluxe/discovery-call"
+          class="blog-cta-btn"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Book your free call
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* ── Blog hero ──────────────────────────────── */
+  .blog-hero {
+    background:
+      linear-gradient(to right, rgba(15,12,45,0.92) 0%, rgba(26,23,68,0.80) 45%, rgba(26,23,68,0.45) 100%),
+      url('/Images/feldon-haynes-working-at-laptop.webp') center/cover no-repeat;
+    padding: 80px 0 72px;
+  }
+
+  .blog-breadcrumb {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .blog-breadcrumb a {
+    color: rgba(255, 255, 255, 0.75);
+    transition: color 0.2s;
+  }
+  .blog-breadcrumb a:hover { color: #F2D832; }
+
+  .blog-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #F2D832;
+    margin-bottom: 16px;
+  }
+  .eyebrow-line {
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: #F2D832;
+    flex-shrink: 0;
+  }
+
+  .blog-h1 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 44px;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: #ffffff;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    max-width: 680px;
+  }
+
+  .blog-sub {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.7;
+    max-width: 560px;
+  }
+
+  /* ── Post grid ──────────────────────────────── */
+  .blog-listing {
+    background: #f8f9fb;
+    padding: 64px 0 72px;
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .blog-card {
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #ede9ff;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .blog-card:hover {
+    box-shadow: 0 12px 40px rgba(59, 48, 158, 0.1);
+    transform: translateY(-3px);
+  }
+
+  .blog-card-img-link { display: block; }
+  .blog-card-img-wrap {
+    overflow: hidden;
+    aspect-ratio: 3 / 2;
+  }
+  .blog-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .blog-card:hover .blog-card-img { transform: scale(1.04); }
+
+  .blog-card-body {
+    padding: 28px 28px 32px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .blog-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+
+  .blog-card-tag {
+    display: inline-flex;
+    align-items: center;
+    background: #EEEDFE;
+    color: #534AB7;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 9999px;
+  }
+
+  .blog-card-date,
+  .blog-card-read {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #b0abc8;
+  }
+
+  .blog-card-title {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: #1a1744;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+  .blog-card-title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .blog-card-title a:hover { color: #534AB7; }
+
+  .blog-card-excerpt {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #7e7a9f;
+    line-height: 1.75;
+    margin-bottom: 20px;
+    flex: 1;
+  }
+
+  .blog-card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #534AB7;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.2s;
+    margin-top: auto;
+  }
+  .blog-card-cta:hover { color: #3b309e; }
+
+  /* ── Bottom CTA ─────────────────────────────── */
+  .blog-bottom-cta {
+    background: #ffffff;
+    padding: 64px 0;
+    border-top: 1px solid #ede9ff;
+  }
+
+  .blog-cta-inner {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    background: linear-gradient(135deg, #1a1744 0%, #26215C 55%, #2d2a6e 100%);
+    border-radius: 20px;
+    padding: 48px 56px;
+  }
+
+  .blog-cta-text { flex: 1; }
+
+  .blog-cta-eyebrow {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #F2D832;
+    margin-bottom: 10px;
+  }
+
+  .blog-cta-h2 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+
+  .blog-cta-body {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.75;
+    max-width: 520px;
+  }
+
+  .blog-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #534AB7;
+    color: #ffffff;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 14px 32px;
+    border-radius: 9999px;
+    white-space: nowrap;
+    min-height: 52px;
+    flex-shrink: 0;
+    transition: background 0.2s ease;
+    box-shadow: 0 6px 24px rgba(83, 74, 183, 0.4);
+  }
+  .blog-cta-btn:hover { background: #3b309e; }
+
+  /* ── Responsive ─────────────────────────────── */
+  @media (max-width: 1024px) {
+    .blog-grid { grid-template-columns: repeat(2, 1fr); }
+    .blog-cta-inner { flex-direction: column; align-items: flex-start; gap: 28px; padding: 36px 32px; }
+    .blog-cta-btn { width: 100%; }
+  }
+
+  @media (max-width: 768px) {
+    /* Mobile hero: different image, bottom-anchored text */
+    .blog-hero {
+      background:
+        linear-gradient(to bottom, rgba(15,12,45,0.35) 0%, rgba(26,23,68,0.82) 55%, #1a1744 100%),
+        url('/Images/feldon-haynes-sales-funnel-training.webp') center/cover no-repeat;
+      min-height: 420px;
+      display: flex;
+      align-items: flex-end;
+      padding: 0;
+    }
+    .blog-hero .container { padding-bottom: 44px; }
+    .blog-h1 { font-size: 30px; }
+    .blog-sub { font-size: 15px; }
+    .blog-grid { grid-template-columns: 1fr; }
+    .blog-listing { padding: 48px 0 56px; }
+    .blog-bottom-cta { padding: 48px 0; }
+    .blog-cta-h2 { font-size: 22px; }
+  }
+</style>

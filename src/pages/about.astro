@@ -1,0 +1,115 @@
+---
+// about.astro — About page
+// Primary keyword: business coach and mentor
+// Meta title: "Business Coach and Mentor | Feldon Haynes" (confirmed in keywords.md)
+// Schema: BreadcrumbList + LocalBusiness + Person
+// Section rhythm: Hero(navy) → Story(off-white) → Credentials(lavender) →
+//                 Mission(off-white) → Fit(navy) → FinalCTA(purple) → Footer
+
+import Layout from '../layouts/Layout.astro';
+import AboutPageHero from '../components/AboutPageHero.astro';
+import AboutPageStory from '../components/AboutPageStory.astro';
+import AboutPageMission from '../components/AboutPageMission.astro';
+import AboutPageCredentials from '../components/AboutPageCredentials.astro';
+import AboutPageGoogleReviews from '../components/AboutPageGoogleReviews.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://feldeluxe.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "About",
+          "item": "https://feldeluxe.com/about"
+        }
+      ]
+    },
+    {
+      "@type": ["LocalBusiness", "ProfessionalService"],
+      "name": "Feldon Haynes Coaching",
+      "legalName": "Feldeluxe Ltd",
+      "url": "https://feldeluxe.com",
+      "telephone": "+447562614867",
+      "email": "info@feldeluxe.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "32 Vicarage Road",
+        "addressLocality": "Halesowen",
+        "addressRegion": "West Midlands",
+        "postalCode": "B62 8HU",
+        "addressCountry": "GB"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "52.4462",
+        "longitude": "-2.0560"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Wednesday", "Thursday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        }
+      ],
+      "areaServed": {
+        "@type": "Country",
+        "name": "United Kingdom"
+      },
+      "serviceType": "Business Coaching",
+      "priceRange": "££"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://feldeluxe.com/about#feldon-haynes",
+      "name": "Feldon Haynes",
+      "jobTitle": "Business Coach and Mentor",
+      "description": "Serial entrepreneur and business coach with 35+ businesses started and 40+ founders supported. Winner of the EPIC Spirit Award. Based in Halesowen, West Midlands.",
+      "url": "https://feldeluxe.com/about",
+      "image": "https://feldeluxe.com/Images/feldon-haynes-professional-headshot.webp",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Feldon Haynes Coaching",
+        "url": "https://feldeluxe.com"
+      },
+      "award": ["EPIC Spirit Award"],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Halesowen",
+        "addressRegion": "West Midlands",
+        "addressCountry": "GB"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/feldon-haynes/",
+        "https://linktr.ee/Feldeluxe"
+      ]
+    }
+  ]
+});
+---
+
+<Layout
+  title="Business Coach and Mentor | Feldon Haynes"
+  description="Feldon Haynes is a business coach and mentor with 35+ businesses started and 40+ founders supported. Based in the West Midlands. Book a free discovery call."
+  canonicalUrl="https://feldeluxe.com/about"
+  ogImage="/Images/feldon-haynes-professional-headshot.webp"
+  schema={schema}
+  preloadImage="/Images/feldon-haynes-professional-headshot.webp"
+>
+  <AboutPageHero />
+  <AboutPageStory />
+  <AboutPageMission />
+  <AboutPageCredentials />
+  <AboutPageGoogleReviews />
+  <FinalCTA />
+</Layout>

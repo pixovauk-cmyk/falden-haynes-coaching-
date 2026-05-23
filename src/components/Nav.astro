@@ -1,0 +1,300 @@
+---
+// Nav.astro — sticky navigation, white background
+---
+
+<nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner container">
+    <a href="/" class="nav-logo" aria-label="Feldon Haynes Coaching — home">
+      <img
+        src="/Images/feldon-haynes-logo-light.webp"
+        alt="Feldon Haynes Coaching"
+        width="123"
+        height="72"
+        loading="eager"
+        class="nav-logo-img"
+      />
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+
+    <a
+      href="https://calendly.com/feldeluxe/discovery-call"
+      class="nav-cta"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Book a call
+    </a>
+
+    <button
+      class="nav-hamburger"
+      id="hamburger"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="nav-overlay"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile full-screen overlay -->
+<div class="nav-overlay" id="nav-overlay" role="dialog" aria-modal="true" aria-label="Navigation menu" aria-hidden="true" inert>
+  <button
+    class="nav-close"
+    id="nav-close"
+    aria-label="Close navigation menu"
+  >
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+      <line x1="18" y1="6" x2="6" y2="18"/>
+      <line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </button>
+
+  <ul role="list">
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/blog">Blog</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+
+  <a
+    href="https://calendly.com/feldeluxe/discovery-call"
+    class="nav-overlay-cta"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Book a free call
+  </a>
+</div>
+
+<script>
+  const nav       = document.getElementById('nav') as HTMLElement;
+  const hamburger = document.getElementById('hamburger') as HTMLButtonElement;
+  const overlay   = document.getElementById('nav-overlay') as HTMLElement;
+  const closeBtn  = document.getElementById('nav-close') as HTMLButtonElement;
+
+  function openMenu() {
+    overlay.removeAttribute('inert');
+    overlay.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    overlay.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    overlay.setAttribute('aria-hidden', 'true');
+    overlay.setAttribute('inert', '');
+    document.body.style.overflow = '';
+  }
+
+  hamburger.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+
+  overlay.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeMenu();
+  });
+
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 8);
+  }, { passive: true });
+</script>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #ffffff;
+    height: 88px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .nav.scrolled {
+    border-bottom-color: #ede9ff;
+    box-shadow: 0 4px 24px rgba(59, 48, 158, 0.07);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    height: 100%;
+    width: 100%;
+  }
+
+  /* Logo */
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .nav-logo-img {
+    height: 72px;
+    width: auto;
+    display: block;
+  }
+
+  /* Desktop links */
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    margin-left: auto;
+  }
+  .nav-links a {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #4a4670;
+    transition: color 0.2s ease;
+    padding: 4px 0;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #534ab7;
+    border-radius: 2px;
+    transition: width 0.2s ease;
+  }
+  .nav-links a:hover {
+    color: #3b309e;
+  }
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+
+  /* Desktop CTA */
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    background: #534ab7;
+    color: #ffffff;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 12px 26px;
+    border-radius: 9999px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background 0.2s ease, transform 0.1s ease;
+    min-height: 46px;
+  }
+  .nav-cta:hover  { background: #3b309e; }
+  .nav-cta:active { transform: scale(0.97); }
+
+  /* Hamburger */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: none;
+    padding: 10px;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: #26215C;
+    border-radius: 2px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  /* Mobile overlay */
+  .nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: #26215C;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+  .nav-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .nav-overlay ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+  .nav-overlay ul a {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #ffffff;
+    transition: color 0.2s ease;
+  }
+  .nav-overlay ul a:hover { color: #F2D832; }
+
+  .nav-overlay-cta {
+    display: inline-block;
+    background: #534ab7;
+    color: #ffffff;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 14px 36px;
+    border-radius: 9999px;
+    transition: background 0.2s ease;
+  }
+  .nav-overlay-cta:hover { background: #3b309e; }
+
+  .nav-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    min-width: 44px;
+    min-height: 44px;
+    transition: color 0.2s ease;
+  }
+  .nav-close:hover { color: #ffffff; }
+
+  /* ── Mobile ─────────────────────────────── */
+  @media (max-width: 768px) {
+    .nav         { height: 72px; }
+    .nav-links   { display: none; }
+    .nav-cta     { display: none; }
+    .nav-hamburger { display: flex; }
+  }
+</style>

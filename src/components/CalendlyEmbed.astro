@@ -1,0 +1,38 @@
+---
+// CalendlyEmbed.astro — inline Calendly booking widget
+// Used on: /contact (discovery call) and /start (landing page)
+// Script loaded async — does not block page render
+// URL: confirm calendly.com/feldeluxe/discovery-call is live before launch
+
+interface Props {
+  url: string;
+  height?: string;
+}
+
+const {
+  url,
+  height = '700px',
+} = Astro.props;
+---
+
+<div class="calendly-wrap">
+  <div
+    class="calendly-inline-widget"
+    data-url={url}
+    data-resize="true"
+    style={`min-width: 320px; height: ${height};`}
+  ></div>
+</div>
+
+<!-- Load Calendly widget script async — does not block LCP -->
+<script is:inline async src="https://assets.calendly.com/assets/external/widget.js"></script>
+
+<style>
+  .calendly-wrap {
+    width: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 0.5px solid #e4e2f5;
+    box-shadow: 0 4px 24px rgba(38, 33, 92, 0.07);
+  }
+</style>
