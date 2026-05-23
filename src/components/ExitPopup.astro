@@ -324,52 +324,63 @@
     .ep-h2 { font-size: 30px; }
   }
 
-  /* ── Mobile — bottom sheet ───────────────────── */
+  /* ── Mobile — minimal bottom sheet ──────────── */
   @media (max-width: 580px) {
+    /* No overlay — clean sheet only */
+    .ep-backdrop { display: none; }
+
     .ep-popup {
-      /* Override centered positioning — anchor to bottom */
       inset: auto;
       bottom: 0;
       left: 0;
       right: 0;
       margin: 0;
       width: 100%;
-      max-height: 88vh;
+      max-height: 85vh;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
-      border-radius: 24px 24px 0 0;
-      /* Single column — no photo panel */
+      border-radius: 20px 20px 0 0;
       grid-template-columns: 1fr;
-      /* Slide up animation instead of scale */
-      transform: translateY(40px);
+      box-shadow: 0 -4px 32px rgba(15, 12, 45, 0.14);
+      transform: translateY(100%);
+      opacity: 1;
     }
     .ep-popup.ep-open {
       transform: translateY(0);
     }
-    /* Hide photo panel — not needed on mobile */
     .ep-left { display: none; }
     .ep-right {
-      padding: 32px 24px 36px;
-      border-radius: 0;
+      background: #ffffff;
+      padding: 24px 22px 32px;
     }
-    .ep-right-blob { top: -40px; right: -40px; width: 180px; height: 180px; }
-    .ep-h2 { font-size: 28px; }
-    .ep-body { font-size: 13px; margin-bottom: 16px; }
-    .ep-checks { gap: 8px; margin-bottom: 20px; }
-    /* Close button: visible on light background */
+    /* Drag handle at top */
+    .ep-right::before {
+      content: '';
+      display: block;
+      width: 36px;
+      height: 4px;
+      background: #ddd9f5;
+      border-radius: 9999px;
+      margin: 0 auto 20px;
+    }
+    .ep-right-blob { display: none; }
+    .ep-h2 { font-size: 26px; margin-bottom: 10px; }
+    .ep-body { font-size: 13px; margin-bottom: 14px; }
+    .ep-checks { gap: 8px; margin-bottom: 18px; }
+    .ep-chip { margin-bottom: 12px; }
     .ep-close {
-      top: 12px;
-      right: 12px;
-      background: rgba(83, 74, 183, 0.1);
-      border-color: rgba(83, 74, 183, 0.2);
+      top: 14px;
+      right: 14px;
+      background: #f0eeff;
+      border-color: #ddd9f5;
       color: #534AB7;
     }
-    .ep-close:hover { background: rgba(83, 74, 183, 0.18); }
+    .ep-close:hover { background: #e3dfff; }
   }
 
   @media (max-width: 380px) {
-    .ep-right { padding: 28px 20px 32px; }
-    .ep-h2 { font-size: 26px; }
+    .ep-right { padding: 20px 18px 28px; }
+    .ep-h2 { font-size: 24px; }
   }
 </style>
 
