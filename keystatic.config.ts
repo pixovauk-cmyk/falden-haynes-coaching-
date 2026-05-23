@@ -51,7 +51,7 @@ export default config({
       schema: {
         email: fields.text({
           label: 'Email address',
-          defaultValue: 'info@feldeluxe.com',
+          defaultValue: 'info@feldonhaynes.com',
         }),
         phone: fields.text({
           label: 'Phone number',

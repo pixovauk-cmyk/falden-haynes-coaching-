@@ -4,7 +4,7 @@ import keystatic from '@keystatic/astro';
 import vercel from '@astrojs/vercel';
 
 export default defineConfig({
-  site: 'https://feldeluxe.com', // Update to confirmed domain before launch
+  site: 'https://feldonhaynes.com', // Update to confirmed domain before launch
   output: 'server',
   adapter: vercel(),
   compressHTML: true,
