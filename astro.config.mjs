@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import keystatic from '@keystatic/astro';
 import vercel from '@astrojs/vercel';
+import react from '@astrojs/react';
 
 export default defineConfig({
   site: 'https://feldonhaynes.com', // Update to confirmed domain before launch
@@ -9,6 +10,7 @@ export default defineConfig({
   adapter: vercel(),
   compressHTML: true,
   integrations: [
+    react(),
     sitemap({
       // Exclude noindex and ad-only pages
       filter: (page) =>
