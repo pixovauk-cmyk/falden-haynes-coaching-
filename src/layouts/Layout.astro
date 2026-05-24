@@ -3,6 +3,7 @@
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import ExitPopup from '../components/ExitPopup.astro';
+import CookieBanner from '../components/CookieBanner.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -114,6 +115,7 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
     <Footer />
 
     <ExitPopup />
+    <CookieBanner />
 
     <!-- WhatsApp floating button -->
     <a
@@ -133,7 +135,7 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
     <style>
       .wa-float {
         position: fixed;
-        bottom: 28px;
+        bottom: calc(28px + var(--cookie-offset, 0px));
         right: 28px;
         z-index: 999;
         display: inline-flex;
@@ -160,7 +162,7 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
 
       @media (max-width: 640px) {
         .wa-float {
-          bottom: 20px;
+          bottom: calc(20px + var(--cookie-offset, 0px));
           right: 16px;
           padding: 13px 16px;
         }
