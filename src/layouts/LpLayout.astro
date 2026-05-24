@@ -1,6 +1,7 @@
 ---
 // LpLayout.astro — minimal layout for landing pages
 // No Nav, no Footer — pure conversion focus
+import CookieBanner from '../components/CookieBanner.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -56,6 +57,7 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
   </head>
   <body>
     <slot />
+    <CookieBanner />
     <script>
       const observer = new IntersectionObserver(
         (entries) => {
