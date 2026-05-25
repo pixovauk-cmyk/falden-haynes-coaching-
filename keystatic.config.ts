@@ -15,7 +15,7 @@ export default config({
       label: 'Site settings',
       path: 'src/data/site-settings',
       schema: {
-        email: fields.text({ label: 'Email address', defaultValue: 'info@feldonhaynes.com' }),
+        email: fields.text({ label: 'Email address', defaultValue: 'Feldonhaynes@gmail.com' }),
         phone: fields.text({ label: 'Phone number', defaultValue: '07562 614867' }),
         whatsapp_url: fields.text({ label: 'WhatsApp URL', defaultValue: 'https://wa.me/447562614867' }),
         location: fields.text({ label: 'Location', defaultValue: 'Halesowen, West Midlands' }),
