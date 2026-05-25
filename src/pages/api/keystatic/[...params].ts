@@ -35,12 +35,7 @@ function fixRequestUrl(request: Request): Request {
 
 export const ALL: APIRoute = async (context) => {
   const handler = makeGenericAPIRouteHandler(
-    {
-      config,
-      clientId: import.meta.env.KEYSTATIC_GITHUB_CLIENT_ID as string,
-      clientSecret: import.meta.env.KEYSTATIC_GITHUB_CLIENT_SECRET as string,
-      secret: import.meta.env.KEYSTATIC_SECRET as string,
-    },
+    { config },
     { slugEnvName: 'PUBLIC_KEYSTATIC_GITHUB_APP_SLUG' }
   );
 
