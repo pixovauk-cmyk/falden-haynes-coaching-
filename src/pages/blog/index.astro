@@ -3,6 +3,13 @@
 // Primary keyword: business coaching blog | informational hub for Feldon Haynes Coaching
 
 import Layout from '../../layouts/Layout.astro';
+import { reader } from '../../lib/reader';
+
+function formatDate(iso: string): string {
+  const [y, m, d] = iso.split('-').map(Number);
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  return `${d} ${months[m - 1]} ${y}`;
+}
 
 const schema = JSON.stringify({
   "@context": "https://schema.org",
@@ -17,19 +24,43 @@ const schema = JSON.stringify({
   ]
 });
 
-const posts = [
-  {
-    slug: "benefits-of-a-business-plan",
-    title: "The Benefits of a Business Plan. And How to Write One That Actually Works.",
-    excerpt: "Most people treat a business plan like a tick-box exercise. Here's what a proper plan actually does for your business, and how to build one that works.",
-    tag: "Business Planning",
-    date: "21 May 2026",
-    datetime: "2026-05-21",
-    readTime: "7 min read",
-    image: "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
-    imageAlt: "Founder working through a business plan at a desk",
-  }
-];
+// Hardcoded post — lives as a static .astro file, always included
+const hardcodedPost = {
+  slug: "benefits-of-a-business-plan",
+  title: "The Benefits of a Business Plan. And How to Write One That Actually Works.",
+  excerpt: "Most people treat a business plan like a tick-box exercise. Here's what a proper plan actually does for your business, and how to build one that works.",
+  tag: "Business Planning",
+  datetime: "2026-05-21",
+  readTime: "7 min read",
+  image: "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+  imageAlt: "Founder working through a business plan at a desk",
+};
+
+// CMS posts
+const cmsPosts = await reader.collections.blog.all();
+const cmsCards = cmsPosts.map(({ slug, entry }) => ({
+  slug,
+  title: entry.title,
+  excerpt: entry.excerpt ?? '',
+  tag: entry.tag ?? 'Entrepreneurship',
+  datetime: entry.date ?? '',
+  readTime: entry.read_time ?? '5 min read',
+  image: entry.featured_image_url ?? 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+  imageAlt: `Cover image for: ${entry.title}`,
+}));
+
+// Merge and sort newest first
+const allPosts = [...cmsCards, hardcodedPost].sort((a, b) => {
+  if (!a.datetime) return 1;
+  if (!b.datetime) return -1;
+  return b.datetime.localeCompare(a.datetime);
+});
+
+// Format display dates
+const posts = allPosts.map(p => ({
+  ...p,
+  date: p.datetime ? formatDate(p.datetime) : '',
+}));
 ---
 
 <Layout
@@ -72,7 +103,7 @@ const posts = [
               <div class="blog-card-img-wrap">
                 <img
                   src={post.image}
-                  alt={post.imageAlt}
+                  alt={post.imageAlt ?? post.title}
                   width="600"
                   height="400"
                   loading="lazy"

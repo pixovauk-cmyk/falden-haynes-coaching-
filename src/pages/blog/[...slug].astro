@@ -1,0 +1,556 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BlogContentRenderer from '../../components/BlogContentRenderer.tsx';
+import { reader } from '../../lib/reader';
+
+const { slug } = Astro.params;
+if (!slug) return new Response(null, { status: 404 });
+
+const entry = await reader.collections.blog.read(slug);
+if (!entry) return new Response(null, { status: 404 });
+
+const nodes = await entry.content();
+
+function formatDate(iso: string): string {
+  const [y, m, d] = iso.split('-').map(Number);
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  return `${d} ${months[m - 1]} ${y}`;
+}
+
+const title      = entry.title;
+const excerpt    = entry.excerpt ?? '';
+const date       = entry.date ?? '';
+const dateDisplay = date ? formatDate(date) : '';
+const tag        = entry.tag ?? 'Entrepreneurship';
+const image      = entry.featured_image_url ?? 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop';
+const readTime   = entry.read_time ?? '5 min read';
+const author     = entry.author ?? 'Feldon Haynes';
+const seoTitle   = entry.seo_title || title;
+const seoDesc    = entry.seo_description || excerpt;
+const canonical  = `https://feldonhaynes.com/blog/${slug}`;
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://feldonhaynes.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://feldonhaynes.com/blog" },
+        { "@type": "ListItem", "position": 3, "name": title, "item": canonical }
+      ]
+    },
+    {
+      "@type": "Article",
+      "headline": title,
+      "description": seoDesc,
+      "author": {
+        "@type": "Person",
+        "name": author,
+        "url": "https://feldonhaynes.com/about",
+        "jobTitle": "Business Coach"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Feldon Haynes Coaching",
+        "url": "https://feldonhaynes.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://feldonhaynes.com/Images/feldon-haynes-logo-light.webp"
+        }
+      },
+      "datePublished": date,
+      "dateModified": date,
+      "image": image,
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": canonical
+      }
+    }
+  ]
+});
+---
+
+<Layout
+  title={`${seoTitle} | Feldon Haynes Coaching`}
+  description={seoDesc}
+  canonicalUrl={canonical}
+  ogType="article"
+  schema={schema}
+>
+
+  <!-- Article header -->
+  <section class="article-hero">
+    <div class="container">
+      <nav class="article-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true"> / </span>
+        <a href="/blog">Blog</a>
+        <span aria-hidden="true"> / </span>
+        <span aria-current="page">{title}</span>
+      </nav>
+
+      <div class="article-meta">
+        <span class="article-tag">{tag}</span>
+        {date && <time class="article-date" datetime={date}>{dateDisplay}</time>}
+        <span class="article-read">{readTime}</span>
+      </div>
+
+      <h1 class="article-h1">{title}</h1>
+
+      {excerpt && (
+        <p class="article-standfirst">{excerpt}</p>
+      )}
+
+      <div class="article-author-chip">
+        <img
+          src="/Images/feldon-haynes-seated-portrait.webp"
+          alt={author}
+          class="author-chip-img"
+          width="40"
+          height="40"
+          loading="eager"
+        />
+        <div>
+          <p class="author-chip-name">{author}</p>
+          <p class="author-chip-role">Business Coach, Feldon Haynes Coaching</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured image -->
+  {image && (
+    <div class="article-feature-img-wrap">
+      <div class="container">
+        <img
+          src={image}
+          alt={`Cover image for: ${title}`}
+          width="1200"
+          height="500"
+          class="article-feature-img"
+          loading="eager"
+        />
+      </div>
+    </div>
+  )}
+
+  <!-- Article body -->
+  <article class="article-body" aria-label="Article content">
+    <div class="container">
+      <div class="article-content">
+
+        <BlogContentRenderer document={nodes} client:load />
+
+        <!-- Author bio -->
+        <div class="article-author-bio">
+          <img
+            src="/Images/feldon-haynes-seated-portrait.webp"
+            alt="Feldon Haynes, business coach"
+            width="80"
+            height="80"
+            class="author-bio-img"
+            loading="lazy"
+          />
+          <div class="author-bio-text">
+            <p class="author-bio-name">Written by {author}</p>
+            <p class="author-bio-body">
+              Feldon is a business coach based in Halesowen, West Midlands. He has started 35 businesses
+              since his teens, worked with the Black Country Chamber of Commerce, and delivered workshops at
+              the University of Warwick Science Park. He currently coaches 40 plus founders across the UK.
+              <a href="/about">Read more about Feldon.</a>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </article>
+
+  <!-- Bottom CTA -->
+  <section class="blog-bottom-cta" aria-label="Book a call">
+    <div class="container">
+      <div class="blog-cta-inner fade-in">
+        <div class="blog-cta-text">
+          <p class="blog-cta-eyebrow">Ready to move forward?</p>
+          <h2 class="blog-cta-h2">Reading is a start. Coaching is what changes things.</h2>
+          <p class="blog-cta-body">
+            Book a free 30-minute discovery call. No pitch. No pressure. Just an honest conversation
+            about where you are and what would actually help.
+          </p>
+        </div>
+        <a
+          href="https://calendly.com/feldon-haynes/discovery-call"
+          class="blog-cta-btn"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Book your free call
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* ── Article Hero ───────────────────────────── */
+  .article-hero {
+    background: linear-gradient(135deg, #1a1744 0%, #26215C 55%, #2d2a6e 100%);
+    padding: 56px 0 48px;
+  }
+
+  .article-breadcrumb {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .article-breadcrumb a {
+    color: rgba(255, 255, 255, 0.75);
+    transition: color 0.2s;
+  }
+  .article-breadcrumb a:hover { color: #F2D832; }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .article-tag {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(242, 216, 50, 0.15);
+    color: #F2D832;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    border: 1px solid rgba(242, 216, 50, 0.3);
+  }
+
+  .article-date,
+  .article-read {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .article-h1 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 44px;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: #ffffff;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    max-width: 780px;
+  }
+
+  .article-standfirst {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.7;
+    max-width: 640px;
+    margin-bottom: 32px;
+  }
+
+  .article-author-chip {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .author-chip-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top center;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    flex-shrink: 0;
+  }
+  .author-chip-name {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.3;
+  }
+  .author-chip-role {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.3;
+  }
+
+  /* ── Featured image ─────────────────────────── */
+  .article-feature-img-wrap {
+    background: #1a1744;
+    padding-bottom: 0;
+  }
+  .article-feature-img {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    display: block;
+    border-radius: 0;
+  }
+
+  /* ── Article body ───────────────────────────── */
+  .article-body {
+    background: #ffffff;
+    padding: 64px 0 80px;
+  }
+
+  .article-content {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .article-content :global(p) {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    color: #3d3a5c;
+    line-height: 1.85;
+    margin-bottom: 20px;
+  }
+
+  .article-content :global(ul),
+  .article-content :global(ol) {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    color: #3d3a5c;
+    line-height: 1.8;
+    margin-bottom: 24px;
+    padding-left: 24px;
+  }
+
+  .article-content :global(li) {
+    margin-bottom: 10px;
+  }
+
+  .article-content :global(h2) {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #1a1744;
+    line-height: 1.25;
+    margin-top: 52px;
+    margin-bottom: 16px;
+  }
+
+  .article-content :global(h3) {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1744;
+    line-height: 1.3;
+    margin-top: 32px;
+    margin-bottom: 12px;
+  }
+
+  .article-content :global(em) {
+    font-style: italic;
+    color: #534ab7;
+  }
+
+  .article-content :global(strong) {
+    font-weight: 700;
+    color: #1a1744;
+  }
+
+  .article-content :global(code) {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    background: #f0eeff;
+    color: #534ab7;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .article-content :global(a) {
+    color: #534AB7;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid #F2D832;
+    padding-bottom: 1px;
+    transition: color 0.2s;
+  }
+  .article-content :global(a:hover) { color: #3b309e; }
+
+  .article-content :global(hr) {
+    border: none;
+    border-top: 1px solid #ede9ff;
+    margin: 40px 0;
+  }
+
+  /* Callout / blockquote */
+  .article-content :global(.article-callout) {
+    background: #EEEDFE;
+    border-left: 4px solid #534AB7;
+    border-radius: 0 12px 12px 0;
+    padding: 20px 28px;
+    margin: 36px 0;
+  }
+  .article-content :global(.article-callout p) {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #26215C;
+    line-height: 1.65;
+    margin-bottom: 0 !important;
+    font-style: italic;
+  }
+
+  /* Author bio */
+  .article-author-bio {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: #f8f9fb;
+    border-radius: 16px;
+    padding: 28px 32px;
+    border: 1px solid #ede9ff;
+    margin-top: 56px;
+  }
+  .author-bio-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top center;
+    flex-shrink: 0;
+    border: 3px solid #ede9ff;
+  }
+  .author-bio-name {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a1744;
+    margin-bottom: 8px;
+  }
+  .author-bio-body {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #7e7a9f;
+    line-height: 1.75;
+    margin-bottom: 0;
+  }
+  .author-bio-body a {
+    color: #534AB7;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid #F2D832;
+    padding-bottom: 1px;
+    transition: color 0.2s;
+  }
+  .author-bio-body a:hover { color: #3b309e; }
+
+  /* ── Bottom CTA ─────────────────────────────── */
+  .blog-bottom-cta {
+    background: #ffffff;
+    padding: 64px 0;
+    border-top: 1px solid #ede9ff;
+  }
+
+  .blog-cta-inner {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    background: linear-gradient(135deg, #1a1744 0%, #26215C 55%, #2d2a6e 100%);
+    border-radius: 20px;
+    padding: 48px 56px;
+  }
+
+  .blog-cta-text { flex: 1; }
+
+  .blog-cta-eyebrow {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #F2D832;
+    margin-bottom: 10px;
+  }
+
+  .blog-cta-h2 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+
+  .blog-cta-body {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.75;
+    max-width: 520px;
+    margin-bottom: 0;
+  }
+
+  .blog-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #534AB7;
+    color: #ffffff;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 14px 32px;
+    border-radius: 9999px;
+    white-space: nowrap;
+    min-height: 52px;
+    flex-shrink: 0;
+    transition: background 0.2s ease;
+    box-shadow: 0 6px 24px rgba(83, 74, 183, 0.4);
+  }
+  .blog-cta-btn:hover { background: #3b309e; }
+
+  /* ── Responsive ─────────────────────────────── */
+  @media (max-width: 1024px) {
+    .blog-cta-inner { flex-direction: column; align-items: flex-start; gap: 28px; padding: 36px 32px; }
+    .blog-cta-btn { width: 100%; }
+  }
+
+  @media (max-width: 768px) {
+    .article-hero { padding: 40px 0 36px; }
+    .article-h1 { font-size: 30px; }
+    .article-standfirst { font-size: 16px; }
+    .article-feature-img { max-height: 240px; }
+    .article-body { padding: 44px 0 60px; }
+    .article-content :global(h2) { font-size: 22px; margin-top: 40px; }
+    .article-content :global(h3) { font-size: 18px; }
+    .article-content :global(p),
+    .article-content :global(ul),
+    .article-content :global(ol) { font-size: 16px; }
+    .article-author-bio { flex-direction: column; align-items: flex-start; padding: 24px 20px; }
+    .blog-bottom-cta { padding: 48px 0; }
+    .blog-cta-h2 { font-size: 22px; }
+  }
+</style>
