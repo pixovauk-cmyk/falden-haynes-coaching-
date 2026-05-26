@@ -1,5 +1,17 @@
 ---
-// AboutPageMVV.astro — Mission / Vision / Values — 3 col with dividers
+import { reader } from '../lib/reader';
+
+const ap = await reader.singletons.about_page.read();
+const mvvChip    = ap?.mvv_chip    ?? 'The why behind the work';
+const mvvH2      = ap?.mvv_h2      ?? 'Mission, Vision & Values';
+const missionBody = ap?.mission_body ?? '';
+const visionBody  = ap?.vision_body  ?? '';
+const v1Title    = ap?.value1_title ?? 'Always be growing';
+const v1Body     = ap?.value1_body  ?? '';
+const v2Title    = ap?.value2_title ?? 'Follow up when needed';
+const v2Body     = ap?.value2_body  ?? '';
+const v3Title    = ap?.value3_title ?? 'Listen for clarity';
+const v3Body     = ap?.value3_body  ?? '';
 ---
 
 <section class="mvv" aria-label="Mission, Vision and Values">
@@ -8,9 +20,9 @@
     <div class="mvv-header fade-in">
       <p class="mvv-eyebrow">
         <span class="mvv-eyebrow-line" aria-hidden="true"></span>
-        The why behind the work
+        {mvvChip}
       </p>
-      <h2 class="mvv-h2">Mission, Vision &amp; Values</h2>
+      <h2 class="mvv-h2">{mvvH2}</h2>
     </div>
 
     <div class="mvv-scroll-wrap" id="mvv-scroll">
@@ -20,11 +32,7 @@
         <div class="mvv-col">
           <img src="/Images/Mission2.webp" alt="" class="mvv-icon" aria-hidden="true" loading="lazy" width="140" height="140" />
           <h3 class="mvv-label">Mission</h3>
-          <p class="mvv-body">
-            I started this to make entrepreneurship practical and achievable through
-            action-focused coaching and structured planning, helping startup founders
-            seize opportunities and build successful ventures that create meaningful impact.
-          </p>
+          <p class="mvv-body">{missionBody}</p>
         </div>
 
         <div class="mvv-divider" aria-hidden="true"></div>
@@ -33,11 +41,7 @@
         <div class="mvv-col">
           <img src="/Images/Vision2.webp" alt="" class="mvv-icon" aria-hidden="true" loading="lazy" width="140" height="140" />
           <h3 class="mvv-label">Vision</h3>
-          <p class="mvv-body">
-            A future where entrepreneurial success is driven by preparation rather than
-            chance. More start-up businesses in the UK solving real problems, equipped
-            with the planning and confidence to build businesses that last.
-          </p>
+          <p class="mvv-body">{visionBody}</p>
         </div>
 
         <div class="mvv-divider" aria-hidden="true"></div>
@@ -47,9 +51,9 @@
           <img src="/Images/Values2.webp" alt="" class="mvv-icon" aria-hidden="true" loading="lazy" width="140" height="140" />
           <h3 class="mvv-label">Values</h3>
           <ul class="mvv-values">
-            <li><strong>Always be growing</strong> committed to learning, experimenting and finding the right people.</li>
-            <li><strong>Follow up when needed</strong> a call to keep you on track with what you are doing.</li>
-            <li><strong>Listen for clarity</strong> gaining clarity to provide the best advice possible.</li>
+            <li><strong>{v1Title}</strong> {v1Body}</li>
+            <li><strong>{v2Title}</strong> {v2Body}</li>
+            <li><strong>{v3Title}</strong> {v3Body}</li>
           </ul>
         </div>
 

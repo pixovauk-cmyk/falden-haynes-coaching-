@@ -1,8 +1,21 @@
 ---
-// AboutPageMission.astro — "How I work"
-// Replaces Mission/Vision/Values framework entirely
-// 3-col image-led section: photo + bold statement + one sentence
-// Uses: working-at-laptop, cutout-thoughtful (never used before), sales-funnel-training
+import { reader } from '../lib/reader';
+
+const ap   = await reader.singletons.about_page.read();
+const site = await reader.singletons.site_settings.read();
+
+const hwChip      = ap?.hw_chip       ?? 'How I work';
+const hwH2        = ap?.hw_h2         ?? 'No theory. No fluff.\nJust honest work.';
+const hwSub       = ap?.hw_sub        ?? 'What you get from me, every session, every client, no exceptions.';
+const card1Title  = ap?.hw_card1_title ?? 'I come prepared.';
+const card1Body   = ap?.hw_card1_body  ?? '';
+const card2Title  = ap?.hw_card2_title ?? "I'll tell you what I actually think.";
+const card2Body   = ap?.hw_card2_body  ?? '';
+const card3Title  = ap?.hw_card3_title ?? 'You leave with a plan.';
+const card3Body   = ap?.hw_card3_body  ?? '';
+const footerText  = ap?.hw_footer_text ?? '';
+const footerCta   = ap?.hw_footer_cta  ?? 'Book a free call';
+const calendly    = site?.calendly_discovery ?? 'https://calendly.com/feldon-haynes/discovery-call';
 ---
 
 <section class="how-work" aria-label="How Feldon works">
@@ -11,12 +24,10 @@
     <div class="hw-header fade-in">
       <p class="eyebrow">
         <span class="eyebrow-line" aria-hidden="true"></span>
-        How I work
+        {hwChip}
       </p>
-      <h2 class="hw-h2">No theory. No fluff.<br>Just honest work.</h2>
-      <p class="hw-sub">
-        What you get from me, every session, every client, no exceptions.
-      </p>
+      <h2 class="hw-h2" set:html={hwH2.replace('\n', '<br>')}></h2>
+      <p class="hw-sub">{hwSub}</p>
     </div>
 
     <div class="hw-scroll-wrap" id="hw-scroll">
@@ -35,15 +46,12 @@
           />
         </div>
         <div class="hw-card-body">
-          <h3 class="hw-title">I come prepared.</h3>
-          <p class="hw-text">
-            Before every session, I've thought about your specific situation, not just your industry.
-            You're never starting from scratch.
-          </p>
+          <h3 class="hw-title">{card1Title}</h3>
+          <p class="hw-text">{card1Body}</p>
         </div>
       </div>
 
-      <!-- Card 2: thoughtful portrait with purple overlay -->
+      <!-- Card 2: purple overlay -->
       <div class="hw-card hw-card--overlay">
         <div class="hw-img-wrap">
           <img
@@ -57,11 +65,8 @@
           <div class="hw-img-overlay" aria-hidden="true"></div>
         </div>
         <div class="hw-card-body">
-          <h3 class="hw-title hw-title--light">I'll tell you what I actually think.</h3>
-          <p class="hw-text hw-text--light">
-            If the idea has a gap, I'll say so. Honest input is more useful
-            than comfortable agreement.
-          </p>
+          <h3 class="hw-title hw-title--light">{card2Title}</h3>
+          <p class="hw-text hw-text--light">{card2Body}</p>
         </div>
       </div>
 
@@ -78,11 +83,8 @@
           />
         </div>
         <div class="hw-card-body">
-          <h3 class="hw-title">You leave with a plan.</h3>
-          <p class="hw-text">
-            Every session ends with a written action plan in your inbox, the same day.
-            Not a vague list. A real plan you can act on.
-          </p>
+          <h3 class="hw-title">{card3Title}</h3>
+          <p class="hw-text">{card3Body}</p>
         </div>
       </div>
 
@@ -102,18 +104,8 @@
     <!-- Bottom: community context -->
     <div class="hw-footer fade-in">
       <div class="hw-footer-inner">
-        <p class="hw-footer-text">
-          I've delivered workshops at the University of Warwick Science Park, worked
-          with the Black Country Chamber of Commerce, and spent years in rooms with people
-          who are trying to build something real. The West Midlands business community
-          matters to me. Genuinely.
-        </p>
-        <a
-          href="https://calendly.com/feldon-haynes/discovery-call"
-          class="hw-footer-cta"
-          target="_blank"
-          rel="noopener noreferrer"
-        >Book a free call</a>
+        <p class="hw-footer-text">{footerText}</p>
+        <a href={calendly} class="hw-footer-cta" target="_blank" rel="noopener noreferrer">{footerCta}</a>
       </div>
     </div>
 

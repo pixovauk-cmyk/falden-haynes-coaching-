@@ -1,41 +1,50 @@
 ---
-// AboutPageStory.astro — timeline/journey format
-// Inspired by Vidyard: alternating image/text blocks with milestone markers
-// DRAFT COPY — update with Feldon's own words once received (Section 12 of info.md)
+import { reader } from '../lib/reader';
+
+const ap   = await reader.singletons.about_page.read();
+const site = await reader.singletons.site_settings.read();
+
+const storyChip = ap?.story_chip ?? 'My journey';
+const storyH2   = ap?.story_h2   ?? 'Where I came from.\nAnd why I coach.';
+const storySub  = ap?.story_sub  ?? 'A story that starts earlier than most. And gets more honest along the way.';
+const m1Tag     = ap?.m1_tag     ?? 'The start';
+const m1H3      = ap?.m1_h3      ?? "I didn't wait for permission.";
+const m1Body1   = ap?.m1_body1   ?? '';
+const m1Body2   = ap?.m1_body2   ?? '';
+const m2Tag     = ap?.m2_tag     ?? 'The real bit';
+const m2H3      = ap?.m2_h3      ?? '35 businesses. Not all of them worked.';
+const m2Body1   = ap?.m2_body1   ?? '';
+const m2Body2   = ap?.m2_body2   ?? '';
+const m3Tag     = ap?.m3_tag     ?? 'Why I coach';
+const m3H3      = ap?.m3_h3      ?? 'I got tired of watching talented people get stuck.';
+const m3Body1   = ap?.m3_body1   ?? '';
+const m3Body2   = ap?.m3_body2   ?? "That's what I do. And that's why I do it.";
+const m3Cta     = ap?.m3_cta     ?? 'Book a free call';
+const calendly  = site?.calendly_discovery ?? 'https://calendly.com/feldon-haynes/discovery-call';
 ---
 
-<section class="story" aria-label="Feldon's story and journey">
+<section class="story" aria-label="Feldon's story and journey" id="story">
   <div class="container">
 
     <div class="story-header fade-in">
       <p class="eyebrow">
         <span class="eyebrow-line" aria-hidden="true"></span>
-        My journey
+        {storyChip}
       </p>
-      <h2 class="story-h2">Where I came from.<br>And why I coach.</h2>
-      <p class="story-sub">
-        A story that starts earlier than most. And gets more honest along the way.
-      </p>
+      <h2 class="story-h2" set:html={storyH2.replace('\n', '<br>')}></h2>
+      <p class="story-sub">{storySub}</p>
     </div>
 
     <!-- Timeline wrapper -->
     <div class="timeline">
 
-      <!-- Milestone 1: The beginning — text left, image right -->
+      <!-- Milestone 1 -->
       <div class="milestone fade-in">
         <div class="milestone-text">
-          <span class="milestone-tag">The start</span>
-          <h3 class="milestone-h3">I didn't wait for permission.</h3>
-          <p class="milestone-body">
-            I started my first business when most people my age were still figuring out
-            what they wanted to study. That was a choice, and it came with everything
-            you'd expect. The excitement. The mistakes. The moments of genuine
-            progress, and the moments where it all felt like it was going backwards.
-          </p>
-          <p class="milestone-body">
-            Raised in the West Midlands, this community
-            has always been part of how I think and operate.
-          </p>
+          <span class="milestone-tag">{m1Tag}</span>
+          <h3 class="milestone-h3">{m1H3}</h3>
+          <p class="milestone-body">{m1Body1}</p>
+          <p class="milestone-body">{m1Body2}</p>
         </div>
         <div class="milestone-visual">
           <img
@@ -55,24 +64,13 @@
         <div class="connector-dot"></div>
       </div>
 
-      <!-- Milestone 2: Building and failing — text left, image right -->
+      <!-- Milestone 2 -->
       <div class="milestone milestone--reverse fade-in">
         <div class="milestone-text">
-          <span class="milestone-tag">The real bit</span>
-          <h3 class="milestone-h3">35 businesses. Not all of them worked.</h3>
-          <p class="milestone-body">
-            I've now started 35 businesses. They haven't all worked. That's the bit
-            most coaches won't tell you. But it's also the bit that matters most.
-            Because you don't get real business knowledge from the ones that went
-            smoothly. You get it from figuring out what went wrong and what you'd
-            do differently.
-          </p>
-          <p class="milestone-body">
-            The West Midlands is where I grew up, where I built my businesses, and
-            where I'm based now. I've worked with the Black Country Chamber of
-            Commerce, delivered workshops at the University of Warwick Science Park,
-            and spent time in rooms with people who are trying to build something real.
-          </p>
+          <span class="milestone-tag">{m2Tag}</span>
+          <h3 class="milestone-h3">{m2H3}</h3>
+          <p class="milestone-body">{m2Body1}</p>
+          <p class="milestone-body">{m2Body2}</p>
         </div>
         <div class="milestone-visual">
           <img
@@ -92,27 +90,15 @@
         <div class="connector-dot"></div>
       </div>
 
-      <!-- Milestone 3: Coaching — text left, image right -->
+      <!-- Milestone 3 -->
       <div class="milestone fade-in">
         <div class="milestone-text">
-          <span class="milestone-tag">Why I coach</span>
-          <h3 class="milestone-h3">I got tired of watching talented people get stuck.</h3>
-          <p class="milestone-body">
-            When I started coaching, it wasn't a pivot or a next step. It came from
-            watching talented, motivated people get stuck in exactly the same places.
-            Not because they lacked ability, but because no one had helped them turn
-            what was in their head into a structured plan.
-          </p>
-          <p class="milestone-body">
-            That's what I do. And that's why I do it.
-          </p>
-          <a
-            href="https://calendly.com/feldon-haynes/discovery-call"
-            class="milestone-cta"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Book a free call
+          <span class="milestone-tag">{m3Tag}</span>
+          <h3 class="milestone-h3">{m3H3}</h3>
+          <p class="milestone-body">{m3Body1}</p>
+          <p class="milestone-body">{m3Body2}</p>
+          <a href={calendly} class="milestone-cta" target="_blank" rel="noopener noreferrer">
+            {m3Cta}
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
               <path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>

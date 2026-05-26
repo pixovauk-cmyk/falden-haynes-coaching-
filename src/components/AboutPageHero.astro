@@ -1,7 +1,13 @@
 ---
-// AboutPageHero.astro — matches homepage hero exactly
-// Same light bg, purple gradient right col, floating cards
-// Uses feldon-haynes-professional-headshot.webp — object-position tuned so face shows
+import { reader } from '../lib/reader';
+
+const ap = await reader.singletons.about_page.read();
+const chip       = ap?.hero_chip       ?? 'Business Coach and Mentor';
+const sub        = ap?.hero_sub        ?? 'Serial entrepreneur. 35+ businesses started. 40+ founders supported. Based in Halesowen, coaching founders across the UK online.';
+const btn        = ap?.hero_btn        ?? 'Read my story';
+const floatNum   = ap?.hero_float_num  ?? '40+';
+const floatLabel = ap?.hero_float_label ?? 'Founders supported';
+const awardChip  = ap?.hero_award_chip ?? 'EPIC Spirit Award';
 ---
 
 <section class="about-hero" aria-label="About Feldon Haynes">
@@ -16,19 +22,16 @@
         <span class="ah-bc-cur" aria-current="page">About</span>
       </nav>
 
-      <span class="ah-chip">Business Coach and Mentor</span>
+      <span class="ah-chip">{chip}</span>
 
       <h1 class="ah-h1">
         Business coach<br>and mentor.<br>
         <em>Who's actually done it.</em>
       </h1>
 
-      <p class="ah-sub">
-        Serial entrepreneur. 35+ businesses started. 40+ founders supported.
-        Based in Halesowen, coaching founders across the UK online.
-      </p>
+      <p class="ah-sub">{sub}</p>
 
-      <a href="#story" class="ah-btn-ghost">Read my story</a>
+      <a href="#story" class="ah-btn-ghost">{btn}</a>
 
     </div>
   </div>
@@ -57,8 +60,8 @@
 
       <!-- Floating stat card — bottom left -->
       <div class="ah-float ah-float--stat">
-        <span class="ah-float-num">40+</span>
-        <span class="ah-float-label">Founders supported</span>
+        <span class="ah-float-num">{floatNum}</span>
+        <span class="ah-float-label">{floatLabel}</span>
       </div>
 
       <!-- Award chip — top right -->
@@ -66,7 +69,7 @@
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
         </svg>
-        <span>EPIC Spirit Award</span>
+        <span>{awardChip}</span>
       </div>
 
     </div>

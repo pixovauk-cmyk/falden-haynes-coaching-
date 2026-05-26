@@ -1,6 +1,11 @@
 ---
-// AboutPageGoogleReviews.astro — all 5 real Google reviews from screenshots
-// Mobile: horizontal swipe, desktop: 3-col grid (first 3) + 2-col row (last 2)
+import { reader } from '../lib/reader';
+
+const ap    = await reader.singletons.about_page.read();
+const site  = await reader.singletons.site_settings.read();
+const grH2  = ap?.gr_h2  ?? 'What clients say on Google.';
+const grSub = ap?.gr_sub ?? "Real feedback from people who've worked with Feldon directly.";
+const googleUrl = site?.google_reviews_url ?? 'https://www.google.com/search?q=feldon+haynes+coaching';
 ---
 
 <section class="google-reviews" aria-label="Google reviews">
@@ -21,8 +26,8 @@
           <span class="gr-count">5 reviews · Feldon Haynes Coaching</span>
         </div>
       </div>
-      <h2 class="gr-h2">What clients say on Google.</h2>
-      <p class="gr-sub">Real feedback from people who've worked with Feldon directly.</p>
+      <h2 class="gr-h2">{grH2}</h2>
+      <p class="gr-sub">{grSub}</p>
     </div>
 
     <!-- Scroll wrapper: marquee on desktop, swipe on mobile -->
@@ -161,7 +166,7 @@
 
     <div class="gr-footer fade-in">
       <a
-        href="https://www.google.com/search?q=Feldon+Haynes+Coaching+services"
+        href={googleUrl}
         target="_blank"
         rel="noopener noreferrer"
         class="gr-link"
