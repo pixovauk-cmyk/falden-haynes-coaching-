@@ -22,6 +22,7 @@ export default defineConfig({
       'src/data/testimonials/workshop-attendee.yaml',
       'src/data/testimonials/new-venture-founder.yaml',
       'src/data/testimonials/business-owner.yaml',
+      'src/data/testimonials/business-manager.yaml',
     ],
   }),
   compressHTML: true,
