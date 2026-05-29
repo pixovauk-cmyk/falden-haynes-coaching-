@@ -2,8 +2,11 @@ name: The Direction Bundle
 tagline: Lost direction
 sessions: 6
 price: 160
-price_was: 300
-description: "Business audit, vision work, and a 6-month strategic roadmap for existing businesses."
-calendly_url: "https://calendly.com/feldon-haynes/packages/bcd3e931-3e20-4faa-9d96-2a82cc4e121a"
+price_was: 450
+description: >-
+  Business audit, vision work, and a 6-month strategic roadmap for existing
+  businesses.
+calendly_url: >-
+  https://calendly.com/feldon-haynes/packages/bcd3e931-3e20-4faa-9d96-2a82cc4e121a
 sort_order: 4
 most_popular: false
