@@ -1,0 +1,286 @@
+---
+import LpLayout from '../../layouts/LpLayout.astro';
+import { reader } from '../../lib/reader';
+
+const { slug } = Astro.params;
+const slugStr = Array.isArray(slug) ? slug[0] : (slug ?? '');
+if (!slugStr) return new Response(null, { status: 404 });
+
+const entry = await reader.collections.landing_pages.read(slugStr);
+if (!entry) return new Response(null, { status: 404 });
+
+const benefits = [entry.benefit_1, entry.benefit_2, entry.benefit_3].filter(Boolean) as string[];
+const ctaLabel = entry.cta_label || 'Book your free 30-minute call';
+const ctaNote  = entry.cta_note  || 'Free · No obligation · Wednesdays and Thursdays';
+---
+
+<LpLayout
+  title={`${entry.title} | Feldon Haynes Coaching`}
+  description={entry.meta_description ?? ''}
+  canonicalUrl={`https://feldonhaynes.com/lp/${slugStr}`}
+  noindex={entry.noindex ?? true}
+>
+
+<!-- ── TOP BAR ─────────────────────────────────── -->
+<header class="lp-bar">
+  <div class="lp-container lp-bar-inner">
+    <a href="/" aria-label="Feldon Haynes Coaching — home">
+      <img src="/Images/feldon-haynes-logo-light.webp" alt="Feldon Haynes Coaching" width="82" height="48" loading="eager" class="lp-logo-img" />
+    </a>
+    {entry.calendly_url && (
+      <a href={entry.calendly_url} class="lp-bar-cta" target="_blank" rel="noopener noreferrer">
+        Book a free call
+      </a>
+    )}
+  </div>
+</header>
+
+<!-- ── HERO ─────────────────────────────────────── -->
+<section class="lp-hero">
+  <div class="lp-container">
+    <div class="hero-inner fade-in">
+
+      {entry.chip && <span class="hero-chip">{entry.chip}</span>}
+
+      <h1 class="hero-h1">{entry.headline}</h1>
+
+      {entry.subheading && <p class="hero-sub">{entry.subheading}</p>}
+
+      {benefits.length > 0 && (
+        <ul class="hero-checks">
+          {benefits.map(b => (
+            <li>
+              <svg class="check-icon" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+                <circle cx="11" cy="11" r="11" fill="#534AB7"/>
+                <path d="M7 11.5l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              {b}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {entry.calendly_url && (
+        <div class="hero-cta-wrap">
+          <a href={entry.calendly_url} class="hero-cta-btn" target="_blank" rel="noopener noreferrer">
+            {ctaLabel}
+          </a>
+          <p class="hero-cta-note">{ctaNote}</p>
+        </div>
+      )}
+
+      <div class="hero-proof">
+        <div class="hero-proof-dots" aria-hidden="true">
+          <span class="proof-dot proof-dot--a">F</span>
+          <span class="proof-dot proof-dot--b">H</span>
+          <span class="proof-dot proof-dot--c">C</span>
+        </div>
+        <p class="hero-proof-text"><strong>40+ founders</strong> already working with Feldon</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOT BAR ──────────────────────────────────── -->
+<div class="lp-foot">
+  <p>&copy; 2026 Feldon Haynes Coaching &middot; Feldon Haynes Coaching.</p>
+  <div class="lp-foot-links">
+    <a href="/privacy">Privacy policy</a>
+    <a href="/terms">Terms &amp; conditions</a>
+  </div>
+</div>
+
+</LpLayout>
+
+<style>
+  .lp-container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── Top bar ────────────────────────────── */
+  .lp-bar {
+    background: #ffffff;
+    border-bottom: 1px solid #ede9ff;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 72px;
+    display: flex;
+    align-items: center;
+  }
+  .lp-bar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px;
+    width: 100%;
+  }
+  .lp-logo-img { height: 48px; width: auto; display: block; }
+  .lp-bar-cta {
+    display: inline-flex;
+    align-items: center;
+    background: #534AB7;
+    color: #ffffff;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 11px 24px;
+    border-radius: 9999px;
+    min-height: 44px;
+    transition: background 0.2s;
+  }
+  .lp-bar-cta:hover { background: #3b309e; }
+
+  /* ── Hero ───────────────────────────────── */
+  .lp-hero {
+    background: #f8f9fb;
+    padding: 80px 0 88px;
+  }
+  .hero-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .hero-chip {
+    display: inline-flex;
+    align-items: center;
+    background: #e3dfff;
+    color: #3b309e;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 9999px;
+    margin-bottom: 24px;
+  }
+  .hero-h1 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 52px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #1a1744;
+    line-height: 1.1;
+    margin-bottom: 18px;
+    max-width: 640px;
+  }
+  .hero-sub {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 17px;
+    color: #5a5680;
+    line-height: 1.65;
+    margin-bottom: 28px;
+    max-width: 560px;
+  }
+  .hero-checks {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 36px;
+    padding: 0;
+  }
+  .hero-checks li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #3d3a5c;
+    line-height: 1.4;
+  }
+  .check-icon { width: 22px; height: 22px; flex-shrink: 0; }
+  .hero-cta-wrap { margin-bottom: 28px; }
+  .hero-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #534AB7;
+    color: #ffffff;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 16px 36px;
+    border-radius: 9999px;
+    white-space: nowrap;
+    min-height: 56px;
+    transition: background 0.2s, transform 0.1s;
+    box-shadow: 0 8px 32px rgba(83,74,183,0.28);
+    margin-bottom: 10px;
+    display: block;
+  }
+  .hero-cta-btn:hover { background: #3b309e; }
+  .hero-cta-btn:active { transform: scale(0.97); }
+  .hero-cta-note {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 12px;
+    color: #b0abc8;
+    margin-top: 10px;
+  }
+  .hero-proof {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 28px;
+    border-top: 1px solid #e8e4f8;
+    width: 100%;
+    max-width: 400px;
+  }
+  .hero-proof-dots { display: flex; align-items: center; }
+  .proof-dot {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    color: #ffffff;
+    border: 2px solid #f8f9fb;
+    margin-left: -8px;
+  }
+  .proof-dot:first-child { margin-left: 0; }
+  .proof-dot--a { background: #534AB7; }
+  .proof-dot--b { background: #26215C; }
+  .proof-dot--c { background: #F2D832; color: #1a1744; }
+  .hero-proof-text {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 13px;
+    color: #7e7a9f;
+  }
+  .hero-proof-text strong { color: #1a1744; }
+
+  /* ── Foot bar ───────────────────────────── */
+  .lp-foot {
+    background: #13102e;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+  }
+  .lp-foot-links { display: flex; gap: 20px; }
+  .lp-foot-links a { color: rgba(255,255,255,0.35); transition: color 0.2s; }
+  .lp-foot-links a:hover { color: rgba(255,255,255,0.7); }
+
+  /* ── Mobile ────────────────────────────── */
+  @media (max-width: 768px) {
+    .lp-hero { padding: 52px 0 64px; }
+    .hero-h1 { font-size: 34px; }
+    .hero-cta-btn { width: 100%; text-align: center; }
+    .lp-foot { flex-direction: column; align-items: flex-start; gap: 10px; }
+  }
+</style>

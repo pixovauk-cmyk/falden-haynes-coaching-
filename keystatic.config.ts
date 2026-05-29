@@ -235,9 +235,16 @@ export default config({
       path: 'src/data/privacy-page',
       schema: {
         last_updated: fields.text({ label: 'Last updated date', defaultValue: '27 June 2025' }),
+        intro: fields.text({ label: 'Intro paragraph', multiline: true, description: 'The opening paragraph shown above the numbered sections.' }),
         content: fields.document({
           label: 'Privacy policy content',
-          formatting: true,
+          description: 'Use Heading 2 for numbered section titles (e.g. "1. Who we are"). Use paragraphs, bullet lists, and bold for body text.',
+          formatting: {
+            headingLevels: [2, 3],
+            inlineMarks: { bold: true, italic: true },
+            listTypes: { unordered: true },
+            softBreaks: true,
+          },
           links: true,
         }),
       },
@@ -248,11 +255,36 @@ export default config({
       path: 'src/data/terms-page',
       schema: {
         last_updated: fields.text({ label: 'Last updated date', defaultValue: '27 June 2025' }),
+        intro: fields.text({ label: 'Intro paragraph', multiline: true, description: 'The opening paragraph shown above the numbered sections.' }),
         content: fields.document({
           label: 'Terms & conditions content',
-          formatting: true,
+          description: 'Use Heading 2 for numbered section titles (e.g. "1. About us"). Use Heading 3 for sub-sections (e.g. "By you (the client)").',
+          formatting: {
+            headingLevels: [2, 3],
+            inlineMarks: { bold: true, italic: true },
+            listTypes: { ordered: true, unordered: true },
+            softBreaks: true,
+          },
           links: true,
         }),
+      },
+    }),
+
+    start_page: singleton({
+      label: 'Start page (/start)',
+      path: 'src/data/start-page',
+      schema: {
+        eyebrow: fields.text({ label: 'Eyebrow text', defaultValue: 'Free 30-minute discovery call' }),
+        headline: fields.text({ label: 'Headline (H1)', multiline: true, defaultValue: "You've got the idea. Let's build the plan." }),
+        subheading: fields.text({ label: 'Subheading paragraph', multiline: true, defaultValue: "Whether you're about to launch something new or looking for honest business startup advice before you go any further, this is the clearest first step you can take." }),
+        benefit_1: fields.text({ label: 'Benefit 1', defaultValue: "Get clear on exactly what's holding you back" }),
+        benefit_2: fields.text({ label: 'Benefit 2', defaultValue: 'Walk away with a structured starting point' }),
+        benefit_3: fields.text({ label: 'Benefit 3', defaultValue: 'No pitch. No pressure. Just an honest conversation.' }),
+        proof_1: fields.text({ label: 'Social proof stat 1', defaultValue: '35+ businesses started' }),
+        proof_2: fields.text({ label: 'Social proof stat 2', defaultValue: '40+ founders coached' }),
+        proof_3: fields.text({ label: 'Social proof stat 3', defaultValue: 'EPIC Spirit Award winner' }),
+        calendly_url: fields.text({ label: 'Calendly booking URL', defaultValue: 'https://calendly.com/feldon-haynes/business-planning-coaching' }),
+        cal_label: fields.text({ label: 'Label above the calendar', defaultValue: 'Pick a time that works for you' }),
       },
     }),
 
@@ -364,6 +396,38 @@ export default config({
         calendly_url: fields.text({ label: 'Calendly booking URL' }),
         sort_order: fields.number({ label: 'Sort order (1–4)', validation: { isRequired: true, min: 1, max: 4 } }),
         most_popular: fields.checkbox({ label: 'Show "Most Popular" badge', defaultValue: false }),
+      },
+    }),
+
+    landing_pages: collection({
+      label: 'Landing pages',
+      path: 'src/data/landing-pages/*',
+      slugField: 'title',
+      schema: {
+        title: fields.slug({
+          name: {
+            label: 'Page title / URL slug',
+            description: 'Used in the URL. Example: "canva-workshop" creates feldonhaynes.com/lp/canva-workshop',
+          },
+        }),
+        meta_description: fields.text({
+          label: 'Meta description',
+          multiline: true,
+          description: 'Shown in Google search results. Under 160 characters.',
+        }),
+        noindex: fields.checkbox({ label: 'Hide from Google (noindex)', defaultValue: true }),
+        chip: fields.text({ label: 'Eyebrow chip text', defaultValue: 'Free 30-minute discovery call' }),
+        headline: fields.text({ label: 'Hero headline (H1)', multiline: true }),
+        subheading: fields.text({ label: 'Hero subheading', multiline: true }),
+        benefit_1: fields.text({ label: 'Benefit 1', description: 'Leave blank to hide.' }),
+        benefit_2: fields.text({ label: 'Benefit 2', description: 'Leave blank to hide.' }),
+        benefit_3: fields.text({ label: 'Benefit 3', description: 'Leave blank to hide.' }),
+        cta_label: fields.text({ label: 'CTA button text', defaultValue: 'Book your free 30-minute call' }),
+        cta_note: fields.text({ label: 'Note below CTA button', defaultValue: 'Free · No obligation · Wednesdays and Thursdays' }),
+        calendly_url: fields.text({
+          label: 'Calendly URL',
+          description: 'The booking link. The CTA button links directly to Calendly.',
+        }),
       },
     }),
 

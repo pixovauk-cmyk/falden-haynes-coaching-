@@ -7,6 +7,20 @@
 
 import '../styles/global.css';
 import CalendlyEmbed from '../components/CalendlyEmbed.astro';
+import { reader } from '../lib/reader';
+
+const cms = await reader.singletons.start_page.read();
+const eyebrow    = cms?.eyebrow    ?? 'Free 30-minute discovery call';
+const headline   = cms?.headline   ?? "You've got the idea. Let's build the plan.";
+const subheading = cms?.subheading ?? "Whether you're about to launch something new or looking for honest business startup advice before you go any further, this is the clearest first step you can take.";
+const benefit1   = cms?.benefit_1  ?? "Get clear on exactly what's holding you back";
+const benefit2   = cms?.benefit_2  ?? 'Walk away with a structured starting point';
+const benefit3   = cms?.benefit_3  ?? 'No pitch. No pressure. Just an honest conversation.';
+const proof1     = cms?.proof_1    ?? '35+ businesses started';
+const proof2     = cms?.proof_2    ?? '40+ founders coached';
+const proof3     = cms?.proof_3    ?? 'EPIC Spirit Award winner';
+const calendlyUrl = cms?.calendly_url ?? 'https://calendly.com/feldon-haynes/business-planning-coaching';
+const calLabel   = cms?.cal_label  ?? 'Pick a time that works for you';
 
 const schema = JSON.stringify({
   "@context": "https://schema.org",
@@ -77,40 +91,25 @@ const schema = JSON.stringify({
       <div class="lp-hero__copy">
         <p class="lp-eyebrow">
           <span class="lp-eyebrow__line" aria-hidden="true"></span>
-          Free 30-minute discovery call
+          {eyebrow}
         </p>
-        <h1 class="lp-h1">
-          You've got the <em>idea</em>.<br>Let's build the plan.
-        </h1>
-        <p class="lp-sub">
-          Whether you're about to launch something new or looking for honest business startup advice before you go any further, this is the clearest first step you can take.
-        </p>
+        <h1 class="lp-h1" set:html={headline}></h1>
+        <p class="lp-sub">{subheading}</p>
         <ul class="lp-benefits">
-          <li>
-            <span class="lp-benefit__dot" aria-hidden="true"></span>
-            <span>Get clear on exactly what's holding you back</span>
-          </li>
-          <li>
-            <span class="lp-benefit__dot" aria-hidden="true"></span>
-            <span>Walk away with a structured starting point</span>
-          </li>
-          <li>
-            <span class="lp-benefit__dot" aria-hidden="true"></span>
-            <span>No pitch. No pressure. Just an honest conversation.</span>
-          </li>
+          {benefit1 && <li><span class="lp-benefit__dot" aria-hidden="true"></span><span>{benefit1}</span></li>}
+          {benefit2 && <li><span class="lp-benefit__dot" aria-hidden="true"></span><span>{benefit2}</span></li>}
+          {benefit3 && <li><span class="lp-benefit__dot" aria-hidden="true"></span><span>{benefit3}</span></li>}
         </ul>
         <p class="lp-proof">
-          <span>35+ businesses started</span>
-          <span class="lp-proof__sep" aria-hidden="true">·</span>
-          <span>40+ founders coached</span>
-          <span class="lp-proof__sep" aria-hidden="true">·</span>
-          <span>EPIC Spirit Award winner</span>
+          {proof1 && <span>{proof1}</span>}
+          {proof2 && <><span class="lp-proof__sep" aria-hidden="true">·</span><span>{proof2}</span></>}
+          {proof3 && <><span class="lp-proof__sep" aria-hidden="true">·</span><span>{proof3}</span></>}
         </p>
       </div>
 
       <div class="lp-hero__cal">
-        <p class="lp-cal__label">Pick a time that works for you</p>
-        <CalendlyEmbed url="https://calendly.com/feldon-haynes/business-planning-coaching" height="660px" />
+        <p class="lp-cal__label">{calLabel}</p>
+        <CalendlyEmbed url={calendlyUrl} height="660px" />
       </div>
 
     </div>

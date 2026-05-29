@@ -1,9 +1,13 @@
 ---
-// terms.astro — Terms & Conditions
-// No primary SEO keyword — noindex
-// BEFORE LAUNCH: Review content against existing feldonhaynes.com/terms and update if different
-
 import Layout from '../layouts/Layout.astro';
+import BlogContentRenderer from '../components/BlogContentRenderer.tsx';
+import { reader } from '../lib/reader';
+
+const data = await reader.singletons.terms_page.read();
+const lastUpdated = data?.last_updated ?? '27 June 2025';
+const intro = data?.intro ?? '';
+const nodes = data ? await data.content() : [];
+const hasContent = Array.isArray(nodes) && nodes.length > 0;
 ---
 
 <Layout
@@ -21,91 +25,102 @@ import Layout from '../layouts/Layout.astro';
         <span>Terms &amp; Conditions</span>
       </p>
       <h1 class="legal-h1">Terms &amp; Conditions</h1>
-      <p class="legal-meta">Last updated: 27 June 2025 &middot; Feldon Haynes Coaching</p>
+      <p class="legal-meta">Last updated: {lastUpdated} &middot; Feldon Haynes Coaching</p>
     </div>
   </section>
 
   <section class="legal-body">
     <div class="container legal-content">
 
-      <p class="legal-intro">
-        These Terms and Conditions govern the coaching services provided by Feldon Haynes Coaching (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;) to you (&ldquo;the client&rdquo;). By booking or engaging in any coaching services, you agree to these terms. Please read them carefully before proceeding.
-      </p>
+      {hasContent ? (
+        <>
+          {intro && <p class="legal-intro">{intro}</p>}
+          <div class="legal-cms">
+            <BlogContentRenderer document={nodes} client:load />
+          </div>
+        </>
+      ) : (
+        <>
+          <p class="legal-intro">
+            These Terms and Conditions govern the coaching services provided by Feldon Haynes Coaching (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;) to you (&ldquo;the client&rdquo;). By booking or engaging in any coaching services, you agree to these terms. Please read them carefully before proceeding.
+          </p>
 
-      <h2>1. About us</h2>
-      <p>Feldon Haynes Coaching is a company registered in England and Wales.</p>
-      <address>
-        <strong>Feldon Haynes Coaching</strong><br>
-        Registered address: 32 Vicarage Road, Halesowen, West Midlands, B62 8HU<br>
-        Companies House number: 16546926<br>
-        Email: <a href="mailto:Feldonhaynes@gmail.com">Feldonhaynes@gmail.com</a><br>
-        Phone: <a href="tel:+447562614867">07562 614867</a>
-      </address>
+          <h2>1. About us</h2>
+          <p>Feldon Haynes Coaching is a company registered in England and Wales.</p>
+          <address>
+            <strong>Feldon Haynes Coaching</strong><br>
+            Registered address: 32 Vicarage Road, Halesowen, West Midlands, B62 8HU<br>
+            Companies House number: 16546926<br>
+            Email: <a href="mailto:Feldonhaynes@gmail.com">Feldonhaynes@gmail.com</a><br>
+            Phone: <a href="tel:+447562614867">07562 614867</a>
+          </address>
 
-      <h2>2. Services</h2>
-      <p>We provide 1-to-1 business coaching and mentoring services, delivered online via video call. All sessions are conducted on Wednesday and Thursday, between 8am and 6pm GMT/BST.</p>
-      <p>Our coaching services are offered as bundles and individual sessions as described on this website. The specific scope of each service is outlined at the time of booking.</p>
-      <p>Coaching services are for informational and developmental purposes only. Feldon Haynes Coaching does not provide legal, financial, accounting, or regulated professional advice. You should seek appropriate professional advice for such matters.</p>
+          <h2>2. Services</h2>
+          <p>We provide 1-to-1 business coaching and mentoring services, delivered online via video call. All sessions are conducted on Wednesday and Thursday, between 8am and 6pm GMT/BST.</p>
+          <p>Our coaching services are offered as bundles and individual sessions as described on this website. The specific scope of each service is outlined at the time of booking.</p>
+          <p>Coaching services are for informational and developmental purposes only. Feldon Haynes Coaching does not provide legal, financial, accounting, or regulated professional advice. You should seek appropriate professional advice for such matters.</p>
 
-      <h2>3. Booking</h2>
-      <p>Sessions are booked via Calendly at the link provided at the time of purchase. Your booking is confirmed once payment has been received in full.</p>
-      <p>We reserve the right to decline or cancel a booking at our discretion, in which case a full refund will be issued.</p>
+          <h2>3. Booking</h2>
+          <p>Sessions are booked via Calendly at the link provided at the time of purchase. Your booking is confirmed once payment has been received in full.</p>
+          <p>We reserve the right to decline or cancel a booking at our discretion, in which case a full refund will be issued.</p>
 
-      <h2>4. Payment</h2>
-      <p>All fees are due in advance of the first session and are payable via Stripe. Prices are displayed on our website and are inclusive of any applicable taxes unless stated otherwise.</p>
-      <p>All prices are quoted in Pounds Sterling (GBP).</p>
-      <p>We reserve the right to update our pricing at any time. Price changes do not affect bookings that have already been confirmed and paid.</p>
+          <h2>4. Payment</h2>
+          <p>All fees are due in advance of the first session and are payable via Stripe. Prices are displayed on our website and are inclusive of any applicable taxes unless stated otherwise.</p>
+          <p>All prices are quoted in Pounds Sterling (GBP).</p>
+          <p>We reserve the right to update our pricing at any time. Price changes do not affect bookings that have already been confirmed and paid.</p>
 
-      <h2>5. Cancellation and rescheduling</h2>
-      <h3>By you (the client)</h3>
-      <ul>
-        <li><strong>More than 48 hours&rsquo; notice</strong> — you may cancel or reschedule at no charge. Sessions will be held in credit for rescheduling.</li>
-        <li><strong>Less than 48 hours&rsquo; notice</strong> — the session will be forfeited and no refund or credit will be issued.</li>
-        <li><strong>No-show</strong> — if you do not attend a scheduled session without prior notice, the session will be forfeited.</li>
-      </ul>
-      <h3>By us</h3>
-      <p>If we need to cancel a session, we will give you as much notice as possible and offer a reschedule. If a reschedule cannot be agreed, a pro-rata refund will be issued for that session.</p>
+          <h2>5. Cancellation and rescheduling</h2>
+          <h3>By you (the client)</h3>
+          <ul>
+            <li><strong>More than 48 hours&rsquo; notice</strong> — you may cancel or reschedule at no charge. Sessions will be held in credit for rescheduling.</li>
+            <li><strong>Less than 48 hours&rsquo; notice</strong> — the session will be forfeited and no refund or credit will be issued.</li>
+            <li><strong>No-show</strong> — if you do not attend a scheduled session without prior notice, the session will be forfeited.</li>
+          </ul>
+          <h3>By us</h3>
+          <p>If we need to cancel a session, we will give you as much notice as possible and offer a reschedule. If a reschedule cannot be agreed, a pro-rata refund will be issued for that session.</p>
 
-      <h2>6. Refunds</h2>
-      <p>Refunds are not available for sessions that have already taken place.</p>
-      <p>If you wish to cancel a bundle before commencing, a full refund will be issued provided no sessions have been held. If sessions have commenced, a pro-rata refund may be offered at our discretion.</p>
-      <p>Refund requests should be submitted in writing to <a href="mailto:Feldonhaynes@gmail.com">Feldonhaynes@gmail.com</a>.</p>
+          <h2>6. Refunds</h2>
+          <p>Refunds are not available for sessions that have already taken place.</p>
+          <p>If you wish to cancel a bundle before commencing, a full refund will be issued provided no sessions have been held. If sessions have commenced, a pro-rata refund may be offered at our discretion.</p>
+          <p>Refund requests should be submitted in writing to <a href="mailto:Feldonhaynes@gmail.com">Feldonhaynes@gmail.com</a>.</p>
 
-      <h2>7. Confidentiality</h2>
-      <p>We treat all information shared during coaching sessions as confidential. We will not disclose personal details of your business, finances, or circumstances to third parties without your consent, except where required by law.</p>
-      <p>We may use anonymised, general case studies or themes for educational purposes, but will never identify you or your business without your explicit written permission.</p>
+          <h2>7. Confidentiality</h2>
+          <p>We treat all information shared during coaching sessions as confidential. We will not disclose personal details of your business, finances, or circumstances to third parties without your consent, except where required by law.</p>
+          <p>We may use anonymised, general case studies or themes for educational purposes, but will never identify you or your business without your explicit written permission.</p>
 
-      <h2>8. Client responsibilities</h2>
-      <p>To get the most from our coaching services, you agree to:</p>
-      <ul>
-        <li>Attend sessions on time and prepared.</li>
-        <li>Complete any agreed actions between sessions.</li>
-        <li>Be honest and open about your circumstances.</li>
-        <li>Respect that coaching results depend significantly on your own effort and commitment.</li>
-      </ul>
+          <h2>8. Client responsibilities</h2>
+          <p>To get the most from our coaching services, you agree to:</p>
+          <ul>
+            <li>Attend sessions on time and prepared.</li>
+            <li>Complete any agreed actions between sessions.</li>
+            <li>Be honest and open about your circumstances.</li>
+            <li>Respect that coaching results depend significantly on your own effort and commitment.</li>
+          </ul>
 
-      <h2>9. Intellectual property</h2>
-      <p>All materials, frameworks, templates, and resources provided by Feldon Haynes Coaching during coaching sessions are our intellectual property. They are provided for your personal and business use only and may not be shared, reproduced, or resold without our prior written consent.</p>
+          <h2>9. Intellectual property</h2>
+          <p>All materials, frameworks, templates, and resources provided by Feldon Haynes Coaching during coaching sessions are our intellectual property. They are provided for your personal and business use only and may not be shared, reproduced, or resold without our prior written consent.</p>
 
-      <h2>10. Limitation of liability</h2>
-      <p>Coaching is a developmental service. We do not guarantee specific business outcomes, revenue results, or success. Results depend on many factors beyond our control, including your own actions and market conditions.</p>
-      <p>To the fullest extent permitted by law, Feldon Haynes Coaching shall not be liable for any indirect, incidental, or consequential loss arising from the use of our services.</p>
-      <p>Our total liability to you in connection with any claim arising from these terms or our services shall not exceed the total fees paid by you for the specific service in question.</p>
-      <p>Nothing in these Terms limits our liability for death or personal injury caused by our negligence, or for fraud or fraudulent misrepresentation.</p>
+          <h2>10. Limitation of liability</h2>
+          <p>Coaching is a developmental service. We do not guarantee specific business outcomes, revenue results, or success. Results depend on many factors beyond our control, including your own actions and market conditions.</p>
+          <p>To the fullest extent permitted by law, Feldon Haynes Coaching shall not be liable for any indirect, incidental, or consequential loss arising from the use of our services.</p>
+          <p>Our total liability to you in connection with any claim arising from these terms or our services shall not exceed the total fees paid by you for the specific service in question.</p>
+          <p>Nothing in these Terms limits our liability for death or personal injury caused by our negligence, or for fraud or fraudulent misrepresentation.</p>
 
-      <h2>11. Governing law</h2>
-      <p>These Terms and Conditions are governed by the laws of England and Wales. Any disputes will be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+          <h2>11. Governing law</h2>
+          <p>These Terms and Conditions are governed by the laws of England and Wales. Any disputes will be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
 
-      <h2>12. Changes to these terms</h2>
-      <p>We may update these Terms and Conditions from time to time. The most recent version will always be published at <a href="/terms">feldonhaynes.com/terms</a>. Continued use of our services after changes are published constitutes acceptance of the updated terms.</p>
+          <h2>12. Changes to these terms</h2>
+          <p>We may update these Terms and Conditions from time to time. The most recent version will always be published at <a href="/terms">feldonhaynes.com/terms</a>. Continued use of our services after changes are published constitutes acceptance of the updated terms.</p>
 
-      <h2>13. Contact</h2>
-      <p>Questions about these Terms and Conditions should be sent to:</p>
-      <address>
-        <strong>Feldon Haynes — Feldon Haynes Coaching</strong><br>
-        Email: <a href="mailto:Feldonhaynes@gmail.com">Feldonhaynes@gmail.com</a><br>
-        Phone: <a href="tel:+447562614867">07562 614867</a>
-      </address>
+          <h2>13. Contact</h2>
+          <p>Questions about these Terms and Conditions should be sent to:</p>
+          <address>
+            <strong>Feldon Haynes — Feldon Haynes Coaching</strong><br>
+            Email: <a href="mailto:Feldonhaynes@gmail.com">Feldonhaynes@gmail.com</a><br>
+            Phone: <a href="tel:+447562614867">07562 614867</a>
+          </address>
+        </>
+      )}
 
     </div>
   </section>
@@ -169,7 +184,7 @@ import Layout from '../layouts/Layout.astro';
     border-bottom: 1px solid #e4e2f5;
   }
 
-  .legal-content h2 {
+  .legal-content :global(h2) {
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     font-size: 16px;
     font-weight: 600;
@@ -178,7 +193,7 @@ import Layout from '../layouts/Layout.astro';
     margin-bottom: 12px;
   }
 
-  .legal-content h3 {
+  .legal-content :global(h3) {
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     font-size: 14px;
     font-weight: 600;
@@ -187,7 +202,7 @@ import Layout from '../layouts/Layout.astro';
     margin-bottom: 8px;
   }
 
-  .legal-content p {
+  .legal-content :global(p) {
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     font-size: 15px;
     font-weight: 400;
@@ -196,7 +211,7 @@ import Layout from '../layouts/Layout.astro';
     margin-bottom: 14px;
   }
 
-  .legal-content ul {
+  .legal-content :global(ul) {
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     font-size: 15px;
     font-weight: 400;
@@ -206,11 +221,11 @@ import Layout from '../layouts/Layout.astro';
     padding: 0;
   }
 
-  .legal-content ul li {
+  .legal-content :global(ul li) {
     margin-bottom: 8px;
   }
 
-  .legal-content address {
+  .legal-content :global(address) {
     font-style: normal;
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     font-size: 15px;
@@ -223,13 +238,66 @@ import Layout from '../layouts/Layout.astro';
     margin: 16px 0 14px;
   }
 
-  .legal-content a {
+  .legal-content :global(a) {
     color: #534AB7;
     text-decoration: underline;
     text-decoration-color: rgba(83, 74, 183, 0.3);
     transition: text-decoration-color 0.2s ease;
   }
-  .legal-content a:hover {
+  .legal-content :global(a:hover) {
+    text-decoration-color: #534AB7;
+  }
+
+  /* CMS content (document renderer output) */
+  .legal-cms :global(h2) {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #26215C;
+    margin-top: 40px;
+    margin-bottom: 12px;
+  }
+
+  .legal-cms :global(h3) {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #26215C;
+    margin-top: 20px;
+    margin-bottom: 8px;
+  }
+
+  .legal-cms :global(p) {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #444;
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+
+  .legal-cms :global(ul),
+  .legal-cms :global(ol) {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #444;
+    line-height: 1.75;
+    margin: 0 0 14px 20px;
+    padding: 0;
+  }
+
+  .legal-cms :global(li) {
+    margin-bottom: 8px;
+  }
+
+  .legal-cms :global(a) {
+    color: #534AB7;
+    text-decoration: underline;
+    text-decoration-color: rgba(83, 74, 183, 0.3);
+    transition: text-decoration-color 0.2s ease;
+  }
+  .legal-cms :global(a:hover) {
     text-decoration-color: #534AB7;
   }
 
